@@ -1,0 +1,44 @@
+.d-auto {
+	flex: auto;
+}
+.d-fill {
+	flex: 1;
+}
+
+.ptb-5 {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.row-full-height {
+	min-height: 100%;
+}
+
+html,
+body {
+	height: 100%;
+	overflow: auto;
+}
+
+.main-content {
+	-webkit-transition: margin 0.25s ease-out;
+	-moz-transition: margin 0.25s ease-out;
+	-o-transition: margin 0.25s ease-out;
+	transition: margin 0.25s ease-out;
+}
+
+.main-container {
+	height: calc(100%);
+	overflow: hidden;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	.main-row {
+		position: relative;
+		// min-height: calc(100vh - 162px);
+	}
+}

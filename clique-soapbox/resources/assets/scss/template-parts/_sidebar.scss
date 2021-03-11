@@ -1,0 +1,124 @@
+.sidebar-content {
+	border-right: 1px solid $light-grey;
+	-webkit-transition: margin 0.25s ease-out;
+	-moz-transition: margin 0.25s ease-out;
+	-o-transition: margin 0.25s ease-out;
+	transition: margin 0.25s ease-out;
+	margin-left: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 1rem;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background: white;
+	height: calc(100vh - 82px);
+
+	@media screen and (min-width: $breakpoint-md) {
+		position: relative;
+		// min-height: calc(100vh - 162px);
+		height: auto;
+	}
+
+	.navbar-brand {
+		padding: 0.3125rem 1rem;
+	}
+
+	.list-group {
+		border-top: 1px solid $light-grey;
+		border-bottom: 1px solid $light-grey;
+		.list-group-item {
+			&:hover {
+				background: $extreme-light-grey;
+			}
+		}
+	}
+
+	.nav-item {
+		margin-bottom: 0;
+		.nav-link {
+			color: #333;
+			font-size: 0.875rem;
+			padding-left: 0;
+			padding-right: 0;
+			&.active,
+			&:hover {
+				color: #2a3341;
+			}
+		}
+	}
+}
+.sidebar-toggle {
+	-webkit-transition: all 0.25s ease-out;
+	-moz-transition: all 0.25s ease-out;
+	-o-transition: all 0.25s ease-out;
+	transition: all 0.25s ease-out;
+
+	margin-top: 0.375rem;
+	margin-bottom: 0;
+	margin-left: 0.375rem;
+
+	position: absolute;
+	z-index: 10;
+
+	@media screen and (max-width: 767px) {
+		top: 0 !important;
+		bottom: auto !important;
+	}
+
+	@media screen and (min-width: $breakpoint-md) {
+		margin-top: 0;
+		position: relative;
+		padding-left: var(--bs-gutter-x);
+	}
+
+	.btn {
+		height: 35px;
+		width: 35px;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		-webkit-transition: transform 0.25s ease-out;
+		-moz-transition: transform 0.25s ease-out;
+		-o-transition: transform 0.25s ease-out;
+		transition: transform 0.25s ease-out;
+
+		&:hover {
+			background-color: $light-grey;
+		}
+		.bi {
+			color: $black;
+		}
+	}
+}
+
+#main {
+	&.sidebar-hidden {
+		.sidebar-content {
+			margin-left: -100%;
+			border-right: 0;
+
+			@media screen and (min-width: $breakpoint-md) {
+				margin-left: -25%;
+			}
+		}
+		.main-content {
+			@media screen and (min-width: $breakpoint-md) {
+				margin-left: calc(35px + (var(--bs-gutter-x) * 2)) !important;
+			}
+		}
+		.sidebar-toggle {
+			.btn {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+//
+// Component:       Variables
+// Description:     Defines all color and style related values as variables
+//                  to allow easy customization for the most common cases.
+//
+// ========================================================================
+// ========================================================================
+// Component: Variables
+// ========================================================================
+// Colors
+$brand-primary: #000000;
+$background: #f0f0eb;
+$offwhite: #fafaf5;
+$white: #ffffff;
+$black: #000000;
+$shadow: #fff;
+$grey: #6c757d;
+$light-grey: #dee2e6;
+$very-light-grey: #e9ecef;
+$extreme-light-grey: #f8f9fa;
+
+$breakpoint-sm: 576px;
+$max-breakpoint-sm: 575px;
+$breakpoint-md: 768px;
+$max-breakpoint-md: 767px;
+$breakpoint-lg: 992px;
+$max-breakpoint-lg: 991px;
+$breakpoint-xl: 1200px;
+$max-breakpoint-xl: 1199px;
+
+:root {
+	--bs-primary: #2291f8;
+}
