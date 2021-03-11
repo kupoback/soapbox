@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "main": [
+      "./scripts/main.js",
+      "./styles/main.scss"
+    ]
+  },
+  "publicPath": "/dist/",
+  "devUrl": "https://clique-soapbox.app",
+  "proxyUrl": "/",
+  "cacheBusting": "[name]_[hash:8]",
+  "watch": [
+    "resources/views/templates/**/*.hbs",
+    "resources/assets/**/*.{scss,css,js,jpeg,jpg,png,svg,woff,woff2,ttf,otf,mov,ico,mp4,webm}"
+  ]
+}
