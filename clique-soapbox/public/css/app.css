@@ -1393,6 +1393,7 @@ body {
   transition: margin 0.25s ease-out;
 }
 
+#app,
 .main-container {
   height: calc(100%);
   overflow: hidden;

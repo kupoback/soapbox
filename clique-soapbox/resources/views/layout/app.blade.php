@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	@include('partials.head')
 	<body>
+{{--		<div id="app"></div>--}}
 		<div class="main-container" role="document">
 			<main class="main" id="main" role="main">
 				@include('partials.header')

@@ -5,8 +5,9 @@ import { createApp } from 'vue';
 // import { MediaQueries } from "vue-media-queries";
 
 // Components
-import HelloWorld from "./components/HelloWorld.vue";
+import App from "./components/App.vue";
+import Header from "./components/Header/Header.vue";
 
-if (document.getElementById('vue-hello')) {
-    createApp(HelloWorld).mount('#vue-hello');
+if (document.getElementById('app')) {
+    createApp(App).mount('#app');
 }
