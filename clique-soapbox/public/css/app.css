@@ -1389,10 +1389,6 @@ body {
   overflow: auto;
 }
 
-.main-content {
-  transition: margin 0.25s ease-out;
-}
-
 #app,
 .main-container {
   height: calc(100%);
@@ -1407,6 +1403,10 @@ body {
 }
 #main .main-row {
   position: relative;
+}
+
+.main-content {
+  transition: margin 0.25s ease-out;
 }
 
 .profile-image img {

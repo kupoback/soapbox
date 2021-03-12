@@ -24,6 +24,11 @@
         "sass": "^1.32.8",
         "sass-loader": "^8.0.2",
         "vue": "^3.0.7",
-        "vue-loader": "^16.1.2"
+        "vue-loader": "^16.1.2",
+        "vue-router": "^4.0.5"
+    },
+    "dependencies": {
+        "vue-media-queries": "^0.0.5",
+        "vuex": "^4.0.0"
     }
 }

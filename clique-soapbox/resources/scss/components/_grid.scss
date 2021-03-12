@@ -20,13 +20,6 @@ body {
 	overflow: auto;
 }
 
-.main-content {
-	-webkit-transition: margin 0.25s ease-out;
-	-moz-transition: margin 0.25s ease-out;
-	-o-transition: margin 0.25s ease-out;
-	transition: margin 0.25s ease-out;
-}
-
 #app,
 .main-container {
 	height: calc(100%);
@@ -42,4 +35,11 @@ body {
 		position: relative;
 		// min-height: calc(100vh - 162px);
 	}
+}
+
+.main-content {
+	-webkit-transition: margin 0.25s ease-out;
+	-moz-transition: margin 0.25s ease-out;
+	-o-transition: margin 0.25s ease-out;
+	transition: margin 0.25s ease-out;
 }

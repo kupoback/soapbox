@@ -5,7 +5,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false" aria-label="Profile Toggle">
                             <span class="profile-image">
-                                <img src="'../../../../../images/placeholder-headshot-image.jpg" alt="Placeholder Image"
+                                <img src="'../../../../images/placeholder-headshot-image.jpg" alt="Placeholder Image"
                                      class="nav-image img-fluid img-thumbnail" height="50px" width="50px" />
                             </span>
                     <span class="d-none d-lg-inline-block">Clique User</span>

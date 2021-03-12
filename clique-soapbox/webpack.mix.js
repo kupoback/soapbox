@@ -14,9 +14,9 @@ const mix = require('laravel-mix');
 
 let productionSourceMaps = false;
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
    .vue()
-   .sass('resources/assets/scss/app.scss', 'public/css')
+   .sass('resources/scss/app.scss', 'public/css')
    .sourceMaps(productionSourceMaps, 'source-map');
 
 /**
@@ -27,7 +27,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
  | @TODO Include a way to optimize images for the frontend
  |
  */
-mix.copy('resources/assets/images/**/*', 'public/images');
+mix.copy('resources/images/**/*', 'public/images');
 
 mix.browserSync({
     proxy: 'https://clique-soapbox.app',
