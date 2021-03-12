@@ -18,6 +18,14 @@
             Footer,
             Header,
         },
+        created() {
+            this.$store.dispatch('setViewport');
+        },
+        mounted() {
+            window.addEventListener('resize', () => {
+                this.$store.dispatch('setViewport');
+            })
+        },
         name: "App"
     };
 </script>

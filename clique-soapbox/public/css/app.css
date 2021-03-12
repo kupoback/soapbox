@@ -1355,6 +1355,18 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?cc252f2c65517314a587f62e1
   --bs-primary: #2291f8;
 }
 
+.fade-enter-active {
+  transition: opacity 1s ease;
+}
+
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
 .muted-text {
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
@@ -1364,6 +1376,10 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?cc252f2c65517314a587f62e1
 
 .bg-muted {
   background-color: #e9ecef !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
 }
 
 .d-auto {
@@ -1677,6 +1693,8 @@ body {
   margin-top: 0.375rem;
   margin-bottom: 0;
   margin-left: 0.375rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   position: absolute;
   z-index: 10;
 }
@@ -1709,6 +1727,12 @@ body {
   color: #000000;
 }
 
+.closed-toggle .sidebar-toggle {
+  margin-left: 0;
+  padding-left: var(--bs-gutter-x);
+  padding-right: var(--bs-gutter-x);
+}
+
 #main.sidebar-hidden .sidebar-content {
   margin-left: -100%;
   border-right: 0;
@@ -1727,6 +1751,12 @@ body {
   transform: rotate(180deg);
 }
 
+.create-new-item {
+  padding: 1rem 0;
+}
+.create-new-item__form {
+  margin: 0 auto;
+}
 .create-new-item__submit .btn {
   width: 45px;
   height: 45px;

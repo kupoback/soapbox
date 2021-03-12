@@ -12,7 +12,7 @@
                         <p class="muted-text">Description</p>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
                     </div>
-                    <div class="col-12 pb-3 agenda__cards">
+                    <div class="col-12 pb-4 agenda__cards">
                         <div class="list-group list-group-flush agenda__card">
                             <AgendaItem v-for="(agenda, index) in comments"
                                         :key="index"
@@ -21,8 +21,8 @@
                         </div>
                     </div>
                     <AgendaModal />
-                    <div class="col-12 order-last align-self-end create-new-item">
-                        <form class="row gx-3 align-items-center">
+                    <div class="col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item">
+                        <form class="row gx-3 align-items-center no-gutters create-new-item__form">
                             <div class="form-floating col-10 col-lg-11">
                                 <input type="text" class="form-control" id="newItem" placeholder="Add New Item">
                                 <label for="newItem" class="px-4">Add New Item</label>
@@ -94,7 +94,7 @@
                 ]
             };
         },
-        components: {
+       components: {
             AgendaModal,
             AgendaItem,
             Sidebar

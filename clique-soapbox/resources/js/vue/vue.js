@@ -1,8 +1,8 @@
 /* global import */
 // Vue Items
-import Vue, { createApp } from 'vue';
+import Vue, {createApp, reactive} from "vue";
 import {store} from "./vuex/store.js";
-import { MediaQueries } from "vue-media-queries";
+// import {MediaQueries} from "vue-media-queries";
 
 // Additional Plugins
 import axios from "axios";
@@ -12,20 +12,16 @@ import router from "./router/router.js";
 
 // Components
 import App from "./components/App.vue";
-import Header from "./components/Header/Header.vue";
 
-if (document.getElementById('app')) {
-    const mediaQueries = new MediaQueries();
+if (document.getElementById("app")) {
     
-    const app = createApp(App, {
-        mediaQueries: mediaQueries,
-    });
+    const app = createApp(App);
     
     app.config.globalProperties.$axios = axios;
     
-    app.use(store);
-    app.use(router);
+    app.use(store)
+       .use(router);
     
     // Mount our component
-    app.mount('#app');
+    app.mount("#app");
 }

@@ -1,4 +1,9 @@
 .create-new-item {
+	padding: 1rem 0;
+	&__form {
+		margin: 0 auto;
+		
+	}
 	&__submit {
 		.btn {
 			width: 45px;
