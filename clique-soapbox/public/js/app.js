@@ -19674,13 +19674,19 @@ __webpack_require__.r(__webpack_exports__);
     SidebarToggler: _SidebarToggler_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
   mounted: function mounted() {
-    if (this.viewport === 'mobile') {
-      this.$store.dispatch('toggleSidebarVisibility', {
-        visibility: false
-      });
-    }
+    var _this = this;
+
+    this.loadResizedEvent();
+    window.addEventListener('resize', function () {
+      _this.loadResizedEvent();
+    });
   },
   methods: {
+    loadResizedEvent: function loadResizedEvent() {
+      this.$store.dispatch('toggleSidebarVisibility', {
+        visibility: this.viewport !== 'mobile'
+      });
+    },
     toggleSidebar: function toggleSidebar(sidebarStatus) {
       var mainWrapper = document.getElementById('main');
       var sidebarToggler = document.querySelector('.sidebar-toggle');

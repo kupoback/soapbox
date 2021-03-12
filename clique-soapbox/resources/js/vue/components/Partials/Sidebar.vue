@@ -28,11 +28,15 @@
             SidebarToggler
         },
         mounted() {
-           if (this.viewport === 'mobile') {
-               this.$store.dispatch('toggleSidebarVisibility', {visibility: false});
-           }
+           this.loadResizedEvent();
+           window.addEventListener('resize', () => {
+               this.loadResizedEvent();
+           })
         },
         methods: {
+           loadResizedEvent() {
+               this.$store.dispatch('toggleSidebarVisibility', {visibility: this.viewport !== 'mobile'});
+           },
            toggleSidebar(sidebarStatus) {
                const mainWrapper = document.getElementById('main');
                const sidebarToggler = document.querySelector('.sidebar-toggle');
