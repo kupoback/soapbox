@@ -20,10 +20,10 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <router-link :to="`/profile`" v-text="`Profile`" class="dropdown-item" />
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">Sign Out</a>
+                        <router-link :to="`/log-out`" v-text="`Sign Out`" class="dropdown-item" />
                     </li>
                 </ul>
             </li>

@@ -7,12 +7,13 @@
                         data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand order-2 order-lg-1" href="/">Clique Soapbox</a>
+                
+                <router-link class="navbar-brand order-2 order-lg-1"
+                             :to="`/`"
+                             v-text="`Clique Soapbox`" />
                 
                 <MainNavigation />
-
                 <ProfileNavigation />
-                
             </div>
         </nav>
     </header>

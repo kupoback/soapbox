@@ -3,3 +3,23 @@
 		cursor: pointer;
 	}
 }
+
+.list-group-flush {
+	
+	.list-group-item {
+		&:hover {
+			background: $extreme-light-grey;
+		}
+	}
+	
+	.nav-link {
+		color: #333;
+		font-size: 0.875rem;
+		padding-left: 0;
+		padding-right: 0;
+		&.active,
+		&:hover {
+			color: #2a3341;
+		}
+	}
+}

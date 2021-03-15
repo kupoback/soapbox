@@ -3,16 +3,12 @@
         <nav class="sticky-md-top">
             <div class="flex-column pt-5">
                 <h3 class="navbar-brand">Team List</h3>
-                <div class="list-group list-group-flush">
-                    <p class="list-group-item nav-item">
-                        <a href="#" class="nav-link">Engineering Monthly Meeting</a>
-                    </p>
-                    <p class="list-group-item nav-item">
-                        <a href="#" class="nav-link">Decoupled WordPress</a>
-                    </p>
-                    <p class="list-group-item nav-item">
-                        <a href="#" class="nav-link">Decoupled React</a>
-                    </p>
+                <div v-if="teams"
+                     class="list-group list-group-flush">
+                    <SidebarItem v-for="({_id, slug, title}) in teams"
+                                 :key="_id"
+                                 :slug="slug"
+                                 :title="title" />
                 </div>
             </div>
         </nav>
@@ -22,11 +18,10 @@
 </template>
 
 <script type="application/javascript">
+    import SidebarItem from "./SidebarItem.vue";
     import SidebarToggler from "./SidebarToggler.vue";
+    
     export default {
-       components: {
-            SidebarToggler
-        },
         mounted() {
            this.loadResizedEvent();
            window.addEventListener('resize', () => {
@@ -37,13 +32,14 @@
            loadResizedEvent() {
                this.$store.dispatch('toggleSidebarVisibility', {visibility: this.viewport !== 'mobile'});
            },
-           toggleSidebar(sidebarStatus) {
+           toggleSidebar() {
                const mainWrapper = document.getElementById('main');
-               const sidebarToggler = document.querySelector('.sidebar-toggle');
                const sidebar = this.$refs.sidebar;
                const vp = this.viewport;
                
-               const sidebarWidth = parseInt(sidebar.offsetWidth - 1);
+               // Need to subtract one extra to compensate for border
+               const getSidebarWidth = Number(sidebar.offsetWidth) - 1;
+               const sidebarWidth = parseInt( typeof getSidebarWidth);
                const mainWrapperClass = 'sidebar-hidden';
                
                if (!this.sidebarOpened) {
@@ -58,12 +54,14 @@
                    sidebar.dataset.collapsed = "false";
                    sidebar.style.marginLeft = null;
                }
-               
            }
         },
         computed: {
             sidebarOpened() {
                 return this.$store.state.sidebarOpened;
+            },
+            teams() {
+                return this.$store.state.teams;
             },
             viewport() {
                 return this.$store.state.viewport;
@@ -79,6 +77,10 @@
             sidebarOpened() {
                 this.toggleSidebar(this.$store.state.sidebarOpened)
             }
+        },
+        components: {
+            SidebarItem,
+            SidebarToggler
         },
         name: "Sidebar"
     };

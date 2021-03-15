@@ -33,25 +33,10 @@
 	.list-group {
 		border-top: 1px solid $light-grey;
 		border-bottom: 1px solid $light-grey;
-		.list-group-item {
-			&:hover {
-				background: $extreme-light-grey;
-			}
-		}
 	}
 
 	.nav-item {
 		margin-bottom: 0;
-		.nav-link {
-			color: #333;
-			font-size: 0.875rem;
-			padding-left: 0;
-			padding-right: 0;
-			&.active,
-			&:hover {
-				color: #2a3341;
-			}
-		}
 	}
 }
 .sidebar-toggle {
@@ -118,6 +103,10 @@
 
 			@media screen and (min-width: $breakpoint-md) {
 				margin-left: -25%;
+			}
+			
+			@media screen and (min-width: $breakpoint-lg) {
+				margin-left: -16.6666666667%;
 			}
 		}
 		.main-content {

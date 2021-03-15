@@ -1,11 +1,34 @@
 import axios from "axios";
-import { createStore } from 'vuex';
+import {createStore} from "vuex";
 
 export const store = createStore({
-    state () {
+    state() {
         return {
             sidebarOpened: true,
-            viewport: ''
+            viewport: "",
+            // Temp data
+            teams: [
+                {
+                    _id: "ID_019355",
+                    title: "Test List",
+                    slug: "",
+                },
+                {
+                    _id: "ID_0193",
+                    title: "Decoupled Discussion",
+                    slug: "decoupled-discussion",
+                },
+                {
+                    _id: "ID_01945",
+                    title: "Engineering React",
+                    slug: "engineering-react",
+                },
+                {
+                    _id: "ID_0084",
+                    title: "Engineering Monthly Meeting",
+                    slug: "engineering-monthly-meeting",
+                },
+            ]
         };
     },
     getters: {},
@@ -50,19 +73,22 @@ export const store = createStore({
         //     return;
         // },
         toggleSidebarVisibility(store, opts) {
-            store.commit('TOGGLE_SIDEBAR', {opts});
+            store.commit("TOGGLE_SIDEBAR", {opts});
         },
         setViewport(store, opts) {
             const winWidth = window.innerWidth;
             
-            let viewportName = 'desktop';
-            if (winWidth < 768) viewportName = 'mobile';
-            else if (winWidth >= 768 && winWidth <= 1200) viewportName = 'tablet';
+            let viewportName = "desktop";
+            if (winWidth < 768) viewportName = "mobile";
+            else if (winWidth >= 768 && winWidth <= 1200) viewportName = "tablet";
             
             if (this.viewport !== viewportName) {
-                store.commit('SET_VIEWPORT', {viewportName});
+                store.commit("SET_VIEWPORT", {viewportName});
             }
-        }
+        },
+        getTeamListing(store, opts) {
+        
+        },
     },
     modules: {},
-})
+});

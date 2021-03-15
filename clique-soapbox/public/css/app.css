@@ -1437,6 +1437,19 @@ body {
   cursor: pointer;
 }
 
+.list-group-flush .list-group-item:hover {
+  background: #f8f9fa;
+}
+.list-group-flush .nav-link {
+  color: #333;
+  font-size: 0.875rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+.list-group-flush .nav-link.active, .list-group-flush .nav-link:hover {
+  color: #2a3341;
+}
+
 .btn-circle {
   border-radius: 50%;
 }
@@ -1672,20 +1685,8 @@ body {
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
-.sidebar-content .list-group .list-group-item:hover {
-  background: #f8f9fa;
-}
 .sidebar-content .nav-item {
   margin-bottom: 0;
-}
-.sidebar-content .nav-item .nav-link {
-  color: #333;
-  font-size: 0.875rem;
-  padding-left: 0;
-  padding-right: 0;
-}
-.sidebar-content .nav-item .nav-link.active, .sidebar-content .nav-item .nav-link:hover {
-  color: #2a3341;
 }
 
 .sidebar-toggle {
@@ -1742,6 +1743,11 @@ body {
     margin-left: -25%;
   }
 }
+@media screen and (min-width: 992px) {
+  #main.sidebar-hidden .sidebar-content {
+    margin-left: -16.6666666667%;
+  }
+}
 @media screen and (min-width: 768px) {
   #main.sidebar-hidden .main-content {
     margin-left: calc(35px + (var(--bs-gutter-x) * 2)) !important;
@@ -1753,6 +1759,7 @@ body {
 
 .create-new-item {
   padding: 1rem 0;
+  z-index: 4;
 }
 .create-new-item__form {
   margin: 0 auto;
@@ -1776,16 +1783,67 @@ body {
 .agenda__description {
   border-bottom: 1px solid #6c757d;
 }
-.agenda__card--right {
+.agenda__cards-card__handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 15px;
+}
+.agenda__cards-card__handle-icons {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+}
+.agenda__cards-card__handle-icons__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+.agenda__cards-card__right {
   margin-right: 0.5rem;
 }
-.agenda__card--left p {
+.agenda__cards-card__left p {
   margin-top: 0;
   margin-bottom: 0;
 }
-.agenda__card .list-group-item {
+.agenda__cards-card:hover, .agenda__cards-card:focus {
+  cursor: pointer;
+}
+.agenda__cards-card:hover__handle, .agenda__cards-card:hover__right, .agenda__cards-card:hover__left, .agenda__cards-card:focus__handle, .agenda__cards-card:focus__right, .agenda__cards-card:focus__left {
+  cursor: pointer;
+}
+.agenda__cards-card:hover .agenda__cards-card__handle-icons, .agenda__cards-card:focus .agenda__cards-card__handle-icons {
+  display: flex;
+}
+.agenda__cards-card:hover .agenda__cards-card__handle-icons__icon, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon {
+  background: #f8f9fa;
+}
+.agenda__cards-card:hover .agenda__cards-card__handle-icons__icon:hover, .agenda__cards-card:hover .agenda__cards-card__handle-icons__icon:focus, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon:hover, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon:focus {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.agenda__cards-card:first-child .list-group-item {
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.agenda__cards-card:last-child .list-group-item {
+  border-bottom: 0;
+}
+.agenda__cards .list-group-item {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 40px;
+  transition: background-color 0.25s;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 .profile-row {

@@ -10,10 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.9.1",
         "@vue/compiler-sfc": "^3.0.7",
-        "axios": "^0.21",
-        "bootstrap": "^5.0.0-beta2",
         "bootstrap-icons": "^1.4.0",
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.2.2",
@@ -23,12 +20,15 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.32.8",
         "sass-loader": "^8.0.2",
-        "vue": "^3.0.7",
-        "vue-loader": "^16.1.2",
-        "vue-router": "^4.0.5"
+        "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "vue-media-queries": "^0.0.5",
+        "@popperjs/core": "^2.9.1",
+        "axios": "^0.21",
+        "bootstrap": "^5.0.0-beta2",
+        "vue": "^3.0.7",
+        "vue-router": "^4.0.5",
+        "vuedraggable": "^4.0.1",
         "vuex": "^4.0.0"
     }
 }

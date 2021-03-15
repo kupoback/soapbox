@@ -1,7 +1,5 @@
 require('./bootstrap.js');
 require('bootstrap/dist/js/bootstrap.min.js');
 
-// Temporary Scripts
-require('./scripts/common.js');
-
+// Register Vue script
 require('./vue/vue.js');
