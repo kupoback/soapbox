@@ -5,9 +5,8 @@
 			text-transform: uppercase;
 		}
 	}
-	.spacer {
-		margin: 0 0.375rem;
-		color: $grey;
+	&-body {
+		padding: 0;
 	}
 	&__agenda {
 		align-items: flex-start;
@@ -16,42 +15,91 @@
 		border: 1px solid rgba(0, 0, 0, 0.2);
 		border-radius: 0.3rem;
 		outline: 0;
-
-		.modal-header {
-			justify-content: normal;
-			border-bottom: none;
+		
+		flex-flow: row wrap;
+		overflow: hidden;
+		@media screen and (min-width: $breakpoint-lg) {
+			flex-flow: initial;
+			overflow: initial;
 		}
+		
+		&-content {
+			overflow-y: auto;
+			min-height: 0;
+			padding: 1rem var(--bs-gutter-x);
+			&__header {
+				display: flex;
+				align-items: center;
+				font-size: 0.875rem;
+				text-transform: uppercase;
+				&__added-by {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+			}
+			&__body {
+			}
+		}
+		&-comments {
+			&-container {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				border-top-right-radius: 0.3rem;
+				border-bottom-right-radius: 0.3rem;
+				border-left: 1px solid $light-grey !important;
+				&__header {
+					display:         flex;
+					flex-flow:       row nowrap;
+					align-items:     center;
+					justify-content: space-between;
+					padding:         1rem var(--bs-gutter-x);
+					h5 {
+						text-transform: none;
+					}
+				}
+				&__body {
+					padding:   1rem var(--bs-gutter-x);
+					flex-grow: 1;
+				}
+				&__footer {
+					padding:          1rem var(--bs-gutter-x);
+					border-top:       1px solid $light-grey;
+					position:         relative;
+					background-color: $white;
+				}
+			}
+		}
+		
 		.modal-content {
 			background-color: transparent;
 			border: none;
 			border-radius: 0;
 		}
-		.modal__comments {
-			border-top-right-radius: 0.3rem;
-			border-bottom-right-radius: 0.3rem;
+		.tab-content {
+			overflow: hidden;
+			height: 100%;
 		}
 	}
-	&__added-by {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-	&__comments {
-		height: 100%;
-		border-left: 1px solid $light-grey !important;
-		.modal-header {
-			h5 {
-				text-transform: none;
+	&-tabs {
+		display: flex;
+		flex-flow: row nowrap;
+		&__block {
+			flex: 0 0 100%;
+			@media screen and (min-width: $breakpoint-lg) {
+				flex: 6;
 			}
 		}
+	}
+	
+	.spacer {
+		margin: 0 0.375rem;
+		color: $grey;
 	}
 	.list-group-item__last {
 		margin-bottom: 1rem;
 	}
 
-	&-footer {
-		border-top: 1px solid $light-grey;
-		background-color: $white;
-	}
 }
 
 .comment-list {

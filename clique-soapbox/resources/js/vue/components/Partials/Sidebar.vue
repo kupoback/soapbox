@@ -70,9 +70,6 @@
         watch: {
             viewport() {
                 const viewport = this.$store.state.viewport;
-                if (viewport === 'mobile') {
-                
-                }
             },
             sidebarOpened() {
                 this.toggleSidebar(this.$store.state.sidebarOpened)

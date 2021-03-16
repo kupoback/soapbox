@@ -19653,6 +19653,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {},
+  data: function data() {
+    return {
+      comments: [{
+        date: "January 1st, 2021",
+        commentList: [{
+          author: "Jane Doe",
+          comment: "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
+          isCurrentUser: false
+        }, {
+          author: "John Doe",
+          comment: "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
+          isCurrentUser: true
+        }, {
+          author: "Patricia Doe",
+          comment: "<p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>",
+          isCurrentUser: false
+        }, {
+          author: "John Doe",
+          comment: "<p>Donec nec justo eget felis facilisis fermentum.</p>",
+          isCurrentUser: true
+        }]
+      }, {
+        date: "Feburary 1st, 2021",
+        commentList: [{
+          author: "Jane Doe",
+          comment: "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
+          isCurrentUser: false
+        }, {
+          author: "John Doe",
+          comment: "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
+          isCurrentUser: true
+        }, {
+          author: "John Doe",
+          comment: "<p>Donec nec justo eget felis facilisis fermentum.</p>",
+          isCurrentUser: true
+        }]
+      }, {
+        date: "March 1st, 2021",
+        commentList: [{
+          author: "John Doe",
+          comment: "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
+          isCurrentUser: true
+        }, {
+          author: "Jane Doe",
+          comment: "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
+          isCurrentUser: false
+        }, {
+          author: "Patricia Doe",
+          comment: "<p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>",
+          isCurrentUser: false
+        }, {
+          author: "John Doe",
+          comment: "<p>Donec nec justo eget felis facilisis fermentum.</p>",
+          isCurrentUser: true
+        }]
+      }],
+      tabPaneClasses: 'tab-pane fade',
+      activePane: 'show active'
+    };
+  },
+  computed: {
+    viewport: function viewport() {
+      return this.$store.state.viewport;
+    }
+  },
   name: "AgendaModal"
 });
 
@@ -19724,8 +19790,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   watch: {
     viewport: function viewport() {
       var viewport = this.$store.state.viewport;
-
-      if (viewport === 'mobile') {}
     },
     sidebarOpened: function sidebarOpened() {
       this.toggleSidebar(this.$store.state.sidebarOpened);
@@ -20459,13 +20523,128 @@ var _hoisted_1 = {
   "aria-labelledby": "exampleModalLabel",
   "aria-hidden": "true"
 };
+var _hoisted_2 = {
+  "class": "modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal__agenda"
+};
+var _hoisted_3 = {
+  "class": "modal-content"
+};
+var _hoisted_4 = {
+  key: 0,
+  "class": "d-flex col-12 modal-tabs"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal__agenda\" data-v-51b2b046><div class=\"modal-content\" data-v-51b2b046><div class=\"modal-header\" data-v-51b2b046><h5 class=\"modal-title\" id=\"exampleModalLabel\" data-v-51b2b046>Team Name</h5><p class=\"spacer\" data-v-51b2b046>|</p><p class=\"lead muted-text modal__added-by \" data-v-51b2b046>Added by Clique Studios</p></div><div class=\"modal-body\" data-v-51b2b046><div class=\"modal__body--title\" data-v-51b2b046><h3 data-v-51b2b046>Topic Title</h3><p class=\"agenda-status text-danger\" data-v-51b2b046><i class=\"bi bi-exclamation-circle-fill\" data-v-51b2b046></i> High Priority</p><p class=\"agenda-status text-success\" data-v-51b2b046><i class=\"bi bi-caret-down-fill\" data-v-51b2b046></i> Low Priority</p></div><div class=\"modal__body--description\" data-v-51b2b046><p data-v-51b2b046>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium tenetur ratione excepturi voluptate recusandae! Temporibus optio eum in dolorum laboriosam nemo. Ipsa nesciunt quibusdam beatae iste rem perspiciatis, voluptatum alias!</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eligendi tempora explicabo, soluta impedit minima, magni, perferendis velit dolore quibusdam veritatis. Blanditiis beatae velit aliquid reprehenderit inventore esse quibusdam ut.</p></div><div class=\"modal__body-todo-list\" data-v-51b2b046><p class=\"muted-text\" data-v-51b2b046>Next Steps</p><ul class=\"list-group list-group-flush\" data-v-51b2b046><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> First checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Second checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Third checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fourth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fifth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Sixth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Seventh checkbox </li><li class=\"list-group-item list-group-item__last\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Eight checkbox </li><li class=\"list-group-item\" data-v-51b2b046><button type=\"button\" class=\" btn btn-secondary d-flex align-items-center\" data-v-51b2b046><i class=\"bi bi-plus me-1\" data-v-51b2b046></i> Add Item </button></li></ul></div></div></div><div class=\"modal-content modal__comments bg-muted\" data-v-51b2b046><div class=\"modal-header\" data-v-51b2b046><h5 class=\"modal-title\" data-v-51b2b046>Comments</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\" data-v-51b2b046></button></div><div class=\"modal-body\" data-v-51b2b046><div class=\"comment-list\" data-v-51b2b046><div class=\"comment-date-group\" data-v-51b2b046><div class=\"comment-list__date-group\" data-v-51b2b046><span data-v-51b2b046>January 1st, 2021</span></div><div class=\"comment-group-item\" data-v-51b2b046><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p></div></div></div><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum.</p></div></div></div></div></div><div class=\"comment-date-group\" data-v-51b2b046><div class=\"comment-list__date-group\" data-v-51b2b046><span data-v-51b2b046>Feburary 1st, 2021</span></div><div class=\"comment-group-item\" data-v-51b2b046><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p></div></div></div><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum.</p></div></div></div></div></div><div class=\"comment-date-group\" data-v-51b2b046><div class=\"comment-list__date-group\" data-v-51b2b046><span data-v-51b2b046>March 1st, 2021</span></div><div class=\"comment-group-item\" data-v-51b2b046><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p></div></div></div><div class=\"comment-item comment-item--other-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p></div></div></div><div class=\"comment-item comment-item--current-user-authored\" data-v-51b2b046><div class=\"comment-item__container\" data-v-51b2b046><div class=\"comment-item__comment\" data-v-51b2b046><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum.</p></div></div></div></div></div></div></div><div class=\"modal-footer comment-add\" data-v-51b2b046><form class=\"w-100\" data-v-51b2b046><div class=\"row align-items-center\" data-v-51b2b046><div class=\"col-9\" data-v-51b2b046><label for=\"comment-entry\" class=\"visually-hidden-focusable\" data-v-51b2b046>Add a comment...</label><textarea class=\"form-control\" id=\"comment-entry\" placeholder=\"Add a comment...\" rows=\"2\" data-v-51b2b046></textarea></div><div class=\"form-footer col-auto\" data-v-51b2b046><button type=\"submit\" class=\"btn btn-primary\" data-v-51b2b046>Submit</button></div></div></form></div></div></div>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", {
+  "class": "nav nav-tabs w-100",
+  id: "nav-tab",
+  role: "tablist"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "nav-link active",
+  id: "modal-details-tab",
+  "data-bs-toggle": "tab",
+  "data-bs-target": "#modal-details",
+  role: "tab",
+  "aria-controls": "modal-details",
+  "aria-selected": "true"
+}, "Details "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "nav-link",
+  id: "modal-comments-tab",
+  "data-bs-toggle": "tab",
+  "data-bs-target": "#modal-comments",
+  role: "tab",
+  "aria-controls": "modal-comments",
+  "aria-selected": "false"
+}, "Comments")], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "tab-content modal-tabs"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-content__header\" data-v-51b2b046><h5 class=\"modal-title\" id=\"exampleModalLabel\" data-v-51b2b046>Team Name</h5><p class=\"spacer\" data-v-51b2b046>|</p><p class=\"lead muted-text modal__agenda-content__header__added-by \" data-v-51b2b046>Added by Clique Studios</p></div><div class=\"modal__agenda-content__body\" data-v-51b2b046><div class=\"modal__body--title\" data-v-51b2b046><h3 data-v-51b2b046>Topic Title</h3><p class=\"agenda-status text-danger\" data-v-51b2b046><i class=\"bi bi-exclamation-circle-fill\" data-v-51b2b046></i> High Priority</p><p class=\"agenda-status text-success\" data-v-51b2b046><i class=\"bi bi-caret-down-fill\" data-v-51b2b046></i> Low Priority</p></div><div class=\"modal__body--description\" data-v-51b2b046><p data-v-51b2b046>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium tenetur ratione excepturi voluptate recusandae! Temporibus optio eum in dolorum laboriosam nemo. Ipsa nesciunt quibusdam beatae iste rem perspiciatis, voluptatum alias!</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eligendi tempora explicabo, soluta impedit minima, magni, perferendis velit dolore quibusdam veritatis. Blanditiis beatae velit aliquid reprehenderit inventore esse quibusdam ut.</p></div><div class=\"modal__body-todo-list\" data-v-51b2b046><p class=\"muted-text\" data-v-51b2b046>Next Steps</p><ul class=\"list-group list-group-flush\" data-v-51b2b046><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> First checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Second checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Third checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fourth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fifth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Sixth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Seventh checkbox </li><li class=\"list-group-item list-group-item__last\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Eight checkbox </li><li class=\"list-group-item\" data-v-51b2b046><button type=\"button\" class=\" btn btn-secondary d-flex align-items-center\" data-v-51b2b046><i class=\"bi bi-plus me-1\" data-v-51b2b046></i> Add Item </button></li></ul></div></div>", 2);
+
+var _hoisted_9 = {
+  "class": "modal__agenda-comments-container"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "modal__agenda-comments-container__header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", {
+  "class": "modal-title"
+}, "Comments"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "button",
+  "class": "btn-close",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  "class": "overflow-auto modal__agenda-comments-container__body comment-list"
+};
+var _hoisted_12 = {
+  "class": "comment-list__date-group"
+};
+var _hoisted_13 = {
+  key: 0,
+  "class": "comment-group-item"
+};
+var _hoisted_14 = {
+  "class": "comment-item__container"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-comments-container__footer comment-add\" data-v-51b2b046><form class=\"w-100\" data-v-51b2b046><div class=\"row align-items-center\" data-v-51b2b046><div class=\"col-9\" data-v-51b2b046><label for=\"comment-entry\" class=\"visually-hidden-focusable\" data-v-51b2b046>Add a comment...</label><textarea class=\"form-control\" id=\"comment-entry\" placeholder=\"Add a comment...\" rows=\"2\" data-v-51b2b046></textarea></div><div class=\"form-footer col-auto\" data-v-51b2b046><button type=\"submit\" class=\"btn btn-primary\" data-v-51b2b046>Submit</button></div></div></form></div>", 1);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [$options.viewport === 'mobile' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("nav", _hoisted_4, [_hoisted_5])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+    id: "modal-details",
+    "class": "modal-tabs__block modal__agenda-content ".concat($options.viewport === 'mobile' ? "".concat($data.tabPaneClasses, " ").concat($data.activePane) : ''),
+    role: "tabpanel",
+    "aria-labelledby": "modal-details-tab"
+  }, [_hoisted_7], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+    id: "modal-comments",
+    role: "tabpanel",
+    "aria-labelledby": "modal-comments-tab",
+    "class": "modal-tabs__block modal__agenda-comments bg-muted ".concat($options.viewport === 'mobile' ? $data.tabPaneClasses : '')
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comments, function (_ref, index) {
+    var date = _ref.date,
+        commentList = _ref.commentList;
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+      key: index,
+      "class": "comment-date-group"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date)
+    }, null, 8
+    /* PROPS */
+    , ["textContent"])]), commentList.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(commentList, function (_ref2, index) {
+      var author = _ref2.author,
+          comment = _ref2.comment,
+          isCurrentUser = _ref2.isCurrentUser;
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+        key: index,
+        "class": "comment-item comment-item--".concat(!!isCurrentUser ? 'current' : 'other', "-user-authored")
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+        "class": "comment-item__comment",
+        innerHTML: comment
+      }, null, 8
+      /* PROPS */
+      , ["innerHTML"])])], 2
+      /* CLASS */
+      );
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), _hoisted_15])], 2
+  /* CLASS */
+  )])])])]);
 });
 
 /***/ }),
