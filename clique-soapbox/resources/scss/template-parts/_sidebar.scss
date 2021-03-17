@@ -4,9 +4,6 @@
 	-moz-transition: margin 0.25s ease-out;
 	-o-transition: margin 0.25s ease-out;
 	transition: margin 0.25s ease-out;
-	margin-left: 0;
-	padding-left: 0;
-	padding-right: 0;
 	padding-bottom: 1rem;
 
 	display: flex;
@@ -30,13 +27,44 @@
 		padding: 0.3125rem 1rem;
 	}
 
-	.list-group {
-		border-top: 1px solid $light-gray;
-		border-bottom: 1px solid $light-gray;
+	.list-group,
+	.list-group-item{
+		border: 0;
+	}
+	
+	.list-group-item {
+		position: relative;
+		margin-top: .125rem;
+		margin-bottom: .125rem;
+		&:after {
+			content: '';
+			display: block;
+			height: 0;
+			width: 4px;
+			position: absolute;
+			right: -.75rem;
+			top: 0;
+			background: var(--bs-primary);
+			transition: height ease .25s;
+		}
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			&:after {
+				height: 100%;
+			}
+		}
 	}
 
 	.nav-item {
 		margin-bottom: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.nav-link {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 }
 .sidebar-toggle {
@@ -98,20 +126,15 @@
 #main {
 	&.sidebar-hidden {
 		.sidebar-content {
-			margin-left: -100%;
+			margin-left: -110%;
 			border-right: 0;
 
 			@media screen and (min-width: $breakpoint-md) {
-				margin-left: -25%;
+				margin-left: -26%;
 			}
 			
 			@media screen and (min-width: $breakpoint-lg) {
-				margin-left: -16.6666666667%;
-			}
-		}
-		.main-content {
-			@media screen and (min-width: $breakpoint-md) {
-				margin-left: calc(35px + (var(--bs-gutter-x) * 2)) !important;
+				margin-left: -17.6666666667%;
 			}
 		}
 		.sidebar-toggle {

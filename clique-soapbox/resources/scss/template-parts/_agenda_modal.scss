@@ -26,15 +26,26 @@
 		&-content {
 			overflow-y: auto;
 			min-height: 0;
-			padding: 1rem var(--bs-gutter-x);
+			padding: 1rem 1.25rem;
 			&__header {
 				display: flex;
-				align-items: center;
+				align-items: flex-end;
 				font-size: 0.875rem;
 				text-transform: uppercase;
+				line-height: 1.5;
+				h5 {
+					font-size: 0.875rem;
+				}
 				&__added-by {
+					line-height: 1.5;
 					margin-top: 0;
 					margin-bottom: 0;
+					margin-left: .5rem;
+					padding-left: .5rem;
+					border-left: 1px solid $very-light-gray;
+					&__name {
+						font-weight: 600;
+					}
 				}
 			}
 			&__body {
@@ -54,7 +65,7 @@
 					flex-flow:       row nowrap;
 					align-items:     center;
 					justify-content: space-between;
-					padding:         1rem var(--bs-gutter-x);
+					padding: 1rem 1.25rem;
 					@media screen and (min-width: $breakpoint-lg) {
 						display:         flex;
 					}
@@ -63,11 +74,11 @@
 					}
 				}
 				&__body {
-					padding:   1rem var(--bs-gutter-x);
+					padding: 1rem 1.25rem;
 					flex-grow: 1;
 				}
 				&__footer {
-					padding:          1rem var(--bs-gutter-x);
+					padding: 1rem 1.25rem;
 					border-top:       1px solid $light-gray;
 					position:         relative;
 					background-color: $white;

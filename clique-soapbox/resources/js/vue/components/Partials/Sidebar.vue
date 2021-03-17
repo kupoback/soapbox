@@ -46,7 +46,7 @@
                    mainWrapper.classList.add(mainWrapperClass);
                    sidebar.dataset.collapsed = "true";
                    
-                   if (vp === 'mobile') sidebar.style.marginLeft = `-100%`;
+                   if (vp === 'mobile') sidebar.style.marginLeft = `-110%`;
                    else sidebar.style.marginLeft = `-${sidebarWidth}px`;
                }
                else {

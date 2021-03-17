@@ -2,7 +2,7 @@
     <div class="container-fluid flex-grow-1 d-flex overflow-scroll">
         <div class="row main-row profile-row">
             <Sidebar />
-            <section class="col-12 col-md-9 col-lg offset-xl-1 main-content profile-content">
+            <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content profile-content">
                 <div class="row row-full-height py-4">
                     <div class="col-12 profile__header mb-5">
                         <h1>Update Profile</h1>

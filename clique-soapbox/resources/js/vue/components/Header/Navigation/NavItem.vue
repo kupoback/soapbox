@@ -1,6 +1,8 @@
 <template>
     <li class="nav-item">
-        <router-link :to="link" v-text="title" class="nav-link" />
+        <router-link :to="link"
+                     class="nav-link"
+                     v-text="title" />
     </li>
 </template>
 

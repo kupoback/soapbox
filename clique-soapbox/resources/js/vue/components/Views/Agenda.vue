@@ -2,8 +2,8 @@
     <div class="container-fluid flex-grow-1 d-flex overflow-scroll">
         <div class="row main-row profile-row">
             <Sidebar />
-            <section class="col-12 col-md-9 col-lg offset-xl-1 main-content agenda">
-                <div class="row row-full-height py-4">
+            <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
+                <div class="row g-0 row-full-height pt-4">
                     <div class="col-12 mb-4 agenda__header">
                         <p class="date-time">March 2nd, 4:30pm</p>
                         <h1>Team Title</h1>
@@ -27,24 +27,24 @@
                             </template>
                         </draggable>
                     </div>
-                </div>
-                <AgendaModal />
-                <div class="col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item">
-                    <form class="row gx-3 align-items-center no-gutters create-new-item__form">
-                        <div class="form-floating col-10 col-lg-11">
-                            <input type="text" class="form-control" id="newItem" placeholder="Add New Item">
-                            <label for="newItem" class="px-4">Add New Item</label>
-                        </div>
-                        <div class="col-2 col-lg-1 create-new-item__submit ">
-                            <button type="submit" class="btn btn-primary btn-circle">
-                                <i class="bi bi-arrow-up"></i>
-                                <span class="visually-hidden-focusable">Add</span>
-                            </button>
-                        </div>
-                    </form>
+                    <div class="col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item">
+                        <form class="row gx-3 align-items-center no-gutters create-new-item__form">
+                            <div class="form-floating col-10 col-lg-11">
+                                <input type="text" class="form-control" id="newItem" placeholder="Add New Item">
+                                <label for="newItem" class="px-4">Add New Item</label>
+                            </div>
+                            <div class="col-2 col-lg-1 create-new-item__submit ">
+                                <button type="submit" class="btn btn-primary btn-circle">
+                                    <i class="bi bi-arrow-up"></i>
+                                    <span class="visually-hidden-focusable">Add</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
         </div>
+        <AgendaModal />
     </div>
 </template>
 

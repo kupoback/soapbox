@@ -2,13 +2,8 @@
     <header class="main-navigation">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" title="Main Navigation" aria-label="Main Navigation">
             <div class="container-fluid">
-                <button class="navbar-toggler col-auto order-1" type="button" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 
-                <router-link class="navbar-brand order-2 order-lg-1"
+                <router-link class="navbar-brand"
                              :to="`/`"
                              v-text="`Clique Soapbox`" />
                 
@@ -25,7 +20,8 @@
     
     export default {
         components: {
-            MainNavigation, ProfileNavigation
+            MainNavigation,
+            ProfileNavigation
         },
         name: "Header"
     };

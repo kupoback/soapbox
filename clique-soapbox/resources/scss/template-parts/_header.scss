@@ -1,11 +1,13 @@
 .main-navigation {
 	width: 100%;
+	.container-fluid {
+		justify-content: initial;
+	}
 }
 
 .profile-nav {
-	@media only screen and (max-width: $max-breakpoint-lg) {
-		margin-left: auto;
-	}
+	margin-left: auto;
+	margin-right: 0;
 	.dropdown-menu {
 		&.show {
 			@media only screen and (max-width: $max-breakpoint-lg) {

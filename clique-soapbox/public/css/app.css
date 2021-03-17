@@ -1429,6 +1429,12 @@ body {
 .main-content {
   transition: margin 0.25s ease-out;
 }
+@media screen and (min-width: 768px) {
+  .main-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .profile-image img {
   border-radius: 50%;
@@ -1453,6 +1459,66 @@ body {
 }
 .list-group-flush .nav-link.active, .list-group-flush .nav-link:hover {
   color: #2a3341;
+}
+
+.list-group-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 15px;
+}
+.list-group-handle-icons {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+}
+.list-group-handle-icons__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.list-group-has-handle {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.list-group-has-handle .list-group-item {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 40px;
+  transition: background-color 0.25s;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.list-group-has-handle:first-child .list-group-item {
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.list-group-has-handle:last-child .list-group-item {
+  border-bottom: 0;
+}
+.list-group-has-handle:hover .list-group-handle, .list-group-has-handle:focus .list-group-handle {
+  cursor: pointer;
+  display: flex;
+}
+.list-group-has-handle:hover .list-group-handle-icons, .list-group-has-handle:focus .list-group-handle-icons {
+  display: flex;
+}
+.list-group-has-handle:hover .list-group-handle-icons__icon, .list-group-has-handle:focus .list-group-handle-icons__icon {
+  background: #f8f9fa;
+}
+.list-group-has-handle:hover .list-group-handle-icons__icon:hover, .list-group-has-handle:hover .list-group-handle-icons__icon:focus, .list-group-has-handle:focus .list-group-handle-icons__icon:hover, .list-group-has-handle:focus .list-group-handle-icons__icon:focus {
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 .btn-circle {
@@ -1508,11 +1574,13 @@ body {
 .main-navigation {
   width: 100%;
 }
+.main-navigation .container-fluid {
+  justify-content: initial;
+}
 
-@media only screen and (max-width: 991px) {
-  .profile-nav {
-    margin-left: auto;
-  }
+.profile-nav {
+  margin-left: auto;
+  margin-right: 0;
 }
 @media only screen and (max-width: 991px) {
   .profile-nav .dropdown-menu.show {
@@ -1558,17 +1626,28 @@ body {
 .modal__agenda-content {
   overflow-y: auto;
   min-height: 0;
-  padding: 1rem var(--bs-gutter-x);
+  padding: 1rem 1.25rem;
 }
 .modal__agenda-content__header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   font-size: 0.875rem;
   text-transform: uppercase;
+  line-height: 1.5;
+}
+.modal__agenda-content__header h5 {
+  font-size: 0.875rem;
 }
 .modal__agenda-content__header__added-by {
+  line-height: 1.5;
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid #e9ecef;
+}
+.modal__agenda-content__header__added-by__name {
+  font-weight: 600;
 }
 .modal__agenda-comments-container {
   display: flex;
@@ -1583,7 +1662,7 @@ body {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem var(--bs-gutter-x);
+  padding: 1rem 1.25rem;
 }
 @media screen and (min-width: 992px) {
   .modal__agenda-comments-container__header {
@@ -1594,11 +1673,11 @@ body {
   text-transform: none;
 }
 .modal__agenda-comments-container__body {
-  padding: 1rem var(--bs-gutter-x);
+  padding: 1rem 1.25rem;
   flex-grow: 1;
 }
 .modal__agenda-comments-container__footer {
-  padding: 1rem var(--bs-gutter-x);
+  padding: 1rem 1.25rem;
   border-top: 1px solid #dee2e6;
   position: relative;
   background-color: #ffffff;
@@ -1766,9 +1845,6 @@ body {
 .sidebar-content {
   border-right: 1px solid #dee2e6;
   transition: margin 0.25s ease-out;
-  margin-left: 0;
-  padding-left: 0;
-  padding-right: 0;
   padding-bottom: 1rem;
   display: flex;
   flex-flow: column;
@@ -1789,12 +1865,41 @@ body {
 .sidebar-content .navbar-brand {
   padding: 0.3125rem 1rem;
 }
-.sidebar-content .list-group {
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+.sidebar-content .list-group,
+.sidebar-content .list-group-item {
+  border: 0;
+}
+.sidebar-content .list-group-item {
+  position: relative;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+}
+.sidebar-content .list-group-item:after {
+  content: "";
+  display: block;
+  height: 0;
+  width: 4px;
+  position: absolute;
+  right: -0.75rem;
+  top: 0;
+  background: var(--bs-primary);
+  transition: height ease 0.25s;
+}
+.sidebar-content .list-group-item:hover, .sidebar-content .list-group-item:focus {
+  background-color: transparent;
+}
+.sidebar-content .list-group-item:hover:after, .sidebar-content .list-group-item:focus:after {
+  height: 100%;
 }
 .sidebar-content .nav-item {
   margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.sidebar-content .nav-link {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .sidebar-toggle {
@@ -1843,22 +1948,17 @@ body {
 }
 
 #main.sidebar-hidden .sidebar-content {
-  margin-left: -100%;
+  margin-left: -110%;
   border-right: 0;
 }
 @media screen and (min-width: 768px) {
   #main.sidebar-hidden .sidebar-content {
-    margin-left: -25%;
+    margin-left: -26%;
   }
 }
 @media screen and (min-width: 992px) {
   #main.sidebar-hidden .sidebar-content {
-    margin-left: -16.6666666667%;
-  }
-}
-@media screen and (min-width: 768px) {
-  #main.sidebar-hidden .main-content {
-    margin-left: calc(35px + (var(--bs-gutter-x) * 2)) !important;
+    margin-left: -17.6666666667%;
   }
 }
 #main.sidebar-hidden .sidebar-toggle .btn {
@@ -1891,27 +1991,13 @@ body {
 .agenda__description {
   border-bottom: 1px solid #6c757d;
 }
-.agenda__cards-card__handle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 15px;
-}
-.agenda__cards-card__handle-icons {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-height: 24px;
-}
-.agenda__cards-card__handle-icons__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px 0;
-  border-radius: 2px;
-}
 .agenda__cards-card__right {
   margin-right: 0.5rem;
+}
+.agenda__cards-card__left-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .agenda__cards-card__left p {
   margin-top: 0;
@@ -1920,18 +2006,8 @@ body {
 .agenda__cards-card:hover, .agenda__cards-card:focus {
   cursor: pointer;
 }
-.agenda__cards-card:hover__handle, .agenda__cards-card:hover__right, .agenda__cards-card:hover__left, .agenda__cards-card:focus__handle, .agenda__cards-card:focus__right, .agenda__cards-card:focus__left {
+.agenda__cards-card:hover__right, .agenda__cards-card:hover__left, .agenda__cards-card:focus__right, .agenda__cards-card:focus__left {
   cursor: pointer;
-}
-.agenda__cards-card:hover .agenda__cards-card__handle-icons, .agenda__cards-card:focus .agenda__cards-card__handle-icons {
-  display: flex;
-}
-.agenda__cards-card:hover .agenda__cards-card__handle-icons__icon, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon {
-  background: #f8f9fa;
-}
-.agenda__cards-card:hover .agenda__cards-card__handle-icons__icon:hover, .agenda__cards-card:hover .agenda__cards-card__handle-icons__icon:focus, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon:hover, .agenda__cards-card:focus .agenda__cards-card__handle-icons__icon:focus {
-  cursor: -webkit-grab;
-  cursor: grab;
 }
 .agenda__cards-card:first-child .list-group-item {
   border-bottom-right-radius: inherit;
@@ -1939,19 +2015,6 @@ body {
 }
 .agenda__cards-card:last-child .list-group-item {
   border-bottom: 0;
-}
-.agenda__cards .list-group-item {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  display: flex;
-  position: relative;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 40px;
-  transition: background-color 0.25s;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
 }
 
 .profile-row {

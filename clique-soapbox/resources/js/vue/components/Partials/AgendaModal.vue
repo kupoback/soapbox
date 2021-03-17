@@ -37,8 +37,7 @@
                          aria-labelledby="modal-details-tab">
                         <div class="modal__agenda-content__header mb-2">
                             <h5 class="modal-title" id="exampleModalLabel">Team Name</h5>
-                            <p class="spacer">|</p>
-                            <p class="lead muted-text modal__agenda-content__header__added-by ">Added by Clique Studios</p>
+                            <p class="lead muted-text modal__agenda-content__header__added-by">Added by <span class="modal__agenda-content__header__added-by__name">Clique Studios</span></p>
                         </div>
                         <div class="modal__agenda-content__body">
                             <div class="modal__body--title mb-2">
@@ -56,45 +55,27 @@
                             </div>
                             <div class="modal__body-todo-list">
                                 <p class="muted-text">Next Steps</p>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        First checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Second checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Third checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Fourth checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Fifth checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Sixth checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Seventh checkbox
-                                    </li>
-                                    <li class="list-group-item list-group-item__last">
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                        Eight checkbox
-                                    </li>
-                                    <li class="list-group-item">
-                                        <button type="button" class=" btn btn-secondary d-flex align-items-center"><i
-                                            class="bi bi-plus me-1"></i> Add Item
-                                        </button>
-                                    </li>
-                                </ul>
+                                <draggable
+                                    :list="toDoList"
+                                    item-key="id"
+                                    tag="div"
+                                    class="list-group list-group-flush"
+                                    handle=".todo-handle"
+                                    @end="consoleItem">
+                                    <template #item="{element, index}">
+                                        <div class="list-group-has-handle">
+                                            <DragHandle drag-class="todo-handle" />
+                                            <div class="list-group-item list-group-item-action">
+                                                <input :id="element.formID"
+                                                       class="form-check-input me-1"
+                                                       type="checkbox"
+                                                       value=""
+                                                       aria-label="..." />
+                                                {{ element.title }}
+                                            </div>
+                                        </div>
+                                    </template>
+                                </draggable>
                             </div>
                         </div>
                     </div>
@@ -149,6 +130,10 @@
 </template>
 
 <script type="application/javascript">
+    import draggable from "vuedraggable";
+
+    import DragHandle from "../Elements/Drag-Handle.vue";
+    
     export default {
         props: {},
         data() {
@@ -238,12 +223,67 @@
                 ],
                 tabPaneClasses: 'tab-pane fade',
                 activePane: 'show active',
+                toDoList: [
+                    {
+                        id: 'tt_01',
+                        title: 'Item 01',
+                        formID: 'item-01',
+                    },
+                    {
+                        id: 'tt_02',
+                        title: 'Item 02',
+                        formID: 'item-02',
+                    },
+                    {
+                        id: 'tt_03',
+                        title: 'Item 03',
+                        formID: 'item-03',
+                    },
+                    {
+                        id: 'tt_04',
+                        title: 'Item 04',
+                        formID: 'item-04',
+                    },
+                    {
+                        id: 'tt_05',
+                        title: 'Item 05',
+                        formID: 'item-05',
+                    },
+                    {
+                        id: 'tt_06',
+                        title: 'Item 06',
+                        formID: 'item-06',
+                    },
+                    {
+                        id: 'tt_07',
+                        title: 'Item 07',
+                        formID: 'item-07',
+                    },
+                    {
+                        id: 'tt_08',
+                        title: 'Item 08',
+                        formID: 'item-08',
+                    },
+                ]
             };
+        },
+        methods: {
+            consoleItem(evt) {
+                if (evt.item) {
+                    const itemId = evt.item.dataset.agendaId;
+                    // Execute axios call here to update the sort order
+                    console.log(itemId);
+                }
+            }
         },
         computed: {
             viewport() {
                 return this.$store.state.viewport;
             },
+        },
+        components: {
+            draggable,
+            DragHandle,
         },
         name: "AgendaModal"
     };

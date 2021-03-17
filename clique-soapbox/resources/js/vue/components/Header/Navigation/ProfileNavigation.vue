@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex col-auto profile-nav order-3 order-lg-3">
+    <div class="d-flex col-auto profile-nav">
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

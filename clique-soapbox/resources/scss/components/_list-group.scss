@@ -23,3 +23,74 @@
 		}
 	}
 }
+
+.list-group-handle {
+	display:         flex;
+	align-items:     center;
+	justify-content: center;
+	min-width:       15px;
+	&-icons {
+		display:         none;
+		align-items:     center;
+		justify-content: center;
+		min-height:      24px;
+		&__icon {
+			display:         flex;
+			align-items:     center;
+			justify-content: center;
+			padding:         2px 0;
+			border-radius:   2px;
+		}
+	}
+	
+}
+
+.list-group-has-handle {
+	display:       flex;
+	position:      relative;
+	align-items:   center;
+	
+	.list-group-item {
+		padding-left:  0.5rem;
+		padding-right: 0.5rem;
+		display:       flex;
+		position:      relative;
+		align-items:   flex-start;
+		width:         100%;
+		min-height:    40px;
+		transition:    background-color .25s;
+		border-top:    0;
+		border-left:   0;
+		border-right:  0;
+	}
+	
+	&:first-child {
+		.list-group-item {
+			border-bottom-right-radius: inherit;
+			border-bottom-left-radius:  inherit;
+		}
+	}
+	&:last-child {
+		.list-group-item {
+			border-bottom: 0;
+		}
+	}
+	
+	&:hover,
+	&:focus {
+		.list-group-handle {
+			cursor:  pointer;
+			display: flex;
+			&-icons {
+				display: flex;
+				&__icon {
+					background: $extreme-light-gray;
+					&:hover,
+					&:focus {
+						cursor: grab;
+					}
+				}
+			}
+		}
+	}
+}
