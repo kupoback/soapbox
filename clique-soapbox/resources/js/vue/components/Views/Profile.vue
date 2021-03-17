@@ -3,7 +3,7 @@
         <div class="row main-row profile-row">
             <Sidebar />
             <section class="col-12 col-md-9 col-lg offset-xl-1 main-content profile-content">
-                <div class="row row-full-height ptb-5">
+                <div class="row row-full-height py-4">
                     <div class="col-12 profile__header mb-5">
                         <h1>Update Profile</h1>
                     </div>

@@ -20539,97 +20539,108 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
   id: "nav-tab",
   role: "tablist"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
-  "class": "nav-link active",
+  "class": "nav-link",
+  role: "presentation"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#modal-details-tab",
   id: "modal-details-tab",
   "data-bs-toggle": "tab",
   "data-bs-target": "#modal-details",
   role: "tab",
   "aria-controls": "modal-details",
-  "aria-selected": "true"
-}, "Details "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "aria-selected": "true",
+  "class": "active"
+}, "Details")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
   "class": "nav-link",
-  id: "modal-comments-tab",
+  role: "presentation"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#modal-comments",
+  id: "modal-comment-tab",
   "data-bs-toggle": "tab",
   "data-bs-target": "#modal-comments",
   role: "tab",
   "aria-controls": "modal-comments",
-  "aria-selected": "false"
+  "aria-selected": "true"
+}, "Comments")])], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "button",
+  "class": "modal__agenda-close btn-close",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "tab-content modal-tabs"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-content__header mb-2\" data-v-51b2b046><h5 class=\"modal-title\" id=\"exampleModalLabel\" data-v-51b2b046>Team Name</h5><p class=\"spacer\" data-v-51b2b046>|</p><p class=\"lead muted-text modal__agenda-content__header__added-by \" data-v-51b2b046>Added by Clique Studios</p></div><div class=\"modal__agenda-content__body\" data-v-51b2b046><div class=\"modal__body--title mb-2\" data-v-51b2b046><h3 class=\"mb-3\" data-v-51b2b046>Topic Title</h3><div class=\"agenda-status\" data-v-51b2b046><p class=\"agenda-status__text text-danger\" data-v-51b2b046><i class=\"bi bi-exclamation-circle-fill\" data-v-51b2b046></i> High Priority</p><p class=\"agenda-status__text text-success\" data-v-51b2b046><i class=\"bi bi-caret-down-fill\" data-v-51b2b046></i> Low Priority</p></div></div><div class=\"modal__body--description\" data-v-51b2b046><p data-v-51b2b046>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium tenetur ratione excepturi voluptate recusandae! Temporibus optio eum in dolorum laboriosam nemo. Ipsa nesciunt quibusdam beatae iste rem perspiciatis, voluptatum alias!</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eligendi tempora explicabo, soluta impedit minima, magni, perferendis velit dolore quibusdam veritatis. Blanditiis beatae velit aliquid reprehenderit inventore esse quibusdam ut.</p></div><div class=\"modal__body-todo-list\" data-v-51b2b046><p class=\"muted-text\" data-v-51b2b046>Next Steps</p><ul class=\"list-group list-group-flush\" data-v-51b2b046><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> First checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Second checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Third checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fourth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fifth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Sixth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Seventh checkbox </li><li class=\"list-group-item list-group-item__last\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Eight checkbox </li><li class=\"list-group-item\" data-v-51b2b046><button type=\"button\" class=\" btn btn-secondary d-flex align-items-center\" data-v-51b2b046><i class=\"bi bi-plus me-1\" data-v-51b2b046></i> Add Item </button></li></ul></div></div>", 2);
+
+var _hoisted_10 = {
+  "class": "modal__agenda-comments-container"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "modal__agenda-comments-container__header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", {
+  "class": "modal-title"
 }, "Comments")], -1
 /* HOISTED */
 );
 
-var _hoisted_6 = {
-  "class": "tab-content modal-tabs"
-};
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-content__header\" data-v-51b2b046><h5 class=\"modal-title\" id=\"exampleModalLabel\" data-v-51b2b046>Team Name</h5><p class=\"spacer\" data-v-51b2b046>|</p><p class=\"lead muted-text modal__agenda-content__header__added-by \" data-v-51b2b046>Added by Clique Studios</p></div><div class=\"modal__agenda-content__body\" data-v-51b2b046><div class=\"modal__body--title\" data-v-51b2b046><h3 data-v-51b2b046>Topic Title</h3><p class=\"agenda-status text-danger\" data-v-51b2b046><i class=\"bi bi-exclamation-circle-fill\" data-v-51b2b046></i> High Priority</p><p class=\"agenda-status text-success\" data-v-51b2b046><i class=\"bi bi-caret-down-fill\" data-v-51b2b046></i> Low Priority</p></div><div class=\"modal__body--description\" data-v-51b2b046><p data-v-51b2b046>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p data-v-51b2b046>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium tenetur ratione excepturi voluptate recusandae! Temporibus optio eum in dolorum laboriosam nemo. Ipsa nesciunt quibusdam beatae iste rem perspiciatis, voluptatum alias!</p><p data-v-51b2b046>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eligendi tempora explicabo, soluta impedit minima, magni, perferendis velit dolore quibusdam veritatis. Blanditiis beatae velit aliquid reprehenderit inventore esse quibusdam ut.</p></div><div class=\"modal__body-todo-list\" data-v-51b2b046><p class=\"muted-text\" data-v-51b2b046>Next Steps</p><ul class=\"list-group list-group-flush\" data-v-51b2b046><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> First checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Second checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Third checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fourth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Fifth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Sixth checkbox </li><li class=\"list-group-item\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Seventh checkbox </li><li class=\"list-group-item list-group-item__last\" data-v-51b2b046><input class=\"form-check-input me-1\" type=\"checkbox\" value=\"\" aria-label=\"...\" data-v-51b2b046> Eight checkbox </li><li class=\"list-group-item\" data-v-51b2b046><button type=\"button\" class=\" btn btn-secondary d-flex align-items-center\" data-v-51b2b046><i class=\"bi bi-plus me-1\" data-v-51b2b046></i> Add Item </button></li></ul></div></div>", 2);
-
-var _hoisted_9 = {
-  "class": "modal__agenda-comments-container"
-};
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "modal__agenda-comments-container__header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", {
-  "class": "modal-title"
-}, "Comments"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-  type: "button",
-  "class": "btn-close",
-  "data-bs-dismiss": "modal",
-  "aria-label": "Close"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_11 = {
+var _hoisted_12 = {
   "class": "overflow-auto modal__agenda-comments-container__body comment-list"
 };
-var _hoisted_12 = {
+var _hoisted_13 = {
   "class": "comment-list__date-group"
 };
-var _hoisted_13 = {
+var _hoisted_14 = {
   key: 0,
   "class": "comment-group-item"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   "class": "comment-item__container"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-comments-container__footer comment-add\" data-v-51b2b046><form class=\"w-100\" data-v-51b2b046><div class=\"row align-items-center\" data-v-51b2b046><div class=\"col-9\" data-v-51b2b046><label for=\"comment-entry\" class=\"visually-hidden-focusable\" data-v-51b2b046>Add a comment...</label><textarea class=\"form-control\" id=\"comment-entry\" placeholder=\"Add a comment...\" rows=\"2\" data-v-51b2b046></textarea></div><div class=\"form-footer col-auto\" data-v-51b2b046><button type=\"submit\" class=\"btn btn-primary\" data-v-51b2b046>Submit</button></div></div></form></div>", 1);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal__agenda-comments-container__footer comment-add\" data-v-51b2b046><form class=\"w-100\" data-v-51b2b046><div class=\"row align-items-center\" data-v-51b2b046><div class=\"col-9\" data-v-51b2b046><label for=\"comment-entry\" class=\"visually-hidden-focusable\" data-v-51b2b046>Add a comment...</label><textarea class=\"form-control\" id=\"comment-entry\" placeholder=\"Add a comment...\" rows=\"2\" data-v-51b2b046></textarea></div><div class=\"form-footer col-auto\" data-v-51b2b046><button type=\"submit\" class=\"btn btn-primary\" data-v-51b2b046>Submit</button></div></div></form></div>", 1);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [$options.viewport === 'mobile' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("nav", _hoisted_4, [_hoisted_5])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [$options.viewport === 'mobile' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("nav", _hoisted_4, [_hoisted_5])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     id: "modal-details",
     "class": "modal-tabs__block modal__agenda-content ".concat($options.viewport === 'mobile' ? "".concat($data.tabPaneClasses, " ").concat($data.activePane) : ''),
     role: "tabpanel",
     "aria-labelledby": "modal-details-tab"
-  }, [_hoisted_7], 2
+  }, [_hoisted_8], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     id: "modal-comments",
     role: "tabpanel",
     "aria-labelledby": "modal-comments-tab",
     "class": "modal-tabs__block modal__agenda-comments bg-muted ".concat($options.viewport === 'mobile' ? $data.tabPaneClasses : '')
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comments, function (_ref, index) {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.comments, function (_ref, index) {
     var date = _ref.date,
         commentList = _ref.commentList;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
       key: index,
       "class": "comment-date-group"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(date)
     }, null, 8
     /* PROPS */
-    , ["textContent"])]), commentList.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(commentList, function (_ref2, index) {
+    , ["textContent"])]), commentList.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(commentList, function (_ref2, index) {
       var author = _ref2.author,
           comment = _ref2.comment,
           isCurrentUser = _ref2.isCurrentUser;
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
         key: index,
         "class": "comment-item comment-item--".concat(!!isCurrentUser ? 'current' : 'other', "-user-authored")
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
         "class": "comment-item__comment",
         innerHTML: comment
       }, null, 8
@@ -20642,7 +20653,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), _hoisted_15])], 2
+  ))]), _hoisted_16])], 2
   /* CLASS */
   )])])])]);
 });
@@ -20880,7 +20891,7 @@ var _hoisted_3 = {
   "class": "col-12 col-md-9 col-lg offset-xl-1 main-content agenda"
 };
 var _hoisted_4 = {
-  "class": "row row-full-height ptb-5"
+  "class": "row row-full-height py-4"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
@@ -20900,7 +20911,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_7 = {
-  "class": "col-12 pb-4 agenda__cards"
+  "class": "col-12 agenda__cards"
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item\" data-v-abdfe362><form class=\"row gx-3 align-items-center no-gutters create-new-item__form\" data-v-abdfe362><div class=\"form-floating col-10 col-lg-11\" data-v-abdfe362><input type=\"text\" class=\"form-control\" id=\"newItem\" placeholder=\"Add New Item\" data-v-abdfe362><label for=\"newItem\" class=\"px-4\" data-v-abdfe362>Add New Item</label></div><div class=\"col-2 col-lg-1 create-new-item__submit \" data-v-abdfe362><button type=\"submit\" class=\"btn btn-primary btn-circle\" data-v-abdfe362><i class=\"bi bi-arrow-up\" data-v-abdfe362></i><span class=\"visually-hidden-focusable\" data-v-abdfe362>Add</span></button></div></form></div>", 1);
@@ -21002,7 +21013,7 @@ var _hoisted_2 = {
   "class": "row main-row profile-row"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"col-12 col-md-9 col-lg offset-xl-1 main-content profile-content\" data-v-7a4dcf76><div class=\"row row-full-height ptb-5\" data-v-7a4dcf76><div class=\"col-12 profile__header mb-5\" data-v-7a4dcf76><h1 data-v-7a4dcf76>Update Profile</h1></div><div class=\"col-12 profile__info\" data-v-7a4dcf76><form data-v-7a4dcf76><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"profile-username\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Username</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"text\" class=\"form-control\" id=\"profile-username\" placeholder=\"Username\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"profile-name\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Your Name</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"text\" class=\"form-control\" id=\"profile-name\" placeholder=\"Name\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"exampleInputEmail1\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Email address</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"example@cliquestudios.com\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"exampleInputPassword1\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Update Password</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" data-v-7a4dcf76></div></div><button type=\"submit\" class=\"btn btn-primary\" data-v-7a4dcf76>Save</button></form></div></div></section>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"col-12 col-md-9 col-lg offset-xl-1 main-content profile-content\" data-v-7a4dcf76><div class=\"row row-full-height py-4\" data-v-7a4dcf76><div class=\"col-12 profile__header mb-5\" data-v-7a4dcf76><h1 data-v-7a4dcf76>Update Profile</h1></div><div class=\"col-12 profile__info\" data-v-7a4dcf76><form data-v-7a4dcf76><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"profile-username\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Username</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"text\" class=\"form-control\" id=\"profile-username\" placeholder=\"Username\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"profile-name\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Your Name</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"text\" class=\"form-control\" id=\"profile-name\" placeholder=\"Name\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"exampleInputEmail1\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Email address</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"example@cliquestudios.com\" data-v-7a4dcf76></div></div><div class=\"row mb-3\" data-v-7a4dcf76><label for=\"exampleInputPassword1\" class=\"col-lg-3 col-form-label form-label\" data-v-7a4dcf76>Update Password</label><div class=\"col-lg-9\" data-v-7a4dcf76><input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" data-v-7a4dcf76></div></div><button type=\"submit\" class=\"btn btn-primary\" data-v-7a4dcf76>Save</button></form></div></div></section>", 1);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 

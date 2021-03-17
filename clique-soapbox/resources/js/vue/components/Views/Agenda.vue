@@ -3,7 +3,7 @@
         <div class="row main-row profile-row">
             <Sidebar />
             <section class="col-12 col-md-9 col-lg offset-xl-1 main-content agenda">
-                <div class="row row-full-height ptb-5">
+                <div class="row row-full-height py-4">
                     <div class="col-12 mb-4 agenda__header">
                         <p class="date-time">March 2nd, 4:30pm</p>
                         <h1>Team Title</h1>
@@ -12,7 +12,7 @@
                         <p class="muted-text">Description</p>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
                     </div>
-                    <div class="col-12 pb-4 agenda__cards">
+                    <div class="col-12 agenda__cards">
                         <draggable
                             :list="agendaList"
                             item-key="id"

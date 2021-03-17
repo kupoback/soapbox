@@ -1,6 +1,6 @@
 .agenda {
 	&__description {
-		border-bottom: 1px solid $grey;
+		border-bottom: 1px solid $gray;
 	}
 	&__cards {
 		&-card {
@@ -44,7 +44,7 @@
 				.agenda__cards-card__handle-icons {
 					display: flex;
 					&__icon {
-						background: $extreme-light-grey;
+						background: $extreme-light-gray;
 						&:hover,
 						&:focus {
 							cursor: grab;

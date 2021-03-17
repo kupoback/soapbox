@@ -7,39 +7,46 @@
                     <ul class="nav nav-tabs w-100"
                         id="nav-tab"
                         role="tablist">
-                        <li class="nav-link active"
-                                id="modal-details-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#modal-details"
-                                role="tab"
-                                aria-controls="modal-details"
-                                aria-selected="true">Details
+                        <li class="nav-link"
+                            role="presentation">
+                            <a href="#modal-details-tab"
+                               id="modal-details-tab"
+                               data-bs-toggle="tab"
+                               data-bs-target="#modal-details"
+                               role="tab"
+                               aria-controls="modal-details"
+                               aria-selected="true"
+                               class="active">Details</a>
                         </li>
                         <li class="nav-link"
-                                id="modal-comments-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#modal-comments"
-                                role="tab"
-                                aria-controls="modal-comments"
-                                aria-selected="false"
-                                >Comments</li>
+                            role="presentation">
+                            <a href="#modal-comments"
+                               id="modal-comment-tab"
+                               data-bs-toggle="tab"
+                               data-bs-target="#modal-comments"
+                               role="tab"
+                               aria-controls="modal-comments"
+                               aria-selected="true">Comments</a></li>
                     </ul>
                 </nav>
+                <button type="button" class="modal__agenda-close btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="tab-content modal-tabs">
                     <div id="modal-details"
                          :class="`modal-tabs__block modal__agenda-content ${viewport === 'mobile' ? `${tabPaneClasses} ${activePane}`: '' }`"
                          role="tabpanel"
                          aria-labelledby="modal-details-tab">
-                        <div class="modal__agenda-content__header">
+                        <div class="modal__agenda-content__header mb-2">
                             <h5 class="modal-title" id="exampleModalLabel">Team Name</h5>
                             <p class="spacer">|</p>
                             <p class="lead muted-text modal__agenda-content__header__added-by ">Added by Clique Studios</p>
                         </div>
                         <div class="modal__agenda-content__body">
-                            <div class="modal__body--title">
-                                <h3>Topic Title</h3>
-                                <p class="agenda-status text-danger"><i class="bi bi-exclamation-circle-fill"></i> High Priority</p>
-                                <p class="agenda-status text-success"><i class="bi bi-caret-down-fill"></i> Low Priority</p>
+                            <div class="modal__body--title mb-2">
+                                <h3 class="mb-3">Topic Title</h3>
+                                <div class="agenda-status">
+                                    <p class="agenda-status__text text-danger"><i class="bi bi-exclamation-circle-fill"></i> High Priority</p>
+                                    <p class="agenda-status__text text-success"><i class="bi bi-caret-down-fill"></i> Low Priority</p>
+                                </div>
                             </div>
                             <div class="modal__body--description">
                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
@@ -98,7 +105,6 @@
                         <div class="modal__agenda-comments-container">
                             <div class="modal__agenda-comments-container__header">
                                 <h5 class="modal-title">Comments</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="overflow-auto modal__agenda-comments-container__body comment-list">
                                 <div v-for="({date, commentList}, index) in comments"
