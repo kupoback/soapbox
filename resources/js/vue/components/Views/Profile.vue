@@ -48,10 +48,8 @@
 </template>
 
 <script type="application/javascript">
-    import Sidebar from "../Partials/Sidebar.vue";
     export default {
         components: {
-            Sidebar
         },
         name: "Profile"
     };

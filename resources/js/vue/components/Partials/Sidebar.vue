@@ -33,7 +33,7 @@
                this.$store.dispatch('toggleSidebarVisibility', {visibility: this.viewport !== 'mobile'});
            },
            toggleSidebar() {
-               const mainWrapper = document.getElementById('main');
+               const mainWrapper = document.getElementById('main-app');
                const sidebar = this.$refs.sidebar;
                const vp = this.viewport;
                

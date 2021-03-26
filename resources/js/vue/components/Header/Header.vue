@@ -2,13 +2,12 @@
     <header class="main-navigation">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" title="Main Navigation" aria-label="Main Navigation">
             <div class="container-fluid">
-                
                 <router-link class="navbar-brand"
                              :to="`/`"
-                             v-text="`Clique Soapbox`" />
+                             v-text="appName" />
                 
                 <MainNavigation />
-                <ProfileNavigation />
+                <ProfileNavigation :user="user" />
             </div>
         </nav>
     </header>
@@ -19,6 +18,7 @@
     import ProfileNavigation from "./Navigation/ProfileNavigation.vue";
     
     export default {
+        props: ['appName', 'user'],
         components: {
             MainNavigation,
             ProfileNavigation

@@ -1,6 +1,6 @@
 <template>
-    <main class="main" id="main" role="main">
-        <Header />
+    <main class="main" id="main-app" role="main">
+        <Header :app-name="appName" />
         <router-view/>
         <Footer />
     </main>
@@ -10,8 +10,15 @@
     import Header from "./Header/Header.vue";
     import Footer from "./Footer/Footer.vue";
     export default {
+        props:{
+            appName: String,
+        },
         created() {
             this.$store.dispatch('setViewport');
+            if (this.user) {
+                const user = JSON.parse(this.user)
+                this.$store.commit('SET_USER', user)
+            }
         },
         mounted() {
             window.addEventListener('resize', () => {

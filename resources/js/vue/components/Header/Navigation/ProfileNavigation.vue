@@ -33,6 +33,7 @@
 
 <script type="application/javascript">
     export default {
+        props: ['user'],
         name: "ProfileNavigation"
     };
 </script>

@@ -49,11 +49,9 @@
 </template>
 
 <script type="application/javascript">
-    import draggable from "vuedraggable";
     
     import AgendaItem from "../Partials/AgendaItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
-    import Sidebar from "../Partials/Sidebar.vue";
     
     export default {
         setup() {
@@ -128,9 +126,7 @@
         },
         components: {
             AgendaModal,
-            AgendaItem,
-            draggable,
-            Sidebar
+            AgendaItem
         },
         name: "Agenda"
     };

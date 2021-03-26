@@ -130,7 +130,6 @@
 </template>
 
 <script type="application/javascript">
-    import draggable from "vuedraggable";
 
     import DragHandle from "../Elements/Drag-Handle.vue";
     
@@ -282,7 +281,6 @@
             },
         },
         components: {
-            draggable,
             DragHandle,
         },
         name: "AgendaModal"

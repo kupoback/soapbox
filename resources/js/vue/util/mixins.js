@@ -9,6 +9,12 @@ export default {
             else if (winWidth >= 768 && winWidth <= 1200) return 'tablet';
             
             return 'desktop';
+        },
+        isObjEmpty(obj) {
+            return Object.keys(obj).length === 0;
+        },
+        objHasKey(obj, key) {
+            return obj.hasOwnProperty(key);
         }
     }
 }
