@@ -18,9 +18,9 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/teams', function() {
-    return view('teams');
-});
+// Route::get('/teams', function() {
+//     return view('teams');
+// });
 
 // Route::get('/profile', function() {
 //     return view('profile');
