@@ -16,7 +16,7 @@ class CreateActionableItemsTable extends Migration
         Schema::create('actionable_items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->bigInteger('created_by');
+            $table->unsignedBigInteger('created_by');
             $table->string('topic_status');
             $table->integer('list_order');
             $table->timestamps();

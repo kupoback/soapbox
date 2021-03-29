@@ -17,7 +17,7 @@ class CreateTopicsTable extends Migration
             $table->id();
             $table->string('title');
             $table->multiLineString('description');
-            $table->bigInteger('created_by'); // ID of the user who created the topic
+            $table->unsignedBigInteger('created_by'); // ID of the user who created the topic
             $table->string('topic_status');
             $table->string('priority_status');
             $table->integer('list_order'); // Order the topic appears in the team list
