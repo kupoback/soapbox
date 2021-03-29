@@ -15,8 +15,8 @@ class CreateUsersViewedCommentTable extends Migration
     {
         Schema::create('users_viewed_comment', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('comment_id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('comment_id');
             $table->timestamps();
         });
     }

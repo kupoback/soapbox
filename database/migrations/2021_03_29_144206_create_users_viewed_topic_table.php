@@ -15,8 +15,8 @@ class CreateUsersViewedTopicTable extends Migration
     {
         Schema::create('users_viewed_topic', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('topic_id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('topic_id');
             $table->timestamps();
         });
     }
