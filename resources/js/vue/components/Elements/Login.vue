@@ -42,9 +42,8 @@
 </template>
 
 <script type="application/javascript">
-    import {Alert} from "bootstrap";
     export default {
-        setup() {
+        data: () => {
             return {
                 formData: {
                     email: "jstamm@example.net",
