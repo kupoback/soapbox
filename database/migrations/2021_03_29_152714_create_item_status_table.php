@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActionableItemsTable extends Migration
+class CreateItemStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateActionableItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('actionable_items', function (Blueprint $table) {
+        Schema::create('item_status', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('status_id');
-            $table->integer('list_order');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateActionableItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actionable_items');
+        Schema::dropIfExists('item_status');
     }
 }

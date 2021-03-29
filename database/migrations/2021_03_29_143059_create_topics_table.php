@@ -18,7 +18,7 @@ class CreateTopicsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->unsignedBigInteger('created_by'); // ID of the user who created the topic
-            $table->string('topic_status');
+            $table->unsignedBigInteger('status_id');
             $table->string('priority_status');
             $table->integer('list_order'); // Order the topic appears in the team list
             $table->boolean('request_delete'); // Whether the item should marked to delete
