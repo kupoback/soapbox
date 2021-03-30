@@ -22,6 +22,11 @@ export default {
     //          .catch(err => console.error(err));
     //     return;
     // },
+    userLogin(store, state) {
+        // axios.get('/api/auth-user')
+        //      .then(({ data } = {}) => commit('setAuthUser', data))
+        //      .catch(error => console.error(error));
+    },
     toggleSidebarVisibility(store, opts) {
         store.commit("TOGGLE_SIDEBAR", {opts});
     },

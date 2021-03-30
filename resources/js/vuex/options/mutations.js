@@ -18,5 +18,8 @@ export default {
     },
     HAS_LOGIN_ERROR(currentState, error) {
         currentState.loginError = error;
+    },
+    setAuthUser(state, user) {
+        state.user = user;
     }
 };

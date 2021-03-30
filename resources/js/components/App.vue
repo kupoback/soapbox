@@ -15,15 +15,25 @@
         },
         created() {
             this.$store.dispatch('setViewport');
+            this.$store.dispatch('setPageTitle', this.$route.meta.title);
             if (this.user) {
                 const user = JSON.parse(this.user)
                 this.$store.commit('SET_USER', user)
             }
         },
         mounted() {
+            // this.$store.dispatch('fetchAuthUser');
             window.addEventListener('resize', () => {
                 this.$store.dispatch('setViewport');
             })
+        },
+        computed: {
+            // ...mapGetters({ authUser: 'authUser' })
+        },
+        watch: {
+            $route(to, from) {
+                this.$store.dispatch('setPageTitle', to.meta.title);
+            }
         },
         components: {
             Footer,

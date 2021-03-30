@@ -1,14 +1,15 @@
 export default {
     loginError: false,
-        secrets: [],
-        sidebarOpened: true,
-        siteData: {
-        name: "",
-            pageTitle: "",
+    secrets: [],
+    sidebarOpened: true,
+    siteData: {
+        pageTitle: "",
     },
+    user: null,
+    userStatus: null,
     viewport: "",
-        // Temp data
-        teams: [
+    // Temp data
+    teams: [
         {
             _id: "ID_019355",
             title: "Test List",

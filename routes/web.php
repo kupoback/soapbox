@@ -13,15 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
-
-// Route::get('/teams', function() {
-//     return view('teams');
-// });
-
-// Route::get('/profile', function() {
-//     return view('profile');
-// });
+Route::get('{any}', 'App\Http\Controllers\AppController@index')
+     ->where('any', '.*')
+     ->middleware('auth')
+     ->name('home');
