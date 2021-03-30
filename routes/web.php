@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('{any}', 'App\Http\Controllers\AppController@index')
      ->where('any', '.*')
-     ->middleware('auth')
+     // ->middleware('auth')
      ->name('home');

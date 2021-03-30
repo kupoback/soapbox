@@ -19490,7 +19490,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.$store.dispatch('setViewport');
-    this.$store.dispatch('setPageTitle', this.$route.meta.title);
+    this.$store.commit('storeTitle', this.$route.meta.title);
 
     if (this.user) {
       var user = JSON.parse(this.user);
@@ -19509,7 +19509,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     $route: function $route(to, from) {
-      this.$store.dispatch('setPageTitle', to.meta.title);
+      this.$store.commit('storeTitle', to.meta.title);
     }
   },
   components: {
@@ -21612,22 +21612,29 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   name: 'Home',
   path: '/',
-  component: _components_Views_Home_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  component: _components_Views_Home_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+  meta: {
+    title: 'Home'
+  }
 }, {
   name: 'Teams',
   path: '/Teams',
+  component: _components_Views_Agenda_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+  meta: {
+    title: 'Teams'
+  }
+}, {
+  name: 'Agenda List',
+  path: '/agenda-list',
+  component: _components_Views_Agenda_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+  meta: {
+    title: 'Agenda List'
+  }
+}, {
+  name: 'Agenda Item List',
+  path: '/agenda-list/:id',
   component: _components_Views_Agenda_vue__WEBPACK_IMPORTED_MODULE_2__.default
-}, // {
-//     name: 'Agenda List',
-//     path: '/agenda-list',
-//     component: Agenda,
-// },
-// {
-//     name: 'Agenda List',
-//     path: '/agenda-list/:id',
-//     component: Agenda,
-// },
-{
+}, {
   name: 'Profile',
   path: '/profile',
   component: _components_Views_Profile_vue__WEBPACK_IMPORTED_MODULE_3__.default
@@ -21786,6 +21793,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   authUser: function authUser(state) {
     return state.user;
+  },
+  pageTitle: function pageTitle(state) {
+    return state.pageTitle;
   }
 });
 
@@ -21843,6 +21853,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   setAuthUser: function setAuthUser(state, user) {
     state.user = user;
+  },
+  storeTitle: function storeTitle(state, title) {
+    if (title) {
+      state.pageTitle = title;
+      document.title = title;
+    }
   }
 });
 
@@ -21861,11 +21877,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   loginError: false,
+  pageTitle: "Home",
   secrets: [],
   sidebarOpened: true,
-  siteData: {
-    pageTitle: ""
-  },
   user: null,
   userStatus: null,
   viewport: "",

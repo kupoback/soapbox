@@ -10,22 +10,25 @@ export const routes = [
         name: 'Home',
         path: '/',
         component: Home,
+        meta: { title: 'Home' }
     },
     {
         name: 'Teams',
         path: '/Teams',
         component: Agenda,
+        meta: { title: 'Teams' }
     },
-    // {
-    //     name: 'Agenda List',
-    //     path: '/agenda-list',
-    //     component: Agenda,
-    // },
-    // {
-    //     name: 'Agenda List',
-    //     path: '/agenda-list/:id',
-    //     component: Agenda,
-    // },
+    {
+        name: 'Agenda List',
+        path: '/agenda-list',
+        component: Agenda,
+        meta: { title: 'Agenda List' }
+    },
+    {
+        name: 'Agenda Item List',
+        path: '/agenda-list/:id',
+        component: Agenda,
+    },
     {
         name: 'Profile',
         path: '/profile',

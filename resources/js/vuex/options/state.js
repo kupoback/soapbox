@@ -1,10 +1,8 @@
 export default {
     loginError: false,
+    pageTitle: "Home",
     secrets: [],
     sidebarOpened: true,
-    siteData: {
-        pageTitle: "",
-    },
     user: null,
     userStatus: null,
     viewport: "",

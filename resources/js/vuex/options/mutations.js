@@ -21,5 +21,11 @@ export default {
     },
     setAuthUser(state, user) {
         state.user = user;
+    },
+    storeTitle(state, title) {
+        if (title) {
+            state.pageTitle = title;
+            document.title = title;
+        }
     }
 };

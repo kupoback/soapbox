@@ -15,7 +15,7 @@
         },
         created() {
             this.$store.dispatch('setViewport');
-            this.$store.dispatch('setPageTitle', this.$route.meta.title);
+            this.$store.commit('storeTitle', this.$route.meta.title);
             if (this.user) {
                 const user = JSON.parse(this.user)
                 this.$store.commit('SET_USER', user)
@@ -32,7 +32,7 @@
         },
         watch: {
             $route(to, from) {
-                this.$store.dispatch('setPageTitle', to.meta.title);
+                this.$store.commit('storeTitle', to.meta.title);
             }
         },
         components: {
