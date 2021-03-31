@@ -49,7 +49,7 @@ class User extends Authenticatable
     
     public function teams()
     {
-        return $this->hasMany(Teams::class);
+        return $this->belongsToMany(Teams::class);
     }
     
 }
