@@ -15,4 +15,9 @@ class Comments extends Model
         'comments',
     ];
     
+    public function topic()
+    {
+        return $this->belongsTo(Topics::class);
+    }
+    
 }

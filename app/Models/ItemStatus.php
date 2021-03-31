@@ -15,4 +15,14 @@ class ItemStatus extends Model
         'status',
     ];
     
+    public function item()
+    {
+        return $this->belongsTo(ActionableItems::class);
+    }
+    
+    public function topic()
+    {
+        return $this->belongsTo(Topics::class);
+    }
+    
 }

@@ -27,12 +27,14 @@ class Topics extends Model
     
     public function topic()
     {
+        $status = $this->hasOne(ItemStatus::class);
         $action_items = $this->hasMany(ActionableItems::class);
         $comments = $this->hasMany(Comments::class);
         
         return (object) [
             'actionItems' => $action_items,
             'comments' => $comments,
+            'status' => $status,
         ];
     }
     

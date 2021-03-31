@@ -21,4 +21,14 @@ class ActionableItems extends Model
         'created_by',
     ];
     
+    public function status()
+    {
+        return $this->hasOne(ItemStatus::class);
+    }
+    
+    public function topic()
+    {
+        return $this->belongsTo(Topics::class);
+    }
+    
 }
