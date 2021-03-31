@@ -25,18 +25,19 @@ class Topics extends Model
         'created_by',
     ];
     
-    public function topic()
+    public function status()
     {
-        $status = $this->hasOne(ItemStatus::class);
-        $action_items = $this->hasMany(ActionableItems::class);
-        $comments = $this->hasMany(Comments::class);
-        
-        return (object) [
-            'actionItems' => $action_items,
-            'comments' => $comments,
-            'status' => $status,
-        ];
+        return $this->hasOne(ItemStatus::class);
     }
     
+    public function actionableItems()
+    {
+        $this->hasMany(ActionableItems::class);
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
     
 }
