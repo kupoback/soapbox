@@ -10,4 +10,10 @@ class UsersViewedComments extends Model
     use HasFactory;
     
     protected $table = 'users_viewed_comment';
+    
+    protected $hidden = [
+        'user_id',
+        'comment_id',
+    ];
+    
 }

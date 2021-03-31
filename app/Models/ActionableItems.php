@@ -10,4 +10,15 @@ class ActionableItems extends Model
     use HasFactory;
     
     protected $table = 'actionable_items';
+    
+    protected $fillable = [
+        'title',
+        'status_id',
+        'list_order',
+    ];
+    
+    protected $hidden = [
+        'created_by',
+    ];
+    
 }

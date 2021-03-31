@@ -30,6 +30,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role_id',
     ];
 
     /**
@@ -44,6 +45,11 @@ class User extends Authenticatable
     public function secrets()
     {
         return $this->hasMany('App\Models\Secret');
+    }
+    
+    public function teams()
+    {
+        return $this->hasMany(Teams::class);
     }
     
 }

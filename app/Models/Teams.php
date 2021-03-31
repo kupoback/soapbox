@@ -10,4 +10,20 @@ class Teams extends Model
     use HasFactory;
     
     protected $table = 'teams';
+    
+    protected $fillable = [
+        'title',
+        'description',
+    ];
+    
+    public function list()
+    {
+    
+    }
+    
+    public function topics()
+    {
+        return $this->hasMany(Topics::class);
+    }
+    
 }

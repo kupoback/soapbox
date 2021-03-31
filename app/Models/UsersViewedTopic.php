@@ -9,5 +9,11 @@ class UsersViewedTopic extends Model
 {
     use HasFactory;
     
-    protected $table = 'user_role';
+    protected $table = 'users_viewed_topic';
+    
+    protected $fillable = [
+        'user_id',
+        'topic_id',
+    ];
+    
 }

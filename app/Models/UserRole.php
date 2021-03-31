@@ -11,4 +11,8 @@ class UserRole extends Model
     
     protected $table = 'user_role';
     
+    protected $hidden = [
+        'user_role',
+    ];
+    
 }

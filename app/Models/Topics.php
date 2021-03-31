@@ -10,4 +10,31 @@ class Topics extends Model
     use HasFactory;
     
     protected $table = 'topics';
+    
+    protected $fillable = [
+        'title',
+        'description',
+        'status_id',
+        'priority_status',
+        'list_order',
+        'request_delete',
+        'archived',
+    ];
+    
+    protected $hidden = [
+        'created_by',
+    ];
+    
+    public function topic()
+    {
+        $action_items = $this->hasMany(ActionableItems::class);
+        $comments = $this->hasMany(Comments::class);
+        
+        return (object) [
+            'actionItems' => $action_items,
+            'comments' => $comments,
+        ];
+    }
+    
+    
 }
