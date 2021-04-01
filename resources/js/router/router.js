@@ -4,8 +4,15 @@ import Home from "../components/Views/Home.vue";
 import Teams from "../components/Views/Teams.vue";
 import Agenda from "../components/Views/Agenda.vue";
 import Profile from "../components/Views/Profile.vue";
+import NotFound from "../components/Views/NotFound.vue";
 
 export const routes = [
+    {
+        name: "not found",
+        path: '/:pathMatch(.*)*',
+        component: NotFound,
+        meta: { title: "Not Found", }
+    },
     {
         name: 'home',
         path: '/',

@@ -1,12 +1,13 @@
 <template>
-    <div class="container-fluid flex-grow-1 d-flex overflow-scroll">
-        <div class="row main-row profile-row">
-            <Sidebar />
+    <Layout container-classes="d-flex overflow-scroll"
+            row-classes="profile-row"
+            :with-sidebar="true">
+        <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content profile-content">
                 <div class="row row-full-height py-4">
                     <TitleHeader css-classes="mb-5 profile__header"
                                  title="Update Profile" />
-                    
+            
                     <div class="col-12 profile__info">
                         <form>
                             <div class="row mb-3">
@@ -39,17 +40,19 @@
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>
-                
+        
                 </div>
             </section>
-        </div>
-    </div>
+        </template>
+    </Layout>
 </template>
 
 <script type="application/javascript">
     import TitleHeader from "../Elements/TitleHeader.vue";
+    import Layout from "../Elements/Layout.vue";
     export default {
         components: {
+            Layout,
             TitleHeader
         },
         name: "Profile"

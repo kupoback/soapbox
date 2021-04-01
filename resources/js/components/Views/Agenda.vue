@@ -1,7 +1,8 @@
 <template>
-    <div class="container-fluid flex-grow-1 d-flex overflow-scroll">
-        <div class="row main-row profile-row">
-            <Sidebar />
+    <Layout container-classes="d-flex overflow-scroll"
+            row-classes="profile-row"
+            with-sidebar="true">
+        <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
                 <div class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
@@ -45,9 +46,9 @@
                     </div>
                 </div>
             </section>
-        </div>
-        <AgendaModal />
-    </div>
+            <AgendaModal />
+        </template>
+    </Layout>
 </template>
 
 <script type="application/javascript">
@@ -55,6 +56,7 @@
     import AgendaItem from "../Partials/AgendaItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
+    import Layout from "../Elements/Layout.vue";
     
     export default {
         setup() {
@@ -128,6 +130,7 @@
             }
         },
         components: {
+            Layout,
             TitleHeader,
             AgendaModal,
             AgendaItem

@@ -1,6 +1,6 @@
 <template>
-    <div class="container-fluid flex-grow-1">
-        <div class="row justify-content-center h-100 main-row">
+    <Layout row-classes="justify-content-center h-100">
+        <template v-slot:body>
             <section class="col-sm-8 col-md-7 ptb-5 main-content team">
                 <TitleHeader css-classes="mb-5 teams__header"
                              title="Your Teams" />
@@ -13,13 +13,15 @@
                               :slug="slug" />
                 </ul>
             </section>
-        </div>
-    </div>
+        </template>
+        
+    </Layout>
 </template>
 
 <script type="application/javascript">
     import TeamItem from "../Partials/TeamItem.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
+    import Layout from "../Elements/Layout.vue";
     
     export default {
         setup() {
@@ -42,6 +44,7 @@
             }
         },
         components: {
+            Layout,
             TitleHeader,
             TeamItem,
         },

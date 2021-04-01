@@ -1,6 +1,6 @@
 <template>
-    <div class="container-fluid flex-grow-1">
-        <div class="row justify-content-center align-items-center h-100 main-row">
+    <Layout row-classes="justify-content-center align-items-center">
+        <template v-slot:body>
             <div class="col-sm-8 col-md-7">
                 <TitleHeader css-classes="home__header"
                              h-classes="display-1"
@@ -12,13 +12,14 @@
                     <Login @login="handeLogin" />
                 </div>
             </div>
-        </div>
-    </div>
+        </template>
+    </Layout>
 </template>
 
 <script type="application/javascript">
     import Login from "../Elements/Login.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
+    import Layout from "../Elements/Layout.vue";
     
     export default {
         data() {
@@ -67,7 +68,7 @@
             // }
         },
         name: "Home",
-        components: {TitleHeader, Login}
+        components: {Layout, TitleHeader, Login}
     };
 </script>
 
