@@ -2,7 +2,6 @@
     <li class="nav-item">
         <router-link :to="{name: link}"
                      class="nav-link"
-                     exact-active-class="fw-bold"
                      v-text="title" />
     </li>
 </template>

@@ -10,8 +10,9 @@
 </template>
 
 <script type="application/javascript">
-    import Layout from "../Elements/Layout.vue";
+    import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
+    
     export default {
         name: "NotFound",
         components: {TitleHeader, Layout}

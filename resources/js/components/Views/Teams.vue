@@ -19,9 +19,9 @@
 </template>
 
 <script type="application/javascript">
+    import Layout from "../Layout/Layout.vue";
     import TeamItem from "../Partials/TeamItem.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
-    import Layout from "../Elements/Layout.vue";
     
     export default {
         setup() {

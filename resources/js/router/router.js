@@ -52,6 +52,7 @@ export const routes = [
 
 const router = createRouter({
     history: createWebHistory(),
+    linkExactActiveClass: "fw-bold",
     routes: routes,
 });
 

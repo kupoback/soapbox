@@ -3,6 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light" title="Main Navigation" aria-label="Main Navigation">
             <div class="container-fluid">
                 <router-link class="navbar-brand"
+                             exact-active-class=""
                              :to="{name: 'home'}"
                              v-text="appName" />
                 

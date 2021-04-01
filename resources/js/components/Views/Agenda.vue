@@ -55,8 +55,8 @@
     
     import AgendaItem from "../Partials/AgendaItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
+    import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
-    import Layout from "../Elements/Layout.vue";
     
     export default {
         setup() {

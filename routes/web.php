@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('{any?}', [App\Http\Controllers\AppController::class, 'index'])
-     // ->middleware('auth')
+    // ->middleware('auth')
+     ->where('any', '.*')
      ->name('base');
