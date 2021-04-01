@@ -34,7 +34,7 @@
             getTeams() {
                 axios.get('/teams')
                      .then(res => {
-                    // console.log(res);
+                    console.log(res);
                 });
             }
         },

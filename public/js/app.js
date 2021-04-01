@@ -20476,7 +20476,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getTeams: function getTeams() {
-      axios.get('/teams').then(function (res) {// console.log(res);
+      axios.get('/teams').then(function (res) {
+        console.log(res);
       });
     }
   },
@@ -22108,6 +22109,8 @@ var mountElmTarget = document.getElementById("app"); // Create our SPA
 
 if (mountElmTarget) {
   var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_App_vue__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread({}, mountElmTarget.dataset));
+  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.headers.common["X-Requested-With"]) = 'XMLHttpRequest';
+  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   app.config.globalProperties.$axios = (axios__WEBPACK_IMPORTED_MODULE_2___default()); // Global App shared
 
   app.use(_vuex_store_js__WEBPACK_IMPORTED_MODULE_1__.store).use(_router_router_js__WEBPACK_IMPORTED_MODULE_3__.default); // Global Component registration

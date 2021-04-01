@@ -9,6 +9,7 @@
 <script type="application/javascript">
     import Header from "./Header/Header.vue";
     import Footer from "./Footer/Footer.vue";
+    
     export default {
         props:{
             appName: String,
