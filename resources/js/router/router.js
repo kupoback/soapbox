@@ -7,37 +7,39 @@ import Profile from "../components/Views/Profile.vue";
 
 export const routes = [
     {
-        name: 'Home',
+        name: 'home',
         path: '/',
         component: Home,
         meta: { title: 'Home' }
     },
     {
-        name: 'Teams',
-        path: '/Teams',
-        component: Agenda,
+        name: 'teams',
+        path: '/teams',
+        component: Teams,
         meta: { title: 'Teams' }
     },
     {
-        name: 'Agenda List',
+        name: 'agenda list',
         path: '/agenda-list',
         component: Agenda,
         meta: { title: 'Agenda List' }
     },
     {
-        name: 'Agenda Item List',
+        name: 'agenda item list',
         path: '/agenda-list/:id',
         component: Agenda,
     },
     {
-        name: 'Profile',
+        name: 'profile',
         path: '/profile',
-        component: Profile
+        component: Profile,
+        meta: { title: 'Profile' }
     },
     {
-        name: 'Logout',
+        name: 'logout',
         path: '/log-out',
-        component: Profile
+        component: Profile,
+        meta: { title: 'Logout' }
     }
 ];
 

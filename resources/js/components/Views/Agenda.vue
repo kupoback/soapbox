@@ -4,10 +4,12 @@
             <Sidebar />
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
                 <div class="row g-0 row-full-height pt-4">
-                    <div class="col-12 mb-4 agenda__header">
-                        <p class="date-time">March 2nd, 4:30pm</p>
-                        <h1>Team Title</h1>
-                    </div>
+                    <TitleHeader css-classes="mb-4 agenda__header"
+                                 title="Team Title">
+                        <template v-slot:date-time>
+                            <p class="date-time">March 2nd, 4:30pm</p>
+                        </template>
+                    </TitleHeader>
                     <div class="col-12 mb-5 pb-4 agenda__description">
                         <p class="muted-text">Description</p>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
@@ -52,6 +54,7 @@
     
     import AgendaItem from "../Partials/AgendaItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
+    import TitleHeader from "../Elements/TitleHeader.vue";
     
     export default {
         setup() {
@@ -125,6 +128,7 @@
             }
         },
         components: {
+            TitleHeader,
             AgendaModal,
             AgendaItem
         },

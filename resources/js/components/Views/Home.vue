@@ -2,7 +2,9 @@
     <div class="container-fluid flex-grow-1">
         <div class="row justify-content-center align-items-center h-100 main-row">
             <div class="col-sm-8 col-md-7">
-                <h1 class="display-1">Clique Soapbox</h1>
+                <TitleHeader css-classes="home__header"
+                             h-classes="display-1"
+                             title="Clique Soapbox" />
                 <hr>
                 <div v-if="!secrets.length"
                      class="login-container">
@@ -16,6 +18,7 @@
 
 <script type="application/javascript">
     import Login from "../Elements/Login.vue";
+    import TitleHeader from "../Elements/TitleHeader.vue";
     
     export default {
         data() {
@@ -64,7 +67,7 @@
             // }
         },
         name: "Home",
-        components: {Login}
+        components: {TitleHeader, Login}
     };
 </script>
 

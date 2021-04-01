@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light" title="Main Navigation" aria-label="Main Navigation">
             <div class="container-fluid">
                 <router-link class="navbar-brand"
-                             to="/"
+                             :to="{name: 'home'}"
                              v-text="appName" />
                 
                 <MainNavigation />

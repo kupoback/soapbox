@@ -1,6 +1,6 @@
 <template>
     <li class="nav-item">
-        <router-link :to="link"
+        <router-link :to="{name: link}"
                      class="nav-link"
                      v-text="title" />
     </li>

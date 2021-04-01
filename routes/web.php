@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('{any}', 'App\Http\Controllers\AppController@index')
-     ->where('any', '.*')
+Route::get('{any?}', [App\Http\Controllers\AppController::class, 'index'])
      // ->middleware('auth')
-     ->name('home');
+     ->name('base');

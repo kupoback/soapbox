@@ -1,7 +1,7 @@
 <template>
     <div id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-            <NavItem link="/teams"
+            <NavItem link="teams"
                      title="Teams" />
         </ul>
     </div>

@@ -4,9 +4,8 @@
             <Sidebar />
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content profile-content">
                 <div class="row row-full-height py-4">
-                    <div class="col-12 profile__header mb-5">
-                        <h1>Update Profile</h1>
-                    </div>
+                    <TitleHeader css-classes="mb-5 profile__header"
+                                 title="Update Profile" />
                     
                     <div class="col-12 profile__info">
                         <form>
@@ -48,8 +47,10 @@
 </template>
 
 <script type="application/javascript">
+    import TitleHeader from "../Elements/TitleHeader.vue";
     export default {
         components: {
+            TitleHeader
         },
         name: "Profile"
     };
