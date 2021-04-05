@@ -1,6 +1,11 @@
 window._ = require('lodash');
 
 /**
+ * Bootstrap 5's ESM
+ */
+require('bootstrap/dist/js/bootstrap.esm.min.js');
+
+/**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
@@ -8,7 +13,11 @@ window._ = require('lodash');
 
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'Content-Type':'application/json',
+    'Accept':'application/json'
+};
 
 window.axios.defaults.withCredentials = true;
 
@@ -19,9 +28,9 @@ window.axios.defaults.withCredentials = true;
  */
 
 // import Echo from 'laravel-echo';
-//
+
 // window.Pusher = require('pusher-js');
-//
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,

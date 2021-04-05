@@ -22089,9 +22089,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./scripts/bootstrap */ "./resources/js/scripts/bootstrap.js");
-
-__webpack_require__(/*! bootstrap/dist/js/bootstrap.esm.min.js */ "./node_modules/bootstrap/dist/js/bootstrap.esm.min.js"); // Vue Items
+__webpack_require__(/*! ./scripts/bootstrap */ "./resources/js/scripts/bootstrap.js"); // Vue Items
 
 
 
@@ -22109,8 +22107,6 @@ var mountElmTarget = document.getElementById("app"); // Create our SPA
 
 if (mountElmTarget) {
   var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_App_vue__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread({}, mountElmTarget.dataset));
-  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.headers.common["X-Requested-With"]) = 'XMLHttpRequest';
-  (axios__WEBPACK_IMPORTED_MODULE_2___default().defaults.withCredentials) = true;
   app.config.globalProperties.$axios = (axios__WEBPACK_IMPORTED_MODULE_2___default()); // Global App shared
 
   app.use(_vuex_store_js__WEBPACK_IMPORTED_MODULE_1__.store).use(_router_router_js__WEBPACK_IMPORTED_MODULE_3__.default); // Global Component registration
@@ -22210,13 +22206,23 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
+ * Bootstrap 5's ESM
+ */
+
+__webpack_require__(/*! bootstrap/dist/js/bootstrap.esm.min.js */ "./node_modules/bootstrap/dist/js/bootstrap.esm.min.js");
+/**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+};
 window.axios.defaults.withCredentials = true;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -22224,9 +22230,7 @@ window.axios.defaults.withCredentials = true;
  * allows your team to easily build robust real-time web applications.
  */
 // import Echo from 'laravel-echo';
-//
 // window.Pusher = require('pusher-js');
-//
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
