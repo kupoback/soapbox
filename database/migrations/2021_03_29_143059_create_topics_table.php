@@ -22,8 +22,8 @@ class CreateTopicsTable extends Migration
             $table->longText('description');
             $table->string('priority_status');
             $table->integer('list_order'); // Order the topic appears in the team list
-            $table->boolean('request_delete'); // Whether the item should marked to delete
-            $table->boolean('archived'); // If the topic_status is closed, mark it for archive
+            $table->boolean('request_delete')->nullable(); // Whether the item should marked to delete
+            $table->boolean('archived')->nullable(); // If the topic_status is closed, mark it for archive
             $table->timestamps();
         });
     }

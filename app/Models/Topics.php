@@ -26,6 +26,11 @@ class Topics extends Model
         'created_by',
     ];
     
+    public function team()
+    {
+        return $this->hasOne(Teams::class);
+    }
+    
     public function status()
     {
         return $this->hasOne(ItemStatus::class);

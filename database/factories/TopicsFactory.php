@@ -3,6 +3,7 @@
 namespace Database\Factories;
 ;
 use App\Models\Teams;
+use App\Models\Topics;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,7 @@ class TopicsFactory extends Factory
      *
      * @var string
      */
-    protected $model = Teams::class;
+    protected $model = Topics::class;
 
     /**
      * Define the model's default state.
@@ -30,6 +31,7 @@ class TopicsFactory extends Factory
             'status_id' => 1,
             'priority_status' => 'normal',
             'list_order' => 1,
+            'request_delete' => 0
         ];
     }
 }

@@ -148,7 +148,7 @@
             fetchData() {
                 this.error = this.data = null;
                 this.loading = true
-                axios.get(`/api/teams/${this.$route.params.slug}`)
+                axios.get(`/api/team/${this.$route.params.slug}`)
                      .then(res => console.log(res))
                 // getPost(this.$route.params.slug, (err, post) => {
                 //     this.loading = false

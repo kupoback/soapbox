@@ -20412,7 +20412,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchData: function fetchData() {
       this.error = this.data = null;
       this.loading = true;
-      axios.get("/api/teams/".concat(this.$route.params.slug)).then(function (res) {
+      axios.get("/api/team/".concat(this.$route.params.slug)).then(function (res) {
         return console.log(res);
       }); // getPost(this.$route.params.slug, (err, post) => {
       //     this.loading = false

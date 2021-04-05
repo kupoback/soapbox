@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SecretController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,9 @@ Route::get('/secrets', [SecretController::class, 'index']);
 //     return $request->user();
 // });
 
-// Route::get('/teams', [TeamsController::class, 'index']);
-
 Route::apiResources([
     'teams' => TeamsController::class,
 ]);
+
+Route::resource('team', TeamController::class)
+    ->parameters(['slug' => 'slug']);
