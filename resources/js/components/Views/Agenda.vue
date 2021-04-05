@@ -4,7 +4,9 @@
             :with-sidebar="true">
         <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
-                <div class="row g-0 row-full-height pt-4">
+                <Loading v-if="loading" />
+                <div v-if="loading && agendaList.length"
+                     class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
                                  title="Team Title">
                         <template v-slot:date-time>
@@ -57,6 +59,7 @@
     import AgendaModal from "../Partials/AgendaModal.vue";
     import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
+    import Loading from "../Elements/Loading.vue";
     
     export default {
         setup() {
@@ -117,8 +120,22 @@
                     },
                 
                 ],
-                dragging: false
+                data: false,
+                dragging: false,
+                error: false,
+                loading: true,
             };
+        },
+        created() {
+            this.$watch(
+                () => this.$route.params,
+                () => {
+                    this.fetchData();
+                },
+                // fetch the data when the view is created and the data is
+                // already being observed
+                { immediate: true }
+            )
         },
         methods: {
             consoleItem(evt) {
@@ -127,9 +144,24 @@
                     // Execute axios call here to update the sort order
                     console.log(itemId);
                 }
+            },
+            fetchData() {
+                this.error = this.data = null;
+                this.loading = true
+                axios.get(`/api/teams/${this.$route.params.slug}`)
+                     .then(res => console.log(res))
+                // getPost(this.$route.params.slug, (err, post) => {
+                //     this.loading = false
+                //     if (err) {
+                //         this.error = err.toString()
+                //     } else {
+                //         this.post = post
+                //     }
+                // })
             }
         },
         components: {
+            Loading,
             Layout,
             TitleHeader,
             AgendaModal,

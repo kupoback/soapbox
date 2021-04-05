@@ -6,7 +6,7 @@ use App\Models\Teams;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class TeamsFactory extends Factory
+class Topics extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,11 +22,13 @@ class TeamsFactory extends Factory
      */
     public function definition()
     {
-        $company = $this->faker->company;
         return [
-            'title' => $company,
+            'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
-            'slug' => Str::slug($company),
+            'created_by' => $this->faker->randomDigit,
+            'status_id' => 'open',
+            'priority_status' => 'normal',
+            'list_order' => 1,
         ];
     }
 }

@@ -20329,6 +20329,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Partials_AgendaModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Partials/AgendaModal.vue */ "./resources/js/components/Partials/AgendaModal.vue");
 /* harmony import */ var _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Layout/Layout.vue */ "./resources/js/components/Layout/Layout.vue");
 /* harmony import */ var _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Elements/TitleHeader.vue */ "./resources/js/components/Elements/TitleHeader.vue");
+/* harmony import */ var _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Elements/Loading.vue */ "./resources/js/components/Elements/Loading.vue");
+
 
 
 
@@ -20380,8 +20382,24 @@ __webpack_require__.r(__webpack_exports__);
         title: "An agenda item 10",
         commentCount: 20
       }],
-      dragging: false
+      data: false,
+      dragging: false,
+      error: false,
+      loading: true
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$watch(function () {
+      return _this.$route.params;
+    }, function () {
+      _this.fetchData();
+    }, // fetch the data when the view is created and the data is
+    // already being observed
+    {
+      immediate: true
+    });
   },
   methods: {
     consoleItem: function consoleItem(evt) {
@@ -20390,9 +20408,24 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log(itemId);
       }
+    },
+    fetchData: function fetchData() {
+      this.error = this.data = null;
+      this.loading = true;
+      axios.get("/api/teams/".concat(this.$route.params.slug)).then(function (res) {
+        return console.log(res);
+      }); // getPost(this.$route.params.slug, (err, post) => {
+      //     this.loading = false
+      //     if (err) {
+      //         this.error = err.toString()
+      //     } else {
+      //         this.post = post
+      //     }
+      // })
     }
   },
   components: {
+    Loading: _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_4__.default,
     Layout: _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     TitleHeader: _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_3__.default,
     AgendaModal: _Partials_AgendaModal_vue__WEBPACK_IMPORTED_MODULE_1__.default,
@@ -20566,7 +20599,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      isLoading: true
+      loading: true
     };
   },
   mounted: function mounted() {
@@ -20582,7 +20615,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.isLoading = true;
+                _this.loading = true;
                 response = false;
                 _context.prev = 2;
                 _context.next = 5;
@@ -20599,7 +20632,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.error(_context.t0);
 
               case 11:
-                _this.isLoading = !!response;
+                _this.loading = !!response;
 
               case 12:
               case "end":
@@ -21842,7 +21875,12 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/agenda-list/".concat($props.slug),
+    to: {
+      name: 'teams-list',
+      params: {
+        slug: $props.slug
+      }
+    },
     "class": "nav-link",
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title)
   }, null, 8
@@ -21874,6 +21912,7 @@ var _hoisted_1 = {
   "class": "col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda"
 };
 var _hoisted_2 = {
+  key: 1,
   "class": "row g-0 row-full-height pt-4"
 };
 
@@ -21925,6 +21964,8 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Loading");
+
   var _component_TitleHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TitleHeader");
 
   var _component_AgendaItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AgendaItem");
@@ -21941,7 +21982,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     "with-sidebar": true
   }, {
     body: _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+        key: 0
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.loading && $data.agendaList.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
         "css-classes": "mb-4 agenda__header",
         title: "Team Title"
       }, {
@@ -21975,7 +22018,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["list", "onEnd"])]), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AgendaModal)];
+      , ["list", "onEnd"])]), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AgendaModal)];
     }),
     _: 1
     /* STABLE */
@@ -22259,7 +22302,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
         "css-classes": "mb-5 teams__header",
         title: "Your Teams"
-      }), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_3, [$data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+      }), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_3, [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
         key: 0,
         fill: "#FF6700"
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $options.teams ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -22390,16 +22433,12 @@ var routes = [{
     title: 'Teams'
   }
 }, {
-  name: 'agenda list',
-  path: '/agenda-list',
+  name: 'teams-list',
+  path: '/teams/:slug',
   component: _components_Views_Agenda_vue__WEBPACK_IMPORTED_MODULE_2__.default,
   meta: {
-    title: 'Agenda List'
+    title: 'Teams List'
   }
-}, {
-  name: 'agenda item list',
-  path: '/agenda-list/:id',
-  component: _components_Views_Agenda_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }, {
   name: 'profile',
   path: '/profile',

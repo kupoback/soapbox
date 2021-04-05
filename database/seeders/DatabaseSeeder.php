@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Teams;
+use App\Models\Topics;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,16 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Teams::factory(1)->create();
+        $topics = Topics::factory(8)->create();
+        // collect($topics)->map(function($topic) {
+        //     Teams::factory(1)->create(['topic_id' => 0]);
+        // });
         // \App\Models\User::factory(10)->create();
-        \App\Models\User::factory(1)->create(
-            [
-                'name' => 'Luke Skywalker',
-                'email' => 'jstamm@example.net',
-                'email_verified_at' => now(),
-                'role_id' => 1,
-                'password' => Hash::make('dev')
-            ]
-        );
+        // User::factory(1)->create(
+        //     [
+        //         'name' => 'Luke Skywalker',
+        //         'email' => 'jstamm@example.net',
+        //         'email_verified_at' => now(),
+        //         'role_id' => 1,
+        //         'password' => Hash::make('dev')
+        //     ]
+        // );
     }
 }

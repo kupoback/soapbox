@@ -6,7 +6,7 @@
                              title="Your Teams" />
                 <hr>
                 <ul class="list-group list-group-flush team__list">
-                    <Loading v-if="isLoading"
+                    <Loading v-if="loading"
                              fill="#FF6700" />
                     <TeamItem v-if="teams"
                               v-for="({_id, slug, title}) in teams"
@@ -32,7 +32,7 @@
         },
         data() {
             return {
-                isLoading: true,
+                loading: true,
             };
         },
         mounted() {
@@ -40,14 +40,14 @@
         },
         methods: {
             async getTeams() {
-                this.isLoading = true;
+                this.loading = true;
                 let response = false;
                 try {
                     response = await this.$store.dispatch("getTeamListing");
                 } catch (error) {
                     console.error(error);
                 }
-                this.isLoading = !!response;
+                this.loading = !!response;
             }
         },
         computed: {

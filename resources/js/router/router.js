@@ -26,15 +26,10 @@ export const routes = [
         meta: { title: 'Teams' }
     },
     {
-        name: 'agenda list',
-        path: '/agenda-list',
+        name: 'teams-list',
+        path: '/teams/:slug',
         component: Agenda,
-        meta: { title: 'Agenda List' }
-    },
-    {
-        name: 'agenda item list',
-        path: '/agenda-list/:id',
-        component: Agenda,
+        meta: { title: 'Teams List' }
     },
     {
         name: 'profile',
