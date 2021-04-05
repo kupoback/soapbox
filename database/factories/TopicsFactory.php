@@ -6,7 +6,7 @@ use App\Models\Teams;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class Topics extends Factory
+class TopicsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -20,13 +20,14 @@ class Topics extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition($team_id = 0)
     {
         return [
             'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
+            'team_id' => $team_id,
             'created_by' => $this->faker->randomDigit,
-            'status_id' => 'open',
+            'status_id' => 1,
             'priority_status' => 'normal',
             'list_order' => 1,
         ];

@@ -16,9 +16,10 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('description');
+            $table->unsignedBigInteger('team_id');
             $table->unsignedBigInteger('created_by'); // ID of the user who created the topic
             $table->unsignedBigInteger('status_id');
+            $table->longText('description');
             $table->string('priority_status');
             $table->integer('list_order'); // Order the topic appears in the team list
             $table->boolean('request_delete'); // Whether the item should marked to delete

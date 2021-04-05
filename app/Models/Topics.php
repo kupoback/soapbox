@@ -14,6 +14,7 @@ class Topics extends Model
     protected $fillable = [
         'title',
         'description',
+        'team_id',
         'status_id',
         'priority_status',
         'list_order',

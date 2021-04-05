@@ -17,10 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $topics = Topics::factory(8)->create();
-        // collect($topics)->map(function($topic) {
-        //     Teams::factory(1)->create(['topic_id' => 0]);
+        // $teams = Teams::factory(4)->create();
+        // $teams->map(function($team) {
+        //     Topics::factory(8)->create(['team_id' => $team->id]);
         // });
+        
+        Teams::factory(4)->create()->map(function($team) {
+            Topics::factory(8)->create(['team_id' => $team->id]);
+        });
+        
         // \App\Models\User::factory(10)->create();
         // User::factory(1)->create(
         //     [
