@@ -20476,7 +20476,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getTeams: function getTeams() {
-      axios.get('/teams').then(function (res) {
+      axios.get('/api/teams').then(function (res) {
         console.log(res);
       });
     }

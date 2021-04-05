@@ -32,7 +32,7 @@
         },
         methods: {
             getTeams() {
-                axios.get('/teams')
+                axios.get('/api/teams')
                      .then(res => {
                     console.log(res);
                 });

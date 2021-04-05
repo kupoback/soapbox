@@ -12,7 +12,8 @@ class TeamsController extends Controller
     
     public function index(Request $request)
     {
-        return TeamsResource::collection(1);
+        // return response()->json(['data' => 'hello']);
+        return TeamsResource::class;
     }
     
     public function store(Request $request)

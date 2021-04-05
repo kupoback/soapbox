@@ -28,8 +28,7 @@ class Teams extends Model
     
     public function topics()
     {
-        return response()->json(['data' => 'hello']);
-        // return $this->hasMany(Topics::class);
+        return $this->hasMany(Topics::class);
     }
     
 }
