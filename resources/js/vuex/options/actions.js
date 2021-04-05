@@ -28,7 +28,7 @@ export default {
         //      .catch(error => console.error(error));
     },
     toggleSidebarVisibility(store, opts) {
-        store.commit("TOGGLE_SIDEBAR", {opts});
+        store.commit("toggleSidebar", {opts});
     },
     setViewport(store, opts) {
         const winWidth = window.innerWidth;
@@ -38,10 +38,20 @@ export default {
         else if (winWidth >= 768 && winWidth <= 1200) viewportName = "tablet";
         
         if (this.viewport !== viewportName) {
-            store.commit("SET_VIEWPORT", {viewportName});
+            store.commit("setViewport", {viewportName});
         }
     },
-    getTeamListing(store, opts) {
-    
+    getTeamListing(store, userId) {
+        axios.get('/api/teams')
+             .then(({status, data}) => {
+                 if (status === 200 && data) {
+                     store.commit("setTeamList", data.data);
+                     return true;
+                 }
+             })
+            .catch(e => {
+                console.error(e);
+                return false;
+            });
     },
 };

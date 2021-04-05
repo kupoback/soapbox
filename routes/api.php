@@ -24,4 +24,6 @@ Route::get('/secrets', [SecretController::class, 'index']);
 
 // Route::get('/teams', [TeamsController::class, 'index']);
 
-Route::apiResource('/teams', TeamsController::class);
+Route::apiResources([
+    'teams' => TeamsController::class,
+]);

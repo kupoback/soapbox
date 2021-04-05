@@ -7,16 +7,16 @@ export default {
     //         currentState.mobileNav = data;
     //     }
     // },
-    TOGGLE_SIDEBAR(currentState, {opts}) {
+    toggleSidebar(currentState, {opts}) {
         currentState.sidebarOpened = opts.visibility;
     },
-    SET_VIEWPORT(currentState, {viewportName}) {
+    setViewport(currentState, {viewportName}) {
         currentState.viewport = viewportName;
     },
-    SET_SECRETS(currentState, {data}) {
+    setSecrets(currentState, {data}) {
         currentState.secrets = data && data;
     },
-    HAS_LOGIN_ERROR(currentState, error) {
+    hasLoginError(currentState, error) {
         currentState.loginError = error;
     },
     setAuthUser(state, user) {
@@ -27,5 +27,8 @@ export default {
             state.pageTitle = title;
             document.title = title;
         }
+    },
+    setTeamList(state, teams) {
+        state.teams = teams;
     }
 };

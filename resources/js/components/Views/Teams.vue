@@ -6,6 +6,8 @@
                              title="Your Teams" />
                 <hr>
                 <ul class="list-group list-group-flush team__list">
+                    <Loading v-if="isLoading"
+                             fill="#FF6700" />
                     <TeamItem v-if="teams"
                               v-for="({_id, slug, title}) in teams"
                               :key="_id"
@@ -14,12 +16,13 @@
                 </ul>
             </section>
         </template>
-        
+    
     </Layout>
 </template>
 
 <script type="application/javascript">
     import Layout from "../Layout/Layout.vue";
+    import Loading from "../Elements/Loading.vue";
     import TeamItem from "../Partials/TeamItem.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
     
@@ -27,15 +30,24 @@
         setup() {
             return {};
         },
+        data() {
+            return {
+                isLoading: true,
+            };
+        },
         mounted() {
             this.getTeams();
         },
         methods: {
-            getTeams() {
-                axios.get('/api/teams')
-                     .then(res => {
-                    console.log(res);
-                });
+            async getTeams() {
+                this.isLoading = true;
+                let response = false;
+                try {
+                    response = await this.$store.dispatch("getTeamListing");
+                } catch (error) {
+                    console.error(error);
+                }
+                this.isLoading = !!response;
             }
         },
         computed: {
@@ -45,6 +57,7 @@
         },
         components: {
             Layout,
+            Loading,
             TitleHeader,
             TeamItem,
         },

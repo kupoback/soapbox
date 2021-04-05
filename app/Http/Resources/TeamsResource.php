@@ -2,9 +2,11 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Carbon\Carbon;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
-class TeamsResource extends ResourceCollection
+class TeamsResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,11 +16,14 @@ class TeamsResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
+        $date = new Carbon($this->created_at);
         
-        // 'data' => $this->collection
         return [
-            'data' => '',
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => Str::slug($this->title),
+            'description' => $this->description,
+            'created_date' => $date->format('Y-m-d'),
         ];
         
     }

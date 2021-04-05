@@ -22,39 +22,54 @@
     import SidebarToggler from "./SidebarToggler.vue";
     
     export default {
+        created() {
+            if (!this.teams.length) {
+                this.getTeams();
+            }
+        },
         mounted() {
-           this.loadResizedEvent();
-           window.addEventListener('resize', () => {
-               this.loadResizedEvent();
-           })
+            this.loadResizedEvent();
+            window.addEventListener("resize", () => {
+                this.loadResizedEvent();
+            });
         },
         methods: {
-           loadResizedEvent() {
-               this.$store.dispatch('toggleSidebarVisibility', {visibility: this.viewport !== 'mobile'});
-           },
-           toggleSidebar() {
-               const mainWrapper = document.getElementById('main-app');
-               const sidebar = this.$refs.sidebar;
-               const vp = this.viewport;
-               
-               // Need to subtract one extra to compensate for border
-               const getSidebarWidth = Number(sidebar.offsetWidth) - 1;
-               const sidebarWidth = parseInt( typeof getSidebarWidth);
-               const mainWrapperClass = 'sidebar-hidden';
-               
-               if (!this.sidebarOpened) {
-                   mainWrapper.classList.add(mainWrapperClass);
-                   sidebar.dataset.collapsed = "true";
-                   
-                   if (vp === 'mobile') sidebar.style.marginLeft = `-110%`;
-                   else sidebar.style.marginLeft = `-${sidebarWidth}px`;
-               }
-               else {
-                   mainWrapper.classList.remove(mainWrapperClass);
-                   sidebar.dataset.collapsed = "false";
-                   sidebar.style.marginLeft = null;
-               }
-           }
+            loadResizedEvent() {
+                this.$store.dispatch("toggleSidebarVisibility", {visibility: this.viewport !== "mobile"});
+            },
+            toggleSidebar() {
+                const mainWrapper = document.getElementById("main-app");
+                const sidebar = this.$refs.sidebar;
+                const vp = this.viewport;
+                
+                // Need to subtract one extra to compensate for border
+                const getSidebarWidth = Number(sidebar.offsetWidth) - 1;
+                const sidebarWidth = parseInt(typeof getSidebarWidth);
+                const mainWrapperClass = "sidebar-hidden";
+                
+                if (!this.sidebarOpened) {
+                    mainWrapper.classList.add(mainWrapperClass);
+                    sidebar.dataset.collapsed = "true";
+                    
+                    if (vp === "mobile") sidebar.style.marginLeft = `-110%`;
+                    else sidebar.style.marginLeft = `-${sidebarWidth}px`;
+                }
+                else {
+                    mainWrapper.classList.remove(mainWrapperClass);
+                    sidebar.dataset.collapsed = "false";
+                    sidebar.style.marginLeft = null;
+                }
+            },
+            async getTeams() {
+                this.isLoading = true;
+                let response = false;
+                try {
+                    response = await this.$store.dispatch("getTeamListing");
+                } catch (error) {
+                    console.error(error);
+                }
+                this.isLoading = !!response;
+            }
         },
         computed: {
             sidebarOpened() {
@@ -72,7 +87,7 @@
                 const viewport = this.$store.state.viewport;
             },
             sidebarOpened() {
-                this.toggleSidebar(this.$store.state.sidebarOpened)
+                this.toggleSidebar(this.$store.state.sidebarOpened);
             }
         },
         components: {

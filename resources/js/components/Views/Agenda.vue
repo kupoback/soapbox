@@ -1,7 +1,7 @@
 <template>
     <Layout container-classes="d-flex overflow-scroll"
             row-classes="profile-row"
-            with-sidebar="true">
+            :with-sidebar="true">
         <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
                 <div class="row g-0 row-full-height pt-4">

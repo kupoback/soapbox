@@ -54,7 +54,7 @@
         methods: {
             closeAlert() {
                 this.$refs.loginErrorAlert.classList.remove('show');
-                setTimeout(() => this.$store.commit('HAS_LOGIN_ERROR', false), 250);
+                setTimeout(() => this.$store.commit('hasLoginError', false), 250);
             }
         },
         computed: {

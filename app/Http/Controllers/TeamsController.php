@@ -8,12 +8,10 @@ use App\Http\Resources\TeamsResource;
 
 class TeamsController extends Controller
 {
-    //
     
     public function index(Request $request)
     {
-        // return response()->json(['data' => 'hello']);
-        return TeamsResource::class;
+        return TeamsResource::collection(Teams::all());
     }
     
     public function store(Request $request)

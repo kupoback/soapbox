@@ -59,7 +59,7 @@
                     });
             },
             updateLoginErr(error) {
-                this.$store.commit("HAS_LOGIN_ERROR", error);
+                this.$store.commit("hasLoginError", error);
             },
         },
         computed: {

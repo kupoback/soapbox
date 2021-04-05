@@ -18,7 +18,7 @@ class Teams extends Model
     
     public function list()
     {
-    
+        // return $this;
     }
     
     public function users()
