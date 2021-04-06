@@ -1,6 +1,6 @@
 <template>
     <p class="list-group-item nav-item">
-        <router-link :to="`/agenda-list/${slug}`"
+        <router-link :to="`/teams/${slug}`"
                      class="nav-link"
                      v-text="title" />
     </p>

@@ -24,7 +24,7 @@ class TopicsFactory extends Factory
     public function definition($team_id = 0)
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph,
             'team_id' => $team_id,
             'created_by' => $this->faker->randomDigit,

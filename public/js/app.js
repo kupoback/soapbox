@@ -20330,6 +20330,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Layout/Layout.vue */ "./resources/js/components/Layout/Layout.vue");
 /* harmony import */ var _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Elements/TitleHeader.vue */ "./resources/js/components/Elements/TitleHeader.vue");
 /* harmony import */ var _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Elements/Loading.vue */ "./resources/js/components/Elements/Loading.vue");
+/* harmony import */ var _util_mixins_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/mixins.js */ "./resources/js/util/mixins.js");
+
 
 
 
@@ -20341,51 +20343,66 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      agendaList: [{
-        id: "ID_0193",
-        title: "An agenda item",
-        commentCount: 10
-      }, {
-        id: "ID_01424",
-        title: "An agenda item 2",
-        commentCount: 1
-      }, {
-        id: "ID_017452",
-        title: "An agenda item 3",
-        commentCount: 12
-      }, {
-        id: "ID_0548",
-        title: "An agenda item 4",
-        commentCount: 10
-      }, {
-        id: "ID_87515",
-        title: "An agenda item 5",
-        commentCount: 7
-      }, {
-        id: "ID_99845",
-        title: "An agenda item 6",
-        commentCount: 4
-      }, {
-        id: "ID_5212",
-        title: "An agenda item 7",
-        commentCount: 5
-      }, {
-        id: "ID_02585",
-        title: "An agenda item 8",
-        commentCount: 1
-      }, {
-        id: "ID_0165",
-        title: "An agenda item 9",
-        commentCount: 15
-      }, {
-        id: "ID_01254",
-        title: "An agenda item 10",
-        commentCount: 20
-      }],
-      data: false,
+      agendaList: null,
+      // Temp Data
+      // agendaList: [
+      //     {
+      //         id: "ID_0193",
+      //         title: "An agenda item",
+      //         commentCount: 10,
+      //     },
+      //     {
+      //         id: "ID_01424",
+      //         title: "An agenda item 2",
+      //         commentCount: 1,
+      //     },
+      //     {
+      //         id: "ID_017452",
+      //         title: "An agenda item 3",
+      //         commentCount: 12,
+      //     },
+      //     {
+      //         id: "ID_0548",
+      //         title: "An agenda item 4",
+      //         commentCount: 10,
+      //     },
+      //     {
+      //         id: "ID_87515",
+      //         title: "An agenda item 5",
+      //         commentCount: 7,
+      //     },
+      //     {
+      //         id: "ID_99845",
+      //         title: "An agenda item 6",
+      //         commentCount: 4,
+      //     },
+      //     {
+      //         id: "ID_5212",
+      //         title: "An agenda item 7",
+      //         commentCount: 5,
+      //     },
+      //     {
+      //         id: "ID_02585",
+      //         title: "An agenda item 8",
+      //         commentCount: 1,
+      //     },
+      //     {
+      //         id: "ID_0165",
+      //         title: "An agenda item 9",
+      //         commentCount: 15,
+      //     },
+      //     {
+      //         id: "ID_01254",
+      //         title: "An agenda item 10",
+      //         commentCount: 20,
+      //     },
+      //
+      // ],
       dragging: false,
       error: false,
-      loading: true
+      id: null,
+      loading: true,
+      teamData: null
     };
   },
   created: function created() {
@@ -20410,18 +20427,30 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     fetchData: function fetchData() {
+      var _this2 = this;
+
       this.error = this.data = null;
       this.loading = true;
-      axios.get("/api/team/".concat(this.$route.params.slug)).then(function (res) {
-        return console.log(res);
-      }); // getPost(this.$route.params.slug, (err, post) => {
-      //     this.loading = false
-      //     if (err) {
-      //         this.error = err.toString()
-      //     } else {
-      //         this.post = post
-      //     }
-      // })
+      axios.get("/api/team/".concat(this.$route.params.slug)).then(function (_ref) {
+        var status = _ref.status,
+            data = _ref.data;
+
+        if (status === 200 && !_this2.isObjEmpty(data)) {
+          var id = data.id;
+          _this2.teamData = data;
+          _this2.id = data.id;
+          axios.get("/api/topics/".concat(id)).then(function (_ref2) {
+            var status = _ref2.status,
+                data = _ref2.data;
+
+            if (status === 200 && !_this2.isObjEmpty(data)) {
+              _this2.agendaList = data;
+            }
+          });
+        }
+      })["finally"](function () {
+        return _this2.loading = false;
+      });
     }
   },
   components: {
@@ -20431,6 +20460,7 @@ __webpack_require__.r(__webpack_exports__);
     AgendaModal: _Partials_AgendaModal_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     AgendaItem: _Partials_AgendaItem_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  mixins: [_util_mixins_js__WEBPACK_IMPORTED_MODULE_5__.default],
   name: "Agenda"
 });
 
@@ -21782,7 +21812,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/agenda-list/".concat($props.slug),
+    to: "/teams/".concat($props.slug),
     "class": "nav-link",
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title)
   }, null, 8
@@ -21915,22 +21945,19 @@ var _hoisted_2 = {
   key: 1,
   "class": "row g-0 row-full-height pt-4"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
-  "class": "date-time"
-}, "March 2nd, 4:30pm", -1
-/* HOISTED */
-);
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_3 = {
+  key: 0,
   "class": "col-12 mb-5 pb-4 agenda__description"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "muted-text"
-}, "Description"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.")], -1
+}, "Description", -1
 /* HOISTED */
 );
 
 var _hoisted_5 = {
+  key: 1,
   "class": "col-12 agenda__cards"
 };
 
@@ -21984,17 +22011,28 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     body: _withId(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
         key: 0
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.loading && $data.agendaList.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.loading && $data.teamData ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
         "css-classes": "mb-4 agenda__header",
-        title: "Team Title"
+        title: $data.teamData.title
       }, {
         "date-time": _withId(function () {
-          return [_hoisted_3];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+            "class": "date-time",
+            textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.created_at)
+          }, null, 8
+          /* PROPS */
+          , ["textContent"])];
         }),
         _: 1
         /* STABLE */
 
-      }), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
+      }, 8
+      /* PROPS */
+      , ["title"]), $data.teamData.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+        textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.description)
+      }, null, 8
+      /* PROPS */
+      , ["textContent"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.agendaList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
         list: $data.agendaList,
         "item-key": "id",
         tag: "div",
@@ -22018,7 +22056,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["list", "onEnd"])]), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AgendaModal)];
+      , ["list", "onEnd"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AgendaModal)];
     }),
     _: 1
     /* STABLE */

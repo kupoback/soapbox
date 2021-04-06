@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teams;
-use Carbon\Carbon;
+use App\Models\Topics;
 use Illuminate\Http\Request;
-use App\Http\Resources\TeamResource;
 
-class TeamController extends Controller
+class TopicsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
     }
@@ -33,30 +31,23 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
-     *
-     * @return \Illuminate\Http\Response|\Illuminate\Support\Collection
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        return collect(Teams::where('slug', $slug)->get()->first())
-            ->map(function ($data, $key) {
-                if ($key === 'created_at') {
-                    $date = new Carbon($data);
-                    return $date->format('F j, Y H:i');
-                }
-                return $data;
-            });
+        //
+        return Topics::where('team_id', $id)->get();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -64,10 +55,10 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($id)
     {
         //
     }

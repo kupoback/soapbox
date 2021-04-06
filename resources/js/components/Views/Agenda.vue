@@ -5,19 +5,22 @@
         <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
                 <Loading v-if="loading" />
-                <div v-if="loading && agendaList.length"
+                <div v-if="!loading && teamData"
                      class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
-                                 title="Team Title">
+                                 :title="teamData.title">
                         <template v-slot:date-time>
-                            <p class="date-time">March 2nd, 4:30pm</p>
+                            <p class="date-time"
+                               v-text="teamData.created_at" />
                         </template>
                     </TitleHeader>
-                    <div class="col-12 mb-5 pb-4 agenda__description">
+                    <div v-if="teamData.description"
+                         class="col-12 mb-5 pb-4 agenda__description">
                         <p class="muted-text">Description</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+                        <p v-text="teamData.description" />
                     </div>
-                    <div class="col-12 agenda__cards">
+                    <div v-if="agendaList"
+                         class="col-12 agenda__cards">
                         <draggable
                             :list="agendaList"
                             item-key="id"
@@ -60,6 +63,7 @@
     import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
     import Loading from "../Elements/Loading.vue";
+    import mixins from "../../util/mixins.js";
     
     export default {
         setup() {
@@ -67,63 +71,66 @@
         },
         data() {
             return {
-                agendaList: [
-                    {
-                        id: "ID_0193",
-                        title: "An agenda item",
-                        commentCount: 10,
-                    },
-                    {
-                        id: "ID_01424",
-                        title: "An agenda item 2",
-                        commentCount: 1,
-                    },
-                    {
-                        id: "ID_017452",
-                        title: "An agenda item 3",
-                        commentCount: 12,
-                    },
-                    {
-                        id: "ID_0548",
-                        title: "An agenda item 4",
-                        commentCount: 10,
-                    },
-                    {
-                        id: "ID_87515",
-                        title: "An agenda item 5",
-                        commentCount: 7,
-                    },
-                    {
-                        id: "ID_99845",
-                        title: "An agenda item 6",
-                        commentCount: 4,
-                    },
-                    {
-                        id: "ID_5212",
-                        title: "An agenda item 7",
-                        commentCount: 5,
-                    },
-                    {
-                        id: "ID_02585",
-                        title: "An agenda item 8",
-                        commentCount: 1,
-                    },
-                    {
-                        id: "ID_0165",
-                        title: "An agenda item 9",
-                        commentCount: 15,
-                    },
-                    {
-                        id: "ID_01254",
-                        title: "An agenda item 10",
-                        commentCount: 20,
-                    },
-                
-                ],
-                data: false,
+                agendaList: null,
+                // Temp Data
+                // agendaList: [
+                //     {
+                //         id: "ID_0193",
+                //         title: "An agenda item",
+                //         commentCount: 10,
+                //     },
+                //     {
+                //         id: "ID_01424",
+                //         title: "An agenda item 2",
+                //         commentCount: 1,
+                //     },
+                //     {
+                //         id: "ID_017452",
+                //         title: "An agenda item 3",
+                //         commentCount: 12,
+                //     },
+                //     {
+                //         id: "ID_0548",
+                //         title: "An agenda item 4",
+                //         commentCount: 10,
+                //     },
+                //     {
+                //         id: "ID_87515",
+                //         title: "An agenda item 5",
+                //         commentCount: 7,
+                //     },
+                //     {
+                //         id: "ID_99845",
+                //         title: "An agenda item 6",
+                //         commentCount: 4,
+                //     },
+                //     {
+                //         id: "ID_5212",
+                //         title: "An agenda item 7",
+                //         commentCount: 5,
+                //     },
+                //     {
+                //         id: "ID_02585",
+                //         title: "An agenda item 8",
+                //         commentCount: 1,
+                //     },
+                //     {
+                //         id: "ID_0165",
+                //         title: "An agenda item 9",
+                //         commentCount: 15,
+                //     },
+                //     {
+                //         id: "ID_01254",
+                //         title: "An agenda item 10",
+                //         commentCount: 20,
+                //     },
+                //
+                // ],
                 dragging: false,
                 error: false,
+                id: null,
                 loading: true,
+                teamData: null,
             };
         },
         created() {
@@ -149,15 +156,20 @@
                 this.error = this.data = null;
                 this.loading = true
                 axios.get(`/api/team/${this.$route.params.slug}`)
-                     .then(res => console.log(res))
-                // getPost(this.$route.params.slug, (err, post) => {
-                //     this.loading = false
-                //     if (err) {
-                //         this.error = err.toString()
-                //     } else {
-                //         this.post = post
-                //     }
-                // })
+                     .then(({status, data}) => {
+                         if (status === 200 && !this.isObjEmpty(data) ) {
+                             const id = data.id;
+                             this.teamData = data;
+                             this.id = data.id;
+                             axios.get(`/api/topics/${id}`)
+                                  .then(({status, data}) => {
+                                      if (status === 200 && !this.isObjEmpty(data)) {
+                                          this.agendaList = data;
+                                      }
+                                  })
+                         }
+                     })
+                     .finally(() => this.loading = false);
             }
         },
         components: {
@@ -167,6 +179,7 @@
             AgendaModal,
             AgendaItem
         },
+        mixins: [mixins],
         name: "Agenda"
     };
 </script>

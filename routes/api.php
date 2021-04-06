@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SecretController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TopicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/secrets', [SecretController::class, 'index']);
 
 Route::apiResources([
     'teams' => TeamsController::class,
+    'topics' => TopicsController::class,
 ]);
 
 Route::resource('team', TeamController::class)
