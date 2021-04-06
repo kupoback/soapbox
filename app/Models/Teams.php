@@ -20,9 +20,10 @@ class Teams extends Model
         'slug',
     ];
     
-    public function setDateAttribute( $value ) {
-        $this->attributes['date'] = (new Carbon($value))->format('F j, Y H:i');
-    }
+    protected $casts = [
+        'created_at'  => 'date:F j, Y H:i',
+    ];
+    
     
     public function list()
     {

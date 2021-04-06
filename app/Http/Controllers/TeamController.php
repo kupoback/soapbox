@@ -39,6 +39,7 @@ class TeamController extends Controller
      */
     public function show(Teams $teams)
     {
+        // dd($teams->first());
         return $teams->first();
     }
 
