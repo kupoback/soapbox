@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Teams extends Model
 {
@@ -11,11 +12,17 @@ class Teams extends Model
     
     protected $table = 'teams';
     
+    // protected $dateFormat = 'F j, Y H:i';
+    
     protected $fillable = [
         'title',
         'description',
         'slug',
     ];
+    
+    public function setDateAttribute( $value ) {
+        $this->attributes['date'] = (new Carbon($value))->format('F j, Y H:i');
+    }
     
     public function list()
     {

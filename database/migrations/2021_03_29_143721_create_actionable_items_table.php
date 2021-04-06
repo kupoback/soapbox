@@ -19,6 +19,7 @@ class CreateActionableItemsTable extends Migration
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('status_id');
             $table->integer('list_order');
+            $table->unsignedBigInteger('topic_id');
             $table->timestamps();
         });
     }
