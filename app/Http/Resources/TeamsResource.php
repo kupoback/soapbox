@@ -13,13 +13,12 @@ class TeamsResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toResponse($request)
     {
         return [
             'id' => $this->id,
             'title' => $this->title,
             'slug' => Str::slug($this->title),
         ];
-        
     }
 }

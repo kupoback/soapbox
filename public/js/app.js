@@ -20436,17 +20436,8 @@ __webpack_require__.r(__webpack_exports__);
             data = _ref.data;
 
         if (status === 200 && !_this2.isObjEmpty(data)) {
-          var id = data.id;
-          _this2.teamData = data;
-          _this2.id = data.id;
-          axios.get("/api/topics/".concat(id)).then(function (_ref2) {
-            var status = _ref2.status,
-                data = _ref2.data;
-
-            if (status === 200 && !_this2.isObjEmpty(data)) {
-              _this2.agendaList = data;
-            }
-          });
+          _this2.teamData = data.team && data.team;
+          _this2.agendaList = data.topics && data.topics;
         }
       })["finally"](function () {
         return _this2.loading = false;

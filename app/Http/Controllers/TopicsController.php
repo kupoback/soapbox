@@ -38,7 +38,7 @@ class TopicsController extends Controller
      */
     public function show($id)
     {
-        return Topic::where('team_id', $id)->get();;
+        return Topic::where('team_id', $id)->get();
     }
 
     /**

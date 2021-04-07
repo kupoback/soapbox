@@ -11,12 +11,13 @@ class TopicsResource extends ResourceCollection
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function toArray($request)
+    public function toResponse($request)
     {
         // $comments = Comment::all();
         // dd($request->id);
-        return parent::toArray($request);
+        return parent::toResponse($request);
     }
 }

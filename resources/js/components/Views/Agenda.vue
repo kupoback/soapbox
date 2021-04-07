@@ -158,15 +158,8 @@
                 axios.get(`/api/team/${this.$route.params.slug}`)
                      .then(({status, data}) => {
                          if (status === 200 && !this.isObjEmpty(data) ) {
-                             const id = data.id;
-                             this.teamData = data;
-                             this.id = data.id;
-                             axios.get(`/api/topics/${id}`)
-                                  .then(({status, data}) => {
-                                      if (status === 200 && !this.isObjEmpty(data)) {
-                                          this.agendaList = data;
-                                      }
-                                  })
+                             this.teamData = data.team && data.team;
+                             this.agendaList = data.topics && data.topics;
                          }
                      })
                      .finally(() => this.loading = false);
