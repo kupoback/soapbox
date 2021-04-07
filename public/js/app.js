@@ -20438,12 +20438,15 @@ __webpack_require__.r(__webpack_exports__);
         if (status === 200 && !_this2.isObjEmpty(data)) {
           var id = data.id;
           _this2.teamData = data;
-          _this2.id = data.id; // axios.get(`/api/topics/${id}`)
-          //      .then(({status, data}) => {
-          //          if (status === 200 && !this.isObjEmpty(data)) {
-          //              this.agendaList = data;
-          //          }
-          //      })
+          _this2.id = data.id;
+          axios.get("/api/topics/".concat(id)).then(function (_ref2) {
+            var status = _ref2.status,
+                data = _ref2.data;
+
+            if (status === 200 && !_this2.isObjEmpty(data)) {
+              _this2.agendaList = data;
+            }
+          });
         }
       })["finally"](function () {
         return _this2.loading = false;

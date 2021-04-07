@@ -30,7 +30,7 @@ Route::apiResources([
 ]);
 
 Route::resource('team', TeamController::class)
-    ->parameters(['slug' => 'slug']);
+    ->parameters(['team' => 'slug']);
 
 Route::resource('topics', TopicsController::class)
-    ->parameters(['team_id' => 'team_id']);
+    ->parameters(['team_id' => 'slug']);

@@ -33,11 +33,12 @@ class TopicsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return Topic
      */
-    public function show(Team $team)
+    public function show($id)
     {
-        return Topic::where('team_id', $team)->get();
+        return Topic::where('team_id', $id)->get();;
     }
 
     /**

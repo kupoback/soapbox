@@ -38,7 +38,6 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        dd($team);
         return $team->first();
     }
 
