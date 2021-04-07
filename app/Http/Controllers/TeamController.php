@@ -36,18 +36,13 @@ class TeamController extends Controller
      *
      * @param  string  $slug
      *
-     * @return \Illuminate\Http\Response|\Illuminate\Support\Collection|array
+     * @return array
      */
-    public function show($slug)
+    public function show(Team $team)
     {
-        $team = Team::where('slug', $slug)->first();
-        $topics = [];
-        if ($team) {
-            $topics = $team->topics;
-        }
         return [
             'team' => $team,
-            'topics' => $topics,
+            'topics' => $team->topics,
         ];
     }
 

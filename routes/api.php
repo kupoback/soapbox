@@ -30,7 +30,7 @@ Route::apiResources([
 ]);
 
 Route::resource('team', TeamController::class)
-    ->parameters(['team' => 'slug']);
+    ->scoped(['team' => 'slug']);
 
 Route::resource('topics', TopicsController::class)
     ->parameters(['team_id' => 'slug']);
