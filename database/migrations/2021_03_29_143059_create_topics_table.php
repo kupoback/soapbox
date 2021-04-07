@@ -15,8 +15,8 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->unsignedBigInteger('team_id');
+            $table->string('title');
             $table->unsignedBigInteger('created_by'); // ID of the user who created the topic
             $table->unsignedBigInteger('status_id');
             $table->longText('description');

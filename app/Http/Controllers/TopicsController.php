@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topics;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller
@@ -34,10 +34,9 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Team $team)
     {
-        //
-        return Topics::where('team_id', $id)->get();
+        return $team;
     }
 
     /**

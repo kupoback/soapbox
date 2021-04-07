@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 ;
-use App\Models\Teams;
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class TeamsFactory extends Factory
+class TeamFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Teams::class;
+    protected $model = Team::class;
 
     /**
      * Define the model's default state.

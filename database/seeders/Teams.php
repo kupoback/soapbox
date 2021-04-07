@@ -15,7 +15,7 @@ class Teams extends Seeder
     public function run()
     {
         //
-        \App\Models\Teams::factory(1)->make(
+        \App\Models\Team::factory(1)->make(
             [
                 'title' => Str::random(10),
             ]

@@ -15,11 +15,10 @@ class CreateActionableItemsTable extends Migration
     {
         Schema::create('actionable_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('topic_id');
             $table->string('title');
-            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('status_id');
             $table->integer('list_order');
-            $table->unsignedBigInteger('topic_id');
             $table->timestamps();
         });
     }

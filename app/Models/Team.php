@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class Teams extends Model
+class Team extends Model
 {
     use HasFactory;
     
@@ -37,7 +36,7 @@ class Teams extends Model
     
     public function topics()
     {
-        return $this->hasMany(Topics::class);
+        return $this->hasMany(Topic::class);
     }
     
 }

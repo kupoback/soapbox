@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SecretController;
 use App\Http\Controllers\TeamsController;
-use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,11 @@ Route::get('/secrets', [SecretController::class, 'index']);
 
 Route::apiResources([
     'teams' => TeamsController::class,
-    'topics' => TopicsController::class,
+    // 'topics' => TopicsController::class,
 ]);
 
 Route::resource('team', TeamController::class)
     ->parameters(['slug' => 'slug']);
+
+Route::resource('topics', TopicsController::class)
+    ->parameters(['team_id' => 'team_id']);

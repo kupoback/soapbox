@@ -17,12 +17,12 @@ class ItemStatus extends Model
     
     public function item()
     {
-        return $this->belongsTo(ActionableItems::class);
+        return $this->belongsTo(ActionableItem::class);
     }
     
     public function topic()
     {
-        return $this->belongsTo(Topics::class);
+        return $this->belongsTo(Topic::class);
     }
     
 }

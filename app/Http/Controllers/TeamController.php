@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teams;
+use App\Models\Team;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\TeamResource;
 
 class TeamController extends Controller
 {
@@ -37,10 +36,9 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response|\Illuminate\Support\Collection
      */
-    public function show(Teams $teams)
+    public function show(Team $team)
     {
-        // dd($teams->first());
-        return $teams->first();
+        return $team->first();
     }
 
     /**

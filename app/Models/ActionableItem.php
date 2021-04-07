@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ActionableItems extends Model
+class ActionableItem extends Model
 {
     use HasFactory;
     
@@ -19,6 +19,7 @@ class ActionableItems extends Model
     
     protected $hidden = [
         'created_by',
+        'topic_id',
     ];
     
     public function status()
@@ -28,7 +29,7 @@ class ActionableItems extends Model
     
     public function topic()
     {
-        return $this->belongsTo(Topics::class);
+        return $this->belongsTo(Topic::class);
     }
     
 }

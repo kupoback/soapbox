@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Teams;
+use App\Models\Team;
 use App\Http\Resources\TeamsResource;
 use Illuminate\Support\Str;
 
@@ -12,12 +12,12 @@ class TeamsController extends Controller
     
     public function index(Request $request)
     {
-        return TeamsResource::collection(Teams::all());
+        return TeamsResource::collection(Team::all());
     }
     
     public function store(Request $request)
     {
-        $team = Teams::create(
+        $team = Team::create(
             [
                 'title' => $request->title,
                 'description' => $request->description,
@@ -28,7 +28,7 @@ class TeamsController extends Controller
         return new TeamsResource($team);
     }
     
-    public function show(Teams $teams)
+    public function show(Team $teams)
     {
         return new TeamsResource($teams);
     }
