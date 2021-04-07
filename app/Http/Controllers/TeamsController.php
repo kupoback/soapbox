@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Team;
-use App\Http\Resources\TeamsResource;
 use Illuminate\Support\Str;
+use App\Http\Resources\TeamsResource;
+use App\Models\Team;
 
 class TeamsController extends Controller
 {

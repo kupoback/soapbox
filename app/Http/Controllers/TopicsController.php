@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller
@@ -36,7 +37,7 @@ class TopicsController extends Controller
      */
     public function show(Team $team)
     {
-        return $team;
+        return Topic::where('team_id', $team)->get();
     }
 
     /**

@@ -161,12 +161,12 @@
                              const id = data.id;
                              this.teamData = data;
                              this.id = data.id;
-                             axios.get(`/api/topics/${id}`)
-                                  .then(({status, data}) => {
-                                      if (status === 200 && !this.isObjEmpty(data)) {
-                                          this.agendaList = data;
-                                      }
-                                  })
+                             // axios.get(`/api/topics/${id}`)
+                             //      .then(({status, data}) => {
+                             //          if (status === 200 && !this.isObjEmpty(data)) {
+                             //              this.agendaList = data;
+                             //          }
+                             //      })
                          }
                      })
                      .finally(() => this.loading = false);

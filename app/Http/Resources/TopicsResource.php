@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Comment;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class TopicsResource extends ResourceCollection
@@ -14,6 +15,8 @@ class TopicsResource extends ResourceCollection
      */
     public function toArray($request)
     {
+        // $comments = Comment::all();
+        // dd($request->id);
         return parent::toArray($request);
     }
 }
