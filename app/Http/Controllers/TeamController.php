@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Models\Team;
-use App\Http\Resources\TeamResource;
 
 class TeamController extends Controller
 {
@@ -43,6 +40,7 @@ class TeamController extends Controller
         return [
             'team' => $team,
             'topics' => $team->topics,
+            // 'comments' => $team->topics()->comments
         ];
     }
 

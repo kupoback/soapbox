@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 
