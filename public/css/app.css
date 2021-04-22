@@ -1686,6 +1686,7 @@ body {
   background-color: transparent;
   border: none;
   border-radius: 0;
+  height: 100%;
 }
 .modal__agenda .tab-content {
   overflow: hidden;
