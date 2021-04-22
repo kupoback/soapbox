@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Topic;
 use Illuminate\Http\Request;
-use App\Models\Team;
+use App\Http\Resources\TopicResource;
 
-class TeamController extends Controller
+class TopicController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // return TeamResource::collection($team);
+        //
     }
 
     /**
@@ -32,24 +32,23 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
-     *
-     * @return array
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show(Topic $topic)
     {
-        $team->topics;
-        return $team;
+        $topic->comments;
+        return $topic;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -57,10 +56,10 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($id)
     {
         //
     }

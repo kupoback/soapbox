@@ -16,7 +16,6 @@ class Comment extends Model
     ];
     
     protected $hidden = [
-        'topic_id',
     ];
     
     public function topic()

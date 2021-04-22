@@ -59,6 +59,7 @@
         flex: 0 0 100%;
         align-items: center;
         justify-content: center;
+        z-index: 2;
     }
     svg {
         width   : 100px;

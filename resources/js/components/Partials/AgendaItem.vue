@@ -6,7 +6,9 @@
             <div class="agenda__cards-card__right">
                 <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
             </div>
-            <div class="agenda__cards-card__left d-fill" aria-current="true" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="agenda__cards-card__left d-fill" aria-current="true"
+                 
+                 @click="triggerModal(element)">
                 <div class="d-flex justify-content-between agenda__cards-card--header">
                     <p class="agenda__cards-card__left-title">{{ title }}</p>
                     <p class="pull-right badge bg-secondary rounded-pill">
@@ -27,6 +29,12 @@
             id: [Number, String],
             commentCount: Number,
             title: String,
+            element: [Array, Object]
+        },
+        methods: {
+            triggerModal(elmData) {
+                this.$emit('openModal', elmData);
+            }
         },
         components: {
             DragHandle

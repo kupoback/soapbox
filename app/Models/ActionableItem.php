@@ -12,14 +12,18 @@ class ActionableItem extends Model
     protected $table = 'actionable_items';
     
     protected $fillable = [
+        'topic_id',
         'title',
         'status_id',
         'list_order',
+        'created_by',
+    ];
+    
+    protected $casts = [
+        'created_at'  => 'date:F j, Y H:i',
     ];
     
     protected $hidden = [
-        'created_by',
-        'topic_id',
     ];
     
     public function status()

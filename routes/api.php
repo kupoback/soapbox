@@ -6,6 +6,7 @@ use App\Http\Controllers\SecretController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TopicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,6 @@ Route::resource('team', TeamController::class)
 
 Route::resource('topics', TopicsController::class)
     ->parameters(['team_id' => 'slug']);
+
+Route::resource('topic', TopicController::class)
+    ->parameters(['topic_id' => 'slug']);

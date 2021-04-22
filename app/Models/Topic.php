@@ -26,6 +26,11 @@ class Topic extends Model
         'created_by',
     ];
     
+    protected $casts = [
+        'created_at'  => 'date:F j, Y',
+        'updated_at'  => 'date:F j, Y',
+    ];
+    
     public function team()
     {
         return $this->belongsTo(Team::class);

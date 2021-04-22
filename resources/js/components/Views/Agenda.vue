@@ -31,7 +31,9 @@
                             <template #item="{element, index}">
                                 <AgendaItem :id="element.id"
                                             :title="element.title"
-                                            :comment-count="element.commentCount" />
+                                            :comment-count="element.commentCount"
+                                            :element="element"
+                                            @openModal="openModal" />
                             </template>
                         </draggable>
                     </div>
@@ -51,19 +53,32 @@
                     </div>
                 </div>
             </section>
-            <AgendaModal />
+            <section v-if="modalLoading"
+                     class="modal-container position-absolute w-100 h-100">
+                <Loading v-if="modalLoading" />
+            </section>
+            <AgendaModal v-if="activeModalItem"
+                         :title="activeModalItem.title"
+                         :comments="activeModalItem.comments"
+                         :created="activeModalItem.created_at"
+                         :description="activeModalItem.description"
+                         :priority-status="activeModalItem.priority_status"
+                         :updated="activeModalItem.updated_at"
+                         :team-title="teamData.title"
+                         @closeModal="closeModal" />
         </template>
     </Layout>
 </template>
 
 <script type="application/javascript">
+    import {Modal} from "bootstrap";
+    import mixins from "../../util/mixins.js";
     
     import AgendaItem from "../Partials/AgendaItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
     import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
     import Loading from "../Elements/Loading.vue";
-    import mixins from "../../util/mixins.js";
     
     export default {
         setup() {
@@ -72,6 +87,7 @@
         data() {
             return {
                 agendaList: null,
+                activeModalItem: null,
                 // Temp Data
                 // agendaList: [
                 //     {
@@ -130,6 +146,7 @@
                 error: false,
                 id: null,
                 loading: true,
+                modalLoading: false,
                 teamData: null,
             };
         },
@@ -141,8 +158,8 @@
                 },
                 // fetch the data when the view is created and the data is
                 // already being observed
-                { immediate: true }
-            )
+                {immediate: true}
+            );
         },
         methods: {
             consoleItem(evt) {
@@ -154,15 +171,33 @@
             },
             fetchData() {
                 this.error = this.data = null;
-                this.loading = true
+                this.loading = true;
                 axios.get(`/api/team/${this.$route.params.slug}`)
                      .then(({status, data}) => {
-                         if (status === 200 && !this.isObjEmpty(data) ) {
-                             this.teamData = data.team && data.team;
-                             this.agendaList = data.topics && data.topics;
+                         if (status === 200 && !this.isObjEmpty(data)) {
+                             this.teamData = data;
+                             this.agendaList = data.topics.length && data.topics;
                          }
                      })
+                     .catch(e => console.error(e))
                      .finally(() => this.loading = false);
+            },
+            openModal(elmData) {
+                this.modalLoading = true;
+                const {id} = elmData;
+                axios.get(`/api/topic/${id}`)
+                     .then(({status, data}) => !this.isObjEmpty(data) && data)
+                     .then(data => this.activeModalItem = data)
+                     .then(() => this.modalGet().show())
+                     .catch(e => console.error(e))
+                    .finally(() => this.modalLoading = false)
+            },
+            closeModal() {
+                setTimeout(() => this.activeModalItem = null, 500);
+            },
+            modalGet() {
+                const modalElm = document.getElementById('agendaModal');
+                return new Modal(modalElm);
             }
         },
         components: {
@@ -177,6 +212,14 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+    .modal-container {
+        z-index: 1000;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    
 </style>
