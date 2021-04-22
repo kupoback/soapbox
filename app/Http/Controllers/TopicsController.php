@@ -35,9 +35,10 @@ class TopicsController extends Controller
      *
      * @return Topic
      */
-    public function show($id)
+    public function show(Topic $topic)
     {
-        return Topic::where('team_id', $id)->get();
+        $topic->comments;
+        return $topic;
     }
 
     /**
