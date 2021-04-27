@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\ListOrderScope;
 
 class Topic extends Model
 {
@@ -31,6 +32,12 @@ class Topic extends Model
         'updated_at'  => 'date:F j, Y',
     ];
     
+    public static function booted()
+    {
+        parent::booted();
+        parent::addGlobalScope(new ListOrderScope());
+    }
+    
     public function team()
     {
         return $this->belongsTo(Team::class);
@@ -43,7 +50,7 @@ class Topic extends Model
     
     public function actionableItems()
     {
-        $this->hasMany(ActionableItem::class);
+        return $this->hasMany(ActionableItem::class);
     }
     
     public function comments()

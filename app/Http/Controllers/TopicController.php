@@ -38,6 +38,7 @@ class TopicController extends Controller
     public function show(Topic $topic)
     {
         $topic->comments;
+        $topic->actionableItems;
         return $topic;
     }
 

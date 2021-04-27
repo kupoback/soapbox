@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\ListOrderScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,17 @@ class ActionableItem extends Model
     
     protected $hidden = [
     ];
+    
+    // public static function booted()
+    // {
+    //     parent::addGlobalScope(new ListOrderScope());
+    // }
+    
+    public static function booted()
+    {
+        parent::booted();
+        parent::addGlobalScope(new ListOrderScope());
+    }
     
     public function status()
     {

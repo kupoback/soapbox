@@ -64,7 +64,8 @@
                             <div class="modal__body-todo-list">
                                 <p class="muted-text">Next Steps</p>
                                 <draggable
-                                    :list="toDoList"
+                                    v-if="actionableItems"
+                                    :list="actionableItems"
                                     item-key="id"
                                     tag="div"
                                     class="list-group list-group-flush"
@@ -74,7 +75,7 @@
                                         <div class="list-group-has-handle">
                                             <DragHandle drag-class="todo-handle" />
                                             <div class="list-group-item list-group-item-action">
-                                                <input :id="element.formID"
+                                                <input :id="element.id"
                                                        class="form-check-input me-1"
                                                        type="checkbox"
                                                        value=""
@@ -143,6 +144,7 @@
     
     export default {
         props: {
+            actionableItems: [Array, Object],
             comments: [Array, Object],
             created: String,
             description: String,

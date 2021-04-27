@@ -58,13 +58,14 @@
                 <Loading v-if="modalLoading" />
             </section>
             <AgendaModal v-if="activeModalItem"
-                         :title="activeModalItem.title"
+                         :actionable-items="activeModalItem.actionable_items"
                          :comments="activeModalItem.comments"
                          :created="activeModalItem.created_at"
                          :description="activeModalItem.description"
                          :priority-status="activeModalItem.priority_status"
-                         :updated="activeModalItem.updated_at"
                          :team-title="teamData.title"
+                         :title="activeModalItem.title"
+                         :updated="activeModalItem.updated_at"
                          @closeModal="closeModal" />
         </template>
     </Layout>

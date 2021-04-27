@@ -20029,6 +20029,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    actionableItems: [Array, Object],
     comments: [Array, Object],
     created: String,
     description: String,
@@ -21762,8 +21763,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     innerHTML: $props.description
   }, null, 8
   /* PROPS */
-  , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
-    list: $data.toDoList,
+  , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, $props.actionableItems ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_draggable, {
+    key: 0,
+    list: $props.actionableItems,
     "item-key": "id",
     tag: "div",
     "class": "list-group list-group-flush",
@@ -21776,7 +21778,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DragHandle, {
         "drag-class": "todo-handle"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: element.formID,
+        id: element.id,
         "class": "form-check-input me-1",
         type: "checkbox",
         value: "",
@@ -21792,7 +21794,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   }, 8
   /* PROPS */
-  , ["list", "onEnd"])])])], 2
+  , ["list", "onEnd"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     id: "modal-comments",
@@ -22161,17 +22163,18 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         key: 0
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.activeModalItem ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_AgendaModal, {
         key: 1,
-        title: $data.activeModalItem.title,
+        "actionable-items": $data.activeModalItem.actionable_items,
         comments: $data.activeModalItem.comments,
         created: $data.activeModalItem.created_at,
         description: $data.activeModalItem.description,
         "priority-status": $data.activeModalItem.priority_status,
-        updated: $data.activeModalItem.updated_at,
         "team-title": $data.teamData.title,
+        title: $data.activeModalItem.title,
+        updated: $data.activeModalItem.updated_at,
         onCloseModal: $options.closeModal
       }, null, 8
       /* PROPS */
-      , ["title", "comments", "created", "description", "priority-status", "updated", "team-title", "onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+      , ["actionable-items", "comments", "created", "description", "priority-status", "team-title", "title", "updated", "onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
