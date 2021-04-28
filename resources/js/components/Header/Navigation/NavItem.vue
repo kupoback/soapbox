@@ -1,7 +1,7 @@
 <template>
-    <li class="nav-item">
+    <li :class="`nav-item ${liClass}`">
         <router-link :to="{name: link}"
-                     class="nav-link"
+                     :class="navClass || 'nav-link'"
                      v-text="title" />
     </li>
 </template>
@@ -11,6 +11,8 @@
         props: {
             link: String,
             title: String,
+            navClass: String,
+            liClass: String,
         },
         name: "NavItem"
     };

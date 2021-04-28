@@ -5,6 +5,7 @@
         <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
                 <Loading v-if="loading" />
+                <p v-if="error" v-html="error" />
                 <div v-if="!loading && teamData"
                      class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
@@ -89,60 +90,6 @@
             return {
                 agendaList: null,
                 activeModalItem: null,
-                // Temp Data
-                // agendaList: [
-                //     {
-                //         id: "ID_0193",
-                //         title: "An agenda item",
-                //         commentCount: 10,
-                //     },
-                //     {
-                //         id: "ID_01424",
-                //         title: "An agenda item 2",
-                //         commentCount: 1,
-                //     },
-                //     {
-                //         id: "ID_017452",
-                //         title: "An agenda item 3",
-                //         commentCount: 12,
-                //     },
-                //     {
-                //         id: "ID_0548",
-                //         title: "An agenda item 4",
-                //         commentCount: 10,
-                //     },
-                //     {
-                //         id: "ID_87515",
-                //         title: "An agenda item 5",
-                //         commentCount: 7,
-                //     },
-                //     {
-                //         id: "ID_99845",
-                //         title: "An agenda item 6",
-                //         commentCount: 4,
-                //     },
-                //     {
-                //         id: "ID_5212",
-                //         title: "An agenda item 7",
-                //         commentCount: 5,
-                //     },
-                //     {
-                //         id: "ID_02585",
-                //         title: "An agenda item 8",
-                //         commentCount: 1,
-                //     },
-                //     {
-                //         id: "ID_0165",
-                //         title: "An agenda item 9",
-                //         commentCount: 15,
-                //     },
-                //     {
-                //         id: "ID_01254",
-                //         title: "An agenda item 10",
-                //         commentCount: 20,
-                //     },
-                //
-                // ],
                 dragging: false,
                 error: false,
                 id: null,
@@ -154,15 +101,14 @@
         created() {
             this.$watch(
                 () => this.$route.params,
-                () => {
-                    this.fetchData();
-                },
-                // fetch the data when the view is created and the data is
-                // already being observed
-                {immediate: true}
+                (to, from) => to.slug && this.fetchData(to.slug),
+                {
+                    immediate: true
+                }
             );
         },
         methods: {
+            // To be replaced with end event
             consoleItem(evt) {
                 if (evt.item) {
                     const itemId = evt.item.dataset.agendaId;
@@ -170,10 +116,10 @@
                     console.log(itemId);
                 }
             },
-            fetchData() {
+            fetchData(slug) {
                 this.error = this.data = null;
                 this.loading = true;
-                axios.get(`/api/team/${this.$route.params.slug}`)
+                axios.get(`/api/team/${slug}`)
                      .then(({status, data}) => {
                          if (status === 200 && !this.isObjEmpty(data)) {
                              this.teamData = data;

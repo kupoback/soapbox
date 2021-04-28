@@ -2,7 +2,7 @@ import {createWebHistory, createRouter} from "vue-router";
 
 import Home from "../components/Views/Home.vue";
 import Teams from "../components/Views/Teams.vue";
-import Agenda from "../components/Views/Agenda.vue";
+import Team from "../components/Views/Team.vue";
 import Profile from "../components/Views/Profile.vue";
 import NotFound from "../components/Views/NotFound.vue";
 
@@ -26,9 +26,9 @@ export const routes = [
         meta: { title: 'Teams' }
     },
     {
-        name: 'teams-list',
+        name: 'team',
         path: '/teams/:slug',
-        component: Agenda,
+        component: Team,
         meta: { title: 'Teams List' }
     },
     {

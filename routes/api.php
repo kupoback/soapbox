@@ -38,3 +38,5 @@ Route::resource('topics', TopicsController::class)
 
 Route::resource('topic', TopicController::class)
     ->parameters(['topic_id' => 'slug']);
+
+// Route::apiResource('profile', )

@@ -21,12 +21,24 @@
                 const user = JSON.parse(this.user)
                 this.$store.commit('SET_USER', user)
             }
+            if (!this.teams.length) {
+                this.getTeams();
+            }
         },
         mounted() {
             // this.$store.dispatch('fetchAuthUser');
             window.addEventListener('resize', () => {
                 this.$store.dispatch('setViewport');
             })
+        },
+        methods: {
+            async getTeams() {
+                try {
+                    return await this.$store.dispatch("getTeamListing");
+                } catch (error) {
+                    console.error(error);
+                }
+            }
         },
         computed: {
             // ...mapGetters({ authUser: 'authUser' })

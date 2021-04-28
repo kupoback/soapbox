@@ -36,7 +36,7 @@ class Team extends Model
     
     public function topics()
     {
-        return $this->hasMany(Topic::class)->orderBy('list_order');
+        return $this->hasMany(Topic::class);
     }
     
 }

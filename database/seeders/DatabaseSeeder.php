@@ -49,14 +49,14 @@ class DatabaseSeeder extends Seeder
             });
         
         // \App\Models\User::factory(10)->create();
-        // User::factory(1)->create(
-        //     [
-        //         'name' => 'Luke Skywalker',
-        //         'email' => 'jstamm@example.net',
-        //         'email_verified_at' => now(),
-        //         'role_id' => 1,
-        //         'password' => Hash::make('dev')
-        //     ]
-        // );
+        User::factory(1)->create(
+            [
+                'name' => 'Luke Skywalker',
+                'email' => 'jstamm@example.net',
+                'email_verified_at' => now(),
+                'role_id' => 1,
+                'password' => Hash::make('dev')
+            ]
+        );
     }
 }

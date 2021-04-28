@@ -2,7 +2,8 @@
     <aside class="col-12 col-md-3 col-lg-2 sidebar-content" id="sidebar" data-collapsed="false" ref="sidebar">
         <nav class="sticky-md-top">
             <div class="flex-column pt-5">
-                <h3 class="navbar-brand">Team List</h3>
+                <h3 class="navbar-brand"
+                    v-text="`Your Teams`" />
                 <div v-if="teams"
                      class="list-group list-group-flush">
                     <SidebarItem v-for="({_id, slug, title}) in teams"
@@ -22,11 +23,6 @@
     import SidebarToggler from "./SidebarToggler.vue";
     
     export default {
-        created() {
-            if (!this.teams.length) {
-                this.getTeams();
-            }
-        },
         mounted() {
             this.loadResizedEvent();
             window.addEventListener("resize", () => {
@@ -60,16 +56,6 @@
                     sidebar.style.marginLeft = null;
                 }
             },
-            async getTeams() {
-                this.isLoading = true;
-                let response = false;
-                try {
-                    response = await this.$store.dispatch("getTeamListing");
-                } catch (error) {
-                    console.error(error);
-                }
-                this.isLoading = !!response;
-            }
         },
         computed: {
             sidebarOpened() {
