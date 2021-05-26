@@ -50,8 +50,8 @@
                                 <div v-if="priorityStatus"
                                      class="agenda-status">
                                     <!-- Need to figure this out at some point -->
-                                    <p class="agenda-status__text text-danger"><i class="bi bi-exclamation-circle-fill"></i> High Priority</p>
-                                    <p class="agenda-status__text text-success"><i class="bi bi-caret-down-fill"></i> Low Priority</p>
+                                    <p v-if="statusObj"
+                                       :class="`agenda-status__text ${statusObj.pClass} `"><i :class="`bi ${statusObj.icon}`"></i> {{statusObj.statusText}}</p>
                                 </div>
                                 <div v-if="created || updated" class="date-created">
                                     <p v-if="created" class="small text-muted mb-0" v-html="`Created: ${created}`" />
@@ -110,11 +110,25 @@
 <!--                                             :class="`comment-item comment-item&#45;&#45;${!!isCurrentUser ? 'current' : 'other'}-user-authored`">-->
 <!--                                            <div class="comment-item__container">-->
 <!--                                                <div class="comment-item__comment" v-html="comment" />-->
-<!--                                                </div>-->
 <!--                                            </div>-->
 <!--                                        </div>-->
 <!--                                    </div>-->
 <!--                                </div>-->
+                                <div v-for="({created_at, comment}, index) in comments"
+                                     :key="index"
+                                     class="comment-date-group">
+<!--                                    <div class="comment-list__date-group">-->
+<!--                                        <span v-text="created_at" />-->
+<!--                                    </div>-->
+                                    <div v-if="comment.length"
+                                         class="comment-group-item">
+                                        <div :class="`comment-item comment-item--other-user-authored`">
+                                            <div class="comment-item__container">
+                                                <div class="comment-item__comment" v-html="comment" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal__agenda-comments-container__footer comment-add">
                                 <form class="w-100">
@@ -141,6 +155,7 @@
 <script type="application/javascript">
 
     import DragHandle from "../Elements/Drag-Handle.vue";
+    import mixins from "../../util/mixins.js";
     
     export default {
         props: {
@@ -155,137 +170,13 @@
         },
         data() {
             return {
-                // comments: [
-                //     {
-                //         date: "January 1st, 2021",
-                //         commentList: [
-                //             {
-                //                 author: "Jane Doe",
-                //                 comment:
-                //                     "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
-                //                 isCurrentUser: false,
-                //             },
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //             {
-                //                 author: "Patricia Doe",
-                //                 comment:
-                //                     "<p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>",
-                //                 isCurrentUser: false,
-                //             },
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Donec nec justo eget felis facilisis fermentum.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //         ]
-                //     },
-                //     {
-                //         date: "Feburary 1st, 2021",
-                //         commentList: [
-                //             {
-                //                 author: "Jane Doe",
-                //                 comment:
-                //                     "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
-                //                 isCurrentUser: false,
-                //             },
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Donec nec justo eget felis facilisis fermentum.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //         ]
-                //     },
-                //     {
-                //         date: "March 1st, 2021",
-                //         commentList: [
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //             {
-                //                 author: "Jane Doe",
-                //                 comment:
-                //                     "<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>",
-                //                 isCurrentUser: false,
-                //             },
-                //             {
-                //                 author: "Patricia Doe",
-                //                 comment:
-                //                     "<p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>",
-                //                 isCurrentUser: false,
-                //             },
-                //             {
-                //                 author: "John Doe",
-                //                 comment:
-                //                     "<p>Donec nec justo eget felis facilisis fermentum.</p>",
-                //                 isCurrentUser: true,
-                //             },
-                //         ]
-                //     },
-                // ],
                 tabPaneClasses: 'tab-pane fade',
                 activePane: 'show active',
-                toDoList: [
-                    {
-                        id: 'tt_01',
-                        title: 'Item 01',
-                        formID: 'item-01',
-                    },
-                    {
-                        id: 'tt_02',
-                        title: 'Item 02',
-                        formID: 'item-02',
-                    },
-                    {
-                        id: 'tt_03',
-                        title: 'Item 03',
-                        formID: 'item-03',
-                    },
-                    {
-                        id: 'tt_04',
-                        title: 'Item 04',
-                        formID: 'item-04',
-                    },
-                    {
-                        id: 'tt_05',
-                        title: 'Item 05',
-                        formID: 'item-05',
-                    },
-                    {
-                        id: 'tt_06',
-                        title: 'Item 06',
-                        formID: 'item-06',
-                    },
-                    {
-                        id: 'tt_07',
-                        title: 'Item 07',
-                        formID: 'item-07',
-                    },
-                    {
-                        id: 'tt_08',
-                        title: 'Item 08',
-                        formID: 'item-08',
-                    },
-                ]
+                statusObj: false,
             };
         },
         mounted() {
-          console.log(this.elmData);
+            this.statusObj = this.statusParse(this.priorityStatus);
         },
         methods: {
             consoleItem(evt) {
@@ -307,6 +198,7 @@
         components: {
             DragHandle,
         },
+        mixins: [mixins],
         name: "AgendaModal"
     };
 </script>

@@ -6,30 +6,37 @@
             <div class="agenda__cards-card__right">
                 <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
             </div>
-            <div class="agenda__cards-card__left d-fill" aria-current="true"
-                 
+            <div class="agenda__cards-card__left d-fill"
+                 aria-current="true"
                  @click="triggerModal(element)">
-                <div class="d-flex justify-content-between agenda__cards-card--header">
-                    <p class="agenda__cards-card__left-title">{{ title }}</p>
-                    <p class="pull-right badge bg-secondary rounded-pill">
-                        {{ commentCount }}
-                        <i class="bi bi-chat-fill"></i>
-                    </p>
-                </div>
+                <AgendaItem :title="title"
+                            :status="statusObj"
+                            :commentCount="commentCount"/>
             </div>
         </div>
     </div>
 </template>
 
 <script type="application/javascript">
+    import AgendaItem from "../Elements/AgendaItem.vue";
     import DragHandle from "../Elements/Drag-Handle.vue";
+    import mixins from "../../util/mixins.js";
     
     export default {
         props: {
             id: [Number, String],
             commentCount: Number,
+            status: String,
             title: String,
             element: [Array, Object]
+        },
+        data() {
+            return {
+                statusObj: false
+            }
+        },
+        mounted() {
+            this.statusObj = this.statusParse(this.status);
         },
         methods: {
             triggerModal(elmData) {
@@ -37,9 +44,11 @@
             }
         },
         components: {
-            DragHandle
+            DragHandle,
+            AgendaItem
         },
-        name: "AgendaItem"
+        mixins: [mixins],
+        name: "AgendaListItem"
     };
 </script>
 

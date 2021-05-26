@@ -15,6 +15,23 @@ export default {
         },
         objHasKey(obj, key) {
             return obj.hasOwnProperty(key);
+        },
+        statusParse(status) {
+            if (status === 'high') {
+                return {
+                    pClass: "text-danger",
+                    icon: "bi-exclamation-circle-fill",
+                    statusText: "High Priority",
+                };
+            }
+            else if (status === 'low') {
+                return {
+                    pClass: "text-success",
+                    icon: "bi-caret-down-fill",
+                    statusText: "Low Priority",
+                };
+            }
+            return false;
         }
     }
 }

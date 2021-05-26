@@ -27,7 +27,7 @@
                     <NavItem v-for="({name, text}, index) in links"
                              :key="index"
                              nav-class="dropdown-item"
-                             :link="name"
+                             :name="name"
                              :title="text" />
                 </ul>
             </li>

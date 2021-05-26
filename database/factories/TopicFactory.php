@@ -27,7 +27,7 @@ class TopicFactory extends Factory
             'description' => $this->faker->paragraph,
             'created_by' => $this->faker->randomDigitNot(0),
             'status_id' => 1,
-            'priority_status' => 'normal',
+            'priority_status' => $this->faker->randomElement(['high', 'low', 'normal']),
             'list_order' => 1,
             'request_delete' => 0
         ];

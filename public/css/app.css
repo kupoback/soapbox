@@ -1999,6 +1999,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  flex: 0 0 90%;
 }
 .agenda__cards-card__left p {
   margin-top: 0;

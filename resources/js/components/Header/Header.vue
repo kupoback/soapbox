@@ -7,7 +7,9 @@
                              :to="{name: 'home'}"
                              v-text="appName" />
                 
+                <!-- If user is logged in, show -->
                 <MainNavigation />
+                
                 <ProfileNavigation :user="user" />
             </div>
         </nav>

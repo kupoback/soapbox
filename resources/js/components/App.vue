@@ -21,7 +21,7 @@
                 const user = JSON.parse(this.user)
                 this.$store.commit('SET_USER', user)
             }
-            if (!this.teams.length) {
+            if (!this.teams) {
                 this.getTeams();
             }
         },

@@ -21,17 +21,14 @@
                     <li class="d-lg-none">
                         <hr class="dropdown-divider">
                     </li>
-                    <NavItem v-for="({name, text}, index) in links"
+                    <NavItem v-for="({slug, title}, index) in teams"
                              :key="index"
                              nav-class="dropdown-item"
-                             :link="name"
-                             :title="text" />
+                             name="team"
+                             :slug="slug"
+                             :title="title" />
                 </ul>
             </li>
-            <NavItem v-else
-                     link="teams"
-                     title="Teams" />
-            
         </ul>
     </div>
 </template>

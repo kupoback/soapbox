@@ -30,8 +30,9 @@
                             handle=".handle"
                             @end="consoleItem">
                             <template #item="{element, index}">
-                                <AgendaItem :id="element.id"
+                                <AgendaListItem :id="element.id"
                                             :title="element.title"
+                                            :status="element.priority_status"
                                             :comment-count="element.commentCount"
                                             :element="element"
                                             @openModal="openModal" />
@@ -76,7 +77,7 @@
     import {Modal} from "bootstrap";
     import mixins from "../../util/mixins.js";
     
-    import AgendaItem from "../Partials/AgendaItem.vue";
+    import AgendaListItem from "../Partials/AgendaListItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
     import Layout from "../Layout/Layout.vue";
     import TitleHeader from "../Elements/TitleHeader.vue";
@@ -152,7 +153,7 @@
             Layout,
             TitleHeader,
             AgendaModal,
-            AgendaItem
+            AgendaListItem
         },
         mixins: [mixins],
         name: "Agenda"
