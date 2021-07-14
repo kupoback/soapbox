@@ -20488,8 +20488,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Partials_AgendaListItem_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Partials/AgendaListItem.vue */ "./resources/js/components/Partials/AgendaListItem.vue");
 /* harmony import */ var _Partials_AgendaModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Partials/AgendaModal.vue */ "./resources/js/components/Partials/AgendaModal.vue");
 /* harmony import */ var _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Layout/Layout.vue */ "./resources/js/components/Layout/Layout.vue");
-/* harmony import */ var _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Elements/TitleHeader.vue */ "./resources/js/components/Elements/TitleHeader.vue");
-/* harmony import */ var _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Elements/Loading.vue */ "./resources/js/components/Elements/Loading.vue");
+/* harmony import */ var _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Elements/Loading.vue */ "./resources/js/components/Elements/Loading.vue");
+/* harmony import */ var _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Elements/TitleHeader.vue */ "./resources/js/components/Elements/TitleHeader.vue");
 
 
 
@@ -20508,7 +20508,7 @@ __webpack_require__.r(__webpack_exports__);
       dragging: false,
       error: false,
       id: null,
-      loading: true,
+      isLoading: true,
       modalLoading: false,
       teamData: null,
       fieldDisabled: false
@@ -20538,7 +20538,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.error = this.data = null;
-      this.loading = true;
+      this.isLoading = true;
       axios.get("/api/team/".concat(slug)).then(function (_ref) {
         var status = _ref.status,
             data = _ref.data;
@@ -20550,7 +20550,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         return console.error(e);
       })["finally"](function () {
-        return _this2.loading = false;
+        return _this2.isLoading = false;
       });
     },
     openModal: function openModal(elmData) {
@@ -20585,14 +20585,25 @@ __webpack_require__.r(__webpack_exports__);
     },
     editFields: function editFields(val) {
       this.fieldDisabled = val;
+    },
+    savefields: function savefields() {
+      console.log(this.teamDescription);
+    },
+    cancelFields: function cancelFields() {
+      this.fieldDisabled = false;
+    }
+  },
+  computed: {
+    teamDescription: function teamDescription() {
+      return this.teamData.description;
     }
   },
   components: {
-    Loading: _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_6__.default,
-    Layout: _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_4__.default,
-    TitleHeader: _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_5__.default,
+    AgendaListItem: _Partials_AgendaListItem_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     AgendaModal: _Partials_AgendaModal_vue__WEBPACK_IMPORTED_MODULE_3__.default,
-    AgendaListItem: _Partials_AgendaListItem_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    Loading: _Elements_Loading_vue__WEBPACK_IMPORTED_MODULE_5__.default,
+    Layout: _Layout_Layout_vue__WEBPACK_IMPORTED_MODULE_4__.default,
+    TitleHeader: _Elements_TitleHeader_vue__WEBPACK_IMPORTED_MODULE_6__.default
   },
   mixins: [_util_mixins_js__WEBPACK_IMPORTED_MODULE_1__.default],
   name: "Agenda"
@@ -22303,26 +22314,40 @@ var _hoisted_2 = {
   "class": "row g-0 row-full-height pt-4"
 };
 var _hoisted_3 = {
-  "class": "col-12 agenda__edit"
+  "class": "col-12 agenda__form-actions"
 };
 var _hoisted_4 = {
+  "class": "btn-group row",
+  role: "group",
+  "aria-label": "Edit and Save Buttons"
+};
+var _hoisted_5 = {
+  "class": "col-auto"
+};
+var _hoisted_6 = {
+  "class": "col-auto"
+};
+var _hoisted_7 = {
+  "class": "col-auto"
+};
+var _hoisted_8 = {
   key: 0,
   "class": "col-12 mb-5 pb-4 agenda__description"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "for": "team-description",
   "class": "muted-text"
 }, "Description", -1
 /* HOISTED */
 );
 
-var _hoisted_6 = {
+var _hoisted_10 = {
   key: 1,
   "class": "col-12 agenda__cards"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
   "class": "row gx-3 align-items-center no-gutters create-new-item__form"
@@ -22349,7 +22374,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_8 = {
+var _hoisted_12 = {
   key: 0,
   "class": "modal-container position-absolute w-100 h-100"
 };
@@ -22375,14 +22400,14 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     "with-sidebar": true
   }, {
     body: _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [$data.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
         key: 0
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", {
         key: 1,
         innerHTML: $data.error
       }, null, 8
       /* PROPS */
-      , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.loading && $data.teamData ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
+      , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.isLoading && $data.teamData ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TitleHeader, {
         "css-classes": "mb-4 agenda__header",
         title: $data.teamData.title
       }, {
@@ -22399,23 +22424,47 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-        href: "",
-        "class": "agenda__edit-link",
+      , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        type: "button",
+        "class": "btn btn-primary btn-sm agenda__form-actions__edit",
         onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
           return $options.editFields(true);
         }, ["prevent"])),
         textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("Edit Team")
       }, null, 8
       /* PROPS */
-      , ["textContent"])])]), $data.teamData.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+      , ["textContent"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [$data.fieldDisabled ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+        key: 0,
+        type: "button",
+        "class": "btn btn-success btn-sm col-auto agenda__form-actions__save",
+        onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.savefields();
+        }, ["prevent"])),
+        textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("Save")
+      }, null, 8
+      /* PROPS */
+      , ["textContent"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [$data.fieldDisabled ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+        key: 0,
+        type: "button",
+        "class": "btn btn-danger btn-sm col-auto agenda__form-actions__cancel",
+        onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.cancelFields();
+        }, ["prevent"])),
+        textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("Cancel")
+      }, null, 8
+      /* PROPS */
+      , ["textContent"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), $data.teamData.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "team-description",
         "class": "form-control border-0",
         rows: "4",
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $options.teamDescription = $event;
+        }),
+        placeholder: $options.teamDescription,
         disabled: !$data.fieldDisabled
-      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.description), 9
-      /* TEXT, PROPS */
-      , ["disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <p v-text=\"teamData.description\" />")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.agendaList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
+      }, null, 8
+      /* PROPS */
+      , ["placeholder", "disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $options.teamDescription]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <p v-text=\"teamData.description\" />")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.agendaList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
         list: $data.agendaList,
         "item-key": "id",
         tag: "div",
@@ -22442,7 +22491,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["list", "onEnd"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_7])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_8, [$data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+      , ["list", "onEnd"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_12, [$data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
         key: 0
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.activeModalItem ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_AgendaModal, {
         key: 1,

@@ -4,9 +4,9 @@
             :with-sidebar="true">
         <template v-slot:body>
             <section class="col-12 col-md-9 col-lg-8 offset-xl-1 main-content agenda">
-                <Loading v-if="loading" />
+                <Loading v-if="isLoading" />
                 <p v-if="error" v-html="error" />
-                <div v-if="!loading && teamData"
+                <div v-if="!isLoading && teamData"
                      class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
                                  :title="teamData.title">
@@ -15,13 +15,29 @@
                                v-text="teamData.created_at" />
                         </template>
                     </TitleHeader>
-                    <div class="col-12 agenda__edit">
-                        <p>
-                            <a href=""
-                               class="agenda__edit-link"
-                               @click.prevent="editFields(true)"
-                               v-text="`Edit Team`" />
-                        </p>
+                    <div class="col-12 agenda__form-actions">
+                        <div class="btn-group row" role="group" aria-label="Edit and Save Buttons">
+                            <div class="col-auto">
+                                <button type="button"
+                                        class="btn btn-primary btn-sm agenda__form-actions__edit"
+                                        @click.prevent="editFields(true)"
+                                        v-text="`Edit Team`" />
+                            </div>
+                            <div class="col-auto">
+                                <button v-if="fieldDisabled"
+                                        type="button"
+                                        class="btn btn-success btn-sm col-auto agenda__form-actions__save"
+                                        @click.prevent="savefields()"
+                                        v-text="`Save`" />
+                            </div>
+                            <div class="col-auto">
+                                <button v-if="fieldDisabled"
+                                        type="button"
+                                        class="btn btn-danger btn-sm col-auto agenda__form-actions__cancel"
+                                        @click.prevent="cancelFields()"
+                                        v-text="`Cancel`" />
+                            </div>
+                        </div>
                     </div>
                     <div v-if="teamData.description"
                          class="col-12 mb-5 pb-4 agenda__description">
@@ -29,7 +45,9 @@
                         <textarea id="team-description"
                                   class="form-control border-0"
                                   rows="4"
-                                  :disabled="!fieldDisabled">{{teamData.description}}</textarea>
+                                  v-model="teamDescription"
+                                  :placeholder="teamDescription"
+                                  :disabled="!fieldDisabled" />
                         <!--                        <p v-text="teamData.description" />-->
                     </div>
                     <div v-if="agendaList"
@@ -92,8 +110,8 @@
     import AgendaListItem from "../Partials/AgendaListItem.vue";
     import AgendaModal from "../Partials/AgendaModal.vue";
     import Layout from "../Layout/Layout.vue";
-    import TitleHeader from "../Elements/TitleHeader.vue";
     import Loading from "../Elements/Loading.vue";
+    import TitleHeader from "../Elements/TitleHeader.vue";
     
     export default {
         setup() {
@@ -106,7 +124,7 @@
                 dragging: false,
                 error: false,
                 id: null,
-                loading: true,
+                isLoading: true,
                 modalLoading: false,
                 teamData: null,
                 fieldDisabled: false,
@@ -132,7 +150,7 @@
             },
             fetchData(slug) {
                 this.error = this.data = null;
-                this.loading = true;
+                this.isLoading = true;
                 axios.get(`/api/team/${slug}`)
                      .then(({status, data}) => {
                          if (status === 200 && !this.isObjEmpty(data)) {
@@ -141,7 +159,7 @@
                          }
                      })
                      .catch(e => console.error(e))
-                     .finally(() => this.loading = false);
+                     .finally(() => this.isLoading = false);
             },
             openModal(elmData) {
                 this.modalLoading = true;
@@ -162,14 +180,25 @@
             },
             editFields(val) {
                 this.fieldDisabled = val;
-            }
+            },
+            savefields() {
+                console.log(this.teamDescription)
+            },
+            cancelFields() {
+                this.fieldDisabled = false;
+            },
+        },
+        computed: {
+            teamDescription() {
+                return this.teamData.description;
+            },
         },
         components: {
+            AgendaListItem,
+            AgendaModal,
             Loading,
             Layout,
             TitleHeader,
-            AgendaModal,
-            AgendaListItem
         },
         mixins: [mixins],
         name: "Agenda"
