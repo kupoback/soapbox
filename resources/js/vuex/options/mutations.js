@@ -7,17 +7,18 @@ export default {
     //         currentState.mobileNav = data;
     //     }
     // },
-    toggleSidebar(currentState, {opts}) {
-        currentState.sidebarOpened = opts.visibility;
+    toggleSidebar(state, {opts}) {
+        state.sidebarOpened = opts.visibility;
     },
-    setViewport(currentState, {viewportName}) {
-        currentState.viewport = viewportName;
+    setViewport(state, {viewportName}) {
+        state.viewport = viewportName;
     },
-    setSecrets(currentState, {data}) {
-        currentState.secrets = data && data;
+    setSecrets(state, data) {
+        console.log(data);
+        state.secrets = data && data;
     },
-    hasLoginError(currentState, error) {
-        currentState.loginError = error;
+    hasLoginError(state, error) {
+        state.loginError = error;
     },
     setAuthUser(state, user) {
         state.user = user;

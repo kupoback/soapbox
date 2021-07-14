@@ -16,7 +16,7 @@
     export default {
         props: {
             commentCount: [Array, Object, String],
-            status: String,
+            status: [Boolean, Object],
             title: String,
         },
         data() {

@@ -24,7 +24,7 @@
     export default {
         data() {
             return {
-                secrets: [],
+                // secrets: [],
             };
         },
         methods: {
@@ -49,23 +49,25 @@
                     .get("/api/secrets/")
                     .then(({data, status}) => {
                         if (status === 200) {
-                            this.secrets = data;
+                            console.log(data);
+                            this.$store.commit('setSecrets', data);
                             this.updateLoginErr(false);
                         }
                     })
                     .catch(e => {
-                        this.secrets = [];
                         this.updateLoginErr(true);
                     });
             },
             updateLoginErr(error) {
                 this.$store.commit("hasLoginError", error);
             },
+            updateLoginCookie(data) {
+            }
         },
         computed: {
-            // secrets() {
-            //     return this.$store.state.secrets;
-            // }
+            secrets() {
+                return this.$store.state.secrets;
+            }
         },
         name: "Home",
         components: {Layout, TitleHeader, Login}

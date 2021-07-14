@@ -48,7 +48,8 @@ export const routes = [
 const router = createRouter({
     history: createWebHistory(),
     linkExactActiveClass: "fw-bold",
-    routes: routes,
+    base: process.env.APP_URL,
+    routes,
 });
 
 export default router;

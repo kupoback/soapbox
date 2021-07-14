@@ -10,15 +10,27 @@
                      class="row g-0 row-full-height pt-4">
                     <TitleHeader css-classes="mb-4 agenda__header"
                                  :title="teamData.title">
-                        <template v-slot:date-time>
+                        <template #dateTime>
                             <p class="date-time"
                                v-text="teamData.created_at" />
                         </template>
                     </TitleHeader>
+                    <div class="col-12 agenda__edit">
+                        <p>
+                            <a href=""
+                               class="agenda__edit-link"
+                               @click.prevent="editFields(true)"
+                               v-text="`Edit Team`" />
+                        </p>
+                    </div>
                     <div v-if="teamData.description"
                          class="col-12 mb-5 pb-4 agenda__description">
-                        <p class="muted-text">Description</p>
-                        <p v-text="teamData.description" />
+                        <label for="team-description" class="muted-text">Description</label>
+                        <textarea id="team-description"
+                                  class="form-control border-0"
+                                  rows="4"
+                                  :disabled="!fieldDisabled">{{teamData.description}}</textarea>
+                        <!--                        <p v-text="teamData.description" />-->
                     </div>
                     <div v-if="agendaList"
                          class="col-12 agenda__cards">
@@ -31,11 +43,11 @@
                             @end="consoleItem">
                             <template #item="{element, index}">
                                 <AgendaListItem :id="element.id"
-                                            :title="element.title"
-                                            :status="element.priority_status"
-                                            :comment-count="element.commentCount"
-                                            :element="element"
-                                            @openModal="openModal" />
+                                                :title="element.title"
+                                                :status="element.priority_status"
+                                                :comment-count="element.commentCount"
+                                                :element="element"
+                                                @openModal="openModal" />
                             </template>
                         </draggable>
                     </div>
@@ -97,6 +109,7 @@
                 loading: true,
                 modalLoading: false,
                 teamData: null,
+                fieldDisabled: false,
             };
         },
         created() {
@@ -138,14 +151,17 @@
                      .then(data => this.activeModalItem = data)
                      .then(() => this.modalGet().show())
                      .catch(e => console.error(e))
-                    .finally(() => this.modalLoading = false)
+                     .finally(() => this.modalLoading = false);
             },
             closeModal() {
                 setTimeout(() => this.activeModalItem = null, 500);
             },
             modalGet() {
-                const modalElm = document.getElementById('agendaModal');
+                const modalElm = document.getElementById("agendaModal");
                 return new Modal(modalElm);
+            },
+            editFields(val) {
+                this.fieldDisabled = val;
             }
         },
         components: {
@@ -161,13 +177,13 @@
 </script>
 
 <style lang="scss" scoped>
-
+    
     .modal-container {
-        z-index: 1000;
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
+        z-index:         1000;
+        display:         flex;
+        flex-flow:       row wrap;
+        align-items:     center;
         justify-content: center;
     }
-    
+
 </style>

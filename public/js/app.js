@@ -19793,7 +19793,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     commentCount: [Array, Object, String],
-    status: String,
+    status: [Boolean, Object],
     title: String
   },
   data: function data() {
@@ -19900,11 +19900,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     cssClasses: String,
     hClasses: String,
     title: String
+  },
+  setup: function setup(props, _ref) {
+    var slots = _ref.slots;
+    var hasDateTime = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    if (slots.dateTime) hasDateTime.value = true;
+    return {
+      hasDateTime: hasDateTime
+    };
   },
   name: "TitleHeader"
 });
@@ -20350,8 +20360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
-      secrets: []
+    return {// secrets: [],
     };
   },
   methods: {
@@ -20383,23 +20392,25 @@ __webpack_require__.r(__webpack_exports__);
             status = _ref2.status;
 
         if (status === 200) {
-          _this2.secrets = data;
+          console.log(data);
+
+          _this2.$store.commit('setSecrets', data);
 
           _this2.updateLoginErr(false);
         }
       })["catch"](function (e) {
-        _this2.secrets = [];
-
         _this2.updateLoginErr(true);
       });
     },
     updateLoginErr: function updateLoginErr(error) {
       this.$store.commit("hasLoginError", error);
-    }
+    },
+    updateLoginCookie: function updateLoginCookie(data) {}
   },
-  computed: {// secrets() {
-    //     return this.$store.state.secrets;
-    // }
+  computed: {
+    secrets: function secrets() {
+      return this.$store.state.secrets;
+    }
   },
   name: "Home",
   components: {
@@ -20499,7 +20510,8 @@ __webpack_require__.r(__webpack_exports__);
       id: null,
       loading: true,
       modalLoading: false,
-      teamData: null
+      teamData: null,
+      fieldDisabled: false
     };
   },
   created: function created() {
@@ -20568,8 +20580,11 @@ __webpack_require__.r(__webpack_exports__);
       }, 500);
     },
     modalGet: function modalGet() {
-      var modalElm = document.getElementById('agendaModal');
+      var modalElm = document.getElementById("agendaModal");
       return new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Modal(modalElm);
+    },
+    editFields: function editFields(val) {
+      this.fieldDisabled = val;
     }
   },
   components: {
@@ -21122,7 +21137,9 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     "class": "col-12 ".concat($props.cssClasses)
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "date-time", {}, undefined, true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  }, [$setup.hasDateTime ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "dateTime", {
+    key: 0
+  }, undefined, true) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
     "class": $props.hClasses,
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title)
   }, null, 10
@@ -22090,7 +22107,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         "css-classes": "home__header",
         "h-classes": "display-1",
         title: "Clique Soapbox"
-      }), _hoisted_2, !$data.secrets.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Login, {
+      }), _hoisted_2, !$options.secrets.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Login, {
         onLogin: $options.handeLogin
       }, null, 8
       /* PROPS */
@@ -22286,22 +22303,26 @@ var _hoisted_2 = {
   "class": "row g-0 row-full-height pt-4"
 };
 var _hoisted_3 = {
+  "class": "col-12 agenda__edit"
+};
+var _hoisted_4 = {
   key: 0,
   "class": "col-12 mb-5 pb-4 agenda__description"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "team-description",
   "class": "muted-text"
 }, "Description", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
+var _hoisted_6 = {
   key: 1,
   "class": "col-12 agenda__cards"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-12 order-last align-self-end position-sticky bottom-0 bg-white create-new-item"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
   "class": "row gx-3 align-items-center no-gutters create-new-item__form"
@@ -22328,7 +22349,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_8 = {
   key: 0,
   "class": "modal-container position-absolute w-100 h-100"
 };
@@ -22365,7 +22386,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         "css-classes": "mb-4 agenda__header",
         title: $data.teamData.title
       }, {
-        "date-time": _withId(function () {
+        dateTime: _withId(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
             "class": "date-time",
             textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.created_at)
@@ -22378,11 +22399,23 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["title"]), $data.teamData.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
-        textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.description)
+      , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+        href: "",
+        "class": "agenda__edit-link",
+        onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.editFields(true);
+        }, ["prevent"])),
+        textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("Edit Team")
       }, null, 8
       /* PROPS */
-      , ["textContent"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.agendaList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
+      , ["textContent"])])]), $data.teamData.description ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "team-description",
+        "class": "form-control border-0",
+        rows: "4",
+        disabled: !$data.fieldDisabled
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamData.description), 9
+      /* TEXT, PROPS */
+      , ["disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <p v-text=\"teamData.description\" />")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.agendaList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_draggable, {
         list: $data.agendaList,
         "item-key": "id",
         tag: "div",
@@ -22409,7 +22442,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["list", "onEnd"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_7, [$data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+      , ["list", "onEnd"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_7])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_8, [$data.modalLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
         key: 0
       })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.activeModalItem ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_AgendaModal, {
         key: 1,
@@ -22587,6 +22620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Views_Team_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Views/Team.vue */ "./resources/js/components/Views/Team.vue");
 /* harmony import */ var _components_Views_Profile_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Views/Profile.vue */ "./resources/js/components/Views/Profile.vue");
 /* harmony import */ var _components_Views_NotFound_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Views/NotFound.vue */ "./resources/js/components/Views/NotFound.vue");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
 
@@ -22639,6 +22673,7 @@ var routes = [{
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createWebHistory)(),
   linkExactActiveClass: "fw-bold",
+  base: process.env.APP_URL,
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -22868,20 +22903,20 @@ __webpack_require__.r(__webpack_exports__);
   //         currentState.mobileNav = data;
   //     }
   // },
-  toggleSidebar: function toggleSidebar(currentState, _ref) {
+  toggleSidebar: function toggleSidebar(state, _ref) {
     var opts = _ref.opts;
-    currentState.sidebarOpened = opts.visibility;
+    state.sidebarOpened = opts.visibility;
   },
-  setViewport: function setViewport(currentState, _ref2) {
+  setViewport: function setViewport(state, _ref2) {
     var viewportName = _ref2.viewportName;
-    currentState.viewport = viewportName;
+    state.viewport = viewportName;
   },
-  setSecrets: function setSecrets(currentState, _ref3) {
-    var data = _ref3.data;
-    currentState.secrets = data && data;
+  setSecrets: function setSecrets(state, data) {
+    console.log(data);
+    state.secrets = data && data;
   },
-  hasLoginError: function hasLoginError(currentState, error) {
-    currentState.loginError = error;
+  hasLoginError: function hasLoginError(state, error) {
+    state.loginError = error;
   },
   setAuthUser: function setAuthUser(state, user) {
     state.user = user;
@@ -28020,7 +28055,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal-container[data-v-50f3ff29] {\n  z-index: 1000;\n  display: flex;\n  flex-flow: row wrap;\n  align-items: center;\n  justify-content: center;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Views/Team.vue"],"names":[],"mappings":"AAEI;EACI,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;AADR","sourcesContent":["\n\n    .modal-container {\n        z-index: 1000;\n        display: flex;\n        flex-flow: row wrap;\n        align-items: center;\n        justify-content: center;\n    }\n    \n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal-container[data-v-50f3ff29] {\n  z-index: 1000;\n  display: flex;\n  flex-flow: row wrap;\n  align-items: center;\n  justify-content: center;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Views/Team.vue"],"names":[],"mappings":"AAEI;EACI,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;AADR","sourcesContent":["\n    \n    .modal-container {\n        z-index:         1000;\n        display:         flex;\n        flex-flow:       row wrap;\n        align-items:     center;\n        justify-content: center;\n    }\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
